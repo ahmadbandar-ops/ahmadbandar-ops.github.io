@@ -1,75 +1,205 @@
-<section id="contact">
-  <div class="contact-background">
-    <img src="39f5b815-acfd-40c3-b5e6-0af16b4375e4.png" alt="Ahmad Bandar" class="hero-image">
-    <div class="contact-content">
-      <h2>Contact Me</h2>
-      <div class="card">
-        <a class="contact-link" href="mailto:bandarahmad104@gmail.com">📧 bandarahmad104@gmail.com</a>
-        <a class="contact-link" href="https://instagram.com/ahmad.bandar.5203" target="_blank">📱 Instagram: @ahmad.bandar.5203</a>
-        <a class="contact-link" href="tel:81101811">📞 81101811</a>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ahmad Bandar | Academic CV Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #64ffda;
+            --navy: #0a192f;
+            --light-navy: #112240;
+            --slate: #8892b0;
+            --white: #e6f1ff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--navy);
+            color: var(--slate);
+            line-height: 1.6;
+        }
+
+        /* تحسين مظهر السكرول */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--navy); }
+        ::-webkit-scrollbar-thumb { background: var(--light-navy); border-radius: 10px; }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: calc(100% - 100px);
+            z-index: 100;
+        }
+
+        .logo { color: var(--primary); font-weight: bold; font-size: 24px; font-family: monospace; }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--primary); }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+        }
+
+        header span { color: var(--primary); font-family: monospace; font-size: 16px; }
+        header h1 { font-size: clamp(40px, 8vw, 70px); color: var(--white); margin: 10px 0; }
+        header h2 { font-size: clamp(30px, 5vw, 50px); margin: 0; }
+
+        section { padding: 100px 10%; }
+        h3 { color: var(--white); font-size: 28px; border-bottom: 1px solid var(--light-navy); padding-bottom: 10px; margin-bottom: 30px; }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+        .cv-card {
+            background: var(--light-navy);
+            padding: 25px;
+            border-radius: 10px;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+
+        .cv-card:hover { border-bottom: 3px solid var(--primary); transform: translateY(-5px); }
+        .cv-card h4 { color: var(--white); margin: 0 0 10px 0; }
+        .cv-card .date { color: var(--primary); font-size: 14px; font-family: monospace; }
+
+        .skills-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .skill-tag { 
+            background: rgba(100, 255, 218, 0.1); 
+            color: var(--primary); 
+            padding: 5px 12px; 
+            border-radius: 4px; 
+            font-size: 12px; 
+            font-family: monospace;
+        }
+
+        /* قسم التواصل الجديد مع صورتك */
+        .contact-section {
+            background: #112240;
+            text-align: center;
+            border-radius: 20px;
+            padding: 60px 20px;
+            margin-bottom: 50px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 24px;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover { color: var(--primary); }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            nav { padding: 20px; width: calc(100% - 40px); }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">AB_</div>
+    <div class="nav-links">
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
     </div>
-  </div>
+</nav>
+
+<header>
+    <span>Hello, I am</span>
+    <h1>Ahmad Bandar.</h1>
+    <h2>Data Science Student @ USJ</h2>
+    <p style="max-width: 500px;">18-year-old tech enthusiast and athlete, focused on leveraging data to solve real-world problems while maintaining excellence in football.</p>
+</header>
+
+<section id="education">
+    <h3>01. Education</h3>
+    <div class="grid">
+        <div class="cv-card">
+            <span class="date">2025 - Present</span>
+            <h4>Bachelor in Data Science</h4>
+            <p>Université Saint-Joseph de Beyrouth (USJ)</p>
+            <p style="font-size: 14px;">Focusing on Statistics, Programming, and Data Visualization.</p>
+        </div>
+        <div class="cv-card">
+            <span class="date">2007 - 2025</span>
+            <h4>Academic Path & Sports</h4>
+            <p>High School Excellence</p>
+            <p style="font-size: 14px;">Balanced academic performance with professional football training.</p>
+        </div>
+    </div>
 </section>
 
-<style>
-.contact-background {
-  position: relative;
-  width: 100%;
-  min-height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 15px;
-  margin-top: 50px;
-  background: linear-gradient(to bottom right, rgba(0,0,0,0.6), rgba(10,25,47,0.6));
-}
+<section id="skills">
+    <h3>02. Technical Skills</h3>
+    <div class="grid">
+        <div class="cv-card">
+            <h4>Data Analysis</h4>
+            <div class="skills-list">
+                <span class="skill-tag">Python (Pandas/NumPy)</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Excel</span>
+                <span class="skill-tag">Data Visualization</span>
+            </div>
+        </div>
+        <div class="cv-card">
+            <h4>Soft Skills</h4>
+            <div class="skills-list">
+                <span class="skill-tag">Teamwork (Athlete mindset)</span>
+                <span class="skill-tag">Time Management</span>
+                <span class="skill-tag">English & Arabic</span>
+                <span class="skill-tag">Problem Solving</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-.hero-image {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.5;
-  z-index: 1;
-}
+<section id="contact" class="contact-section">
+    <img src="image.png" alt="Ahmad Bandar" class="profile-img">
+    <h3 style="border:none; margin-bottom:10px;">Get In Touch</h3>
+    <p>I'm currently looking for internships or data projects.</p>
+    <div class="social-links">
+        <a href="mailto:bandarahmad104@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://instagram.com/ahmad.bandar.5203" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="tel:81101811"><i class="fas fa-phone"></i></a>
+    </div>
+</section>
 
-.contact-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: white;
-}
+<footer style="text-align: center; padding: 20px; font-size: 12px; font-family: monospace;">
+    Built for Academic Project | Ahmad Bandar © 2026
+</footer>
 
-.contact-content h2 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.card {
-  background: rgba(17, 34, 64, 0.85);
-  padding: 25px;
-  max-width: 600px;
-  margin: 0 auto;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-}
-
-a.contact-link {
-  display: block;
-  color: #64ffda;
-  text-decoration: none;
-  margin: 10px 0;
-  font-size: 18px;
-  transition: 0.3s;
-}
-
-a.contact-link:hover {
-  color: #00ffc2;
-  transform: scale(1.05);
-}
-</style>
+</body>
+</html>
