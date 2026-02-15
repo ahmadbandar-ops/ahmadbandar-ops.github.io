@@ -1,320 +1,75 @@
-[3:25 PM, 2/15/2026] Sonic: <!DOCTYPE html>
-<html>
-<head>
-<title>Ahmad Bandar | Personal Website</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<section id="contact">
+  <div class="contact-background">
+    <img src="39f5b815-acfd-40c3-b5e6-0af16b4375e4.png" alt="Ahmad Bandar" class="hero-image">
+    <div class="contact-content">
+      <h2>Contact Me</h2>
+      <div class="card">
+        <a class="contact-link" href="mailto:bandarahmad104@gmail.com">📧 bandarahmad104@gmail.com</a>
+        <a class="contact-link" href="https://instagram.com/ahmad.bandar.5203" target="_blank">📱 Instagram: @ahmad.bandar.5203</a>
+        <a class="contact-link" href="tel:81101811">📞 81101811</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <style>
-body{
-  margin:0;
-  font-family: 'Segoe UI', sans-serif;
-  background:#0a192f;
-  color:white;
-  scroll-behavior:smooth;
+.contact-background {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 15px;
+  margin-top: 50px;
+  background: linear-gradient(to bottom right, rgba(0,0,0,0.6), rgba(10,25,47,0.6));
 }
 
-nav{
-  position:fixed;
-  width:100%;
-  background:#112240;
-  padding:15px;
-  text-align:center;
-  z-index:10;
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  z-index: 1;
 }
 
-nav a{
-  color:white;
-  margin:0 15px;
-  text-decoration:none;
-  font-weight:500;
-  transition:0.3s;
+.contact-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
 }
 
-nav a:hover {
-  color:#64ffda;
+.contact-content h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
 }
 
-header{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  background:linear-gradient(135deg,#0a192f,#112240);
+.card {
+  background: rgba(17, 34, 64, 0.85);
+  padding: 25px;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
-header h1{
-  font-size:48px;
-  margin:10px 0;
+a.contact-link {
+  display: block;
+  color: #64ffda;
+  text-decoration: none;
+  margin: 10px 0;
+  font-size: 18px;
+  transition: 0.3s;
 }
 
-header p{
-  font-size:18px;
-  color:#ccd6f6;
-}
-
-button{
-  padding:15px 35px;
-  margin-top:20px;
-  border:none;
-  background:#64ffda;
-  color:#0a192f;
-  font-weight:bold;
-  border-radius:10px;
-  cursor:pointer;
-  font-size:18px;
-  transition:0.3s;
-  box-shadow:0 5px 15px rgba(100,255,218,0.3);
-}
-
-button:hover{
-  background:#00ffc2;
-  color:white;
-  transform:scale(1.1);
-  box-shadow:0 8px 20px rgba(100,255,218,0.6);
-}
-
-section{
-  padding:80px 20px;
-  text-align:center;
-}
-
-.card{
-  background:#112240;
-  padding:25px;
-  max-width:600px;
-  margin:20px auto;
-  border-radius:15px;
-  transition:0.3s;
-  box-shadow:0 5px 15px rgba(0,0,0,0.3);
-}
-
-.card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.5);
-}
-
-a.contact-link{
-  color:#64ffda;
-  text-decoration:none;
-  display:block;
-  margin:10px 0;
-  font-size:18px;
-  transition:0.3s;
-}
-
-a.contact-link:hover{
-  color:#00ffc2;
-  transform:scale(1.05);
-}
-
-footer{
-  background:#020c1b;
-  padding:20px;
-  text-align:center;
-  font-size:14px;
-  color:#8892b0;
+a.contact-link:hover {
+  color: #00ffc2;
+  transform: scale(1.05);
 }
 </style>
-</head>
-
-<body>
-
-<nav>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<header>
-<h1>Ahmad Bandar</h1>
-<p>Data Science Student | Football Player | 18 Years Old</p>
-<button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">📩 Contact Me</button>
-</header>
-
-<section id="about">
-<h2>About Me</h2>
-<div class="card">
-<p><strong>Age:</strong> 18</p>
-<p><strong>Date of Birth:</strong> 11 / 6 / 2007</p>
-<p><strong>Education:</strong> Studying Data Science at Université Saint-Joseph de Beyrouth (USJ)</p>
-<p><strong>Sport:</strong> Football Player</p>
-<p>I am passionate about technology, data, and sports. My goal is to grow professionally in the field of Data Science while maintaining discipline and excellence in football.</p>
-</div>
-</section>
-
-<section id="contact">
-<h2>Contact Me</h2>
-<div class="card">
-<a class="contact-link" href="mailto:bandarahmad104@gmail.com">📧 bandarahmad104@gmail.com</a>
-<a class="contact-link" href="https://instagram.com/ahmad.bandar.5203" target="_blank">📱 Instagram: @ahmadbandar5203</a>
-<a class="contact-link" href="tel:81101811">📞 81101811</a>
-</div>
-</section>
-
-<footer>
-© 2026 Ahmad Bandar | All Rights Reserved
-</footer>
-
-</body>
-</html>
-[3:36 PM, 2/15/2026] Sonic: DOCTYPE html>
-<html>
-<head>
-<title>Ahmad Bandar | Personal Website</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-  margin:0;
-  font-family: 'Segoe UI', sans-serif;
-  background:#0a192f;
-  color:white;
-  scroll-behavior:smooth;
-}
-
-nav{
-  position:fixed;
-  width:100%;
-  background:#112240;
-  padding:15px;
-  text-align:center;
-  z-index:10;
-}
-
-nav a{
-  color:white;
-  margin:0 15px;
-  text-decoration:none;
-  font-weight:500;
-  transition:0.3s;
-}
-
-nav a:hover {
-  color:#64ffda;
-}
-
-header{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  background:linear-gradient(135deg,#0a192f,#112240);
-}
-
-header h1{
-  font-size:48px;
-  margin:10px 0;
-}
-
-header p{
-  font-size:18px;
-  color:#ccd6f6;
-}
-
-button{
-  padding:15px 35px;
-  margin-top:20px;
-  border:none;
-  background:#64ffda;
-  color:#0a192f;
-  font-weight:bold;
-  border-radius:10px;
-  cursor:pointer;
-  font-size:18px;
-  transition:0.3s;
-  box-shadow:0 5px 15px rgba(100,255,218,0.3);
-}
-
-button:hover{
-  background:#00ffc2;
-  color:white;
-  transform:scale(1.1);
-  box-shadow:0 8px 20px rgba(100,255,218,0.6);
-}
-
-section{
-  padding:80px 20px;
-  text-align:center;
-}
-
-.card{
-  background:#112240;
-  padding:25px;
-  max-width:600px;
-  margin:20px auto;
-  border-radius:15px;
-  transition:0.3s;
-  box-shadow:0 5px 15px rgba(0,0,0,0.3);
-}
-
-.card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 10px 25px rgba(0,0,0,0.5);
-}
-
-a.contact-link{
-  color:#64ffda;
-  text-decoration:none;
-  display:block;
-  margin:10px 0;
-  font-size:18px;
-  transition:0.3s;
-}
-
-a.contact-link:hover{
-  color:#00ffc2;
-  transform:scale(1.05);
-}
-
-footer{
-  background:#020c1b;
-  padding:20px;
-  text-align:center;
-  font-size:14px;
-  color:#8892b0;
-}
-</style>
-</head>
-
-<body>
-
-<nav>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<header>
-<h1>Ahmad Bandar</h1>
-<p>Data Science Student | Football Player | 18 Years Old</p>
-<button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">📩 Contact Me</button>
-</header>
-
-<section id="about">
-<h2>About Me</h2>
-<div class="card">
-<p><strong>Age:</strong> 18</p>
-<p><strong>Date of Birth:</strong> 11 / 6 / 2007</p>
-<p><strong>Education:</strong> Studying Data Science at Université Saint-Joseph de Beyrouth (USJ)</p>
-<p><strong>Sport:</strong> Football Player</p>
-<p>I am passionate about technology, data, and sports. My goal is to grow professionally in the field of Data Science while maintaining discipline and excellence in football.</p>
-</div>
-</section>
-
-<section id="contact">
-<h2>Contact Me</h2>
-<div class="card">
-<a class="contact-link" href="mailto:bandarahmad104@gmail.com">📧 bandarahmad104@gmail.com</a>
-<a class="contact-link" href="https://instagram.com/ahmad.bandar.5203" target="_blank">📱 Instagram: @ahmad.bandar.5203</a>
-<a class="contact-link" href="tel:81101811">📞 81101811</a>
-</div>
-</section>
-
-<footer>
-© 2026 Ahmad Bandar | All Rights Reserved
-</footer>
-
-</body>
-</html>
