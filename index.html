@@ -1,73 +1,55 @@
-/* Add this inside <style> tags */
-:root {
-    --bg: #0a192f;
-    --card: #112240;
-    --accent: #64ffda; /* Neon Green from your site */
-    --text: #ccd6f6;
-    --text-dim: #8892b0;
-}
+<div class="cv-card">
+    <aside class="sidebar">
+        <div class="profile-frame">
+            <img src="YOUR_IMAGE_HERE" alt="Ahmad Bandar">
+        </div>
+        <h1>Ahmad Bandar</h1>
+        <p class="subtitle">Data Science Student</p>
 
-body {
-    background: var(--bg);
-    color: var(--text);
-    display: flex;
-    justify-content: center;
-    padding: 50px;
-    font-family: 'Inter', sans-serif;
-}
+        <section class="side-group">
+            <h3>Contact</h3>
+            [span_2](start_span)<p>📧 bandarahmad104@gmail.com[span_2](end_span)</p>
+            [span_3](start_span)<p>📞 81101811[span_3](end_span)</p>
+            [span_4](start_span)<p>📍 Saksakiyeh[span_4](end_span)</p>
+        </section>
 
-.cv-card {
-    display: flex;
-    width: 1000px;
-    background: var(--card);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-}
+        <section class="side-group">
+            <h3>Languages</h3>
+            [span_5](start_span)<p>English, Arabic[span_5](end_span)</p>
+        </section>
+    </aside>
 
-/* Sidebar Styling */
-.sidebar {
-    width: 30%;
-    background: #020c1b;
-    padding: 40px 30px;
-    border-right: 1px solid #233554;
-}
+    <main class="content">
+        <div class="bento-grid">
+            <div class="bento-box">
+                <h4>About Me</h4>
+                [span_6](start_span)<p>Aspiring Data Science student at USJ with a strong foundation in analytical thinking.[span_6](end_span) [span_7](start_span)As a professional athlete, I bring discipline and teamwork to the technical world.[span_7](end_span)</p>
+            </div>
 
-.profile-frame img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 2px solid var(--accent);
-    margin-bottom: 20px;
-}
+            <div class="bento-box">
+                <h4>Education</h4>
+                [span_8](start_span)<p><strong>BS in Data Science</strong>[span_8](end_span)</p>
+                [span_9](start_span)<p class="date">Sep 2025 - Present[span_9](end_span)</p>
+                [span_10](start_span)<p>Université Saint-Joseph (USJ)[span_10](end_span)</p>
+            </div>
 
-/* Bento Grid: The "Awe" part */
-.content { width: 70%; padding: 50px; }
+            <div class="bento-box">
+                <h4>Experience</h4>
+                [span_11](start_span)<p><strong>Professional Athlete</strong>[span_11](end_span)</p>
+                [span_12](start_span)<p class="date">Aug 2019 - Present[span_12](end_span)</p>
+                [span_13](start_span)<p>Saksakiyeh Football Club[span_13](end_span)</p>
+            </div>
 
-.bento-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 columns */
-    grid-auto-rows: 1fr; /* Equal height */
-    gap: 20px;
-}
+            <div class="bento-box">
+                <h4>Technical Skills</h4>
+                <ul>
+                    [span_14](start_span)<li>Python & Statistics[span_14](end_span)</li>
+                    [span_15](start_span)<li>Data Visualization[span_15](end_span)</li>
+                    [span_16](start_span)<li>Predictive Modeling[span_16](end_span)</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</div>
 
-.bento-box {
-    background: rgba(2, 12, 27, 0.3);
-    border: 1px solid #233554;
-    padding: 25px;
-    border-radius: 10px;
-    transition: 0.3s;
-}
-
-.bento-box:hover {
-    border-color: var(--accent);
-    transform: translateY(-5px);
-}
-
-h4 { color: var(--accent); text-transform: uppercase; margin-bottom: 15px; }
-.date { font-size: 12px; color: var(--accent); }
-
-/* Hide button when printing */
-@media print {
-    .download-fab { display: none; }
-}
+<button class="download-fab" onclick="window.print()">Download CV</button>
