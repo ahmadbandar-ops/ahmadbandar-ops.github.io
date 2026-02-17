@@ -1,217 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Bandar | CV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #0a192f;
-            --sidebar-bg: #020c1b;
-            --card-bg: #112240;
-            --accent: #64ffda;
-            --text-main: #ccd6f6;
-            --text-dim: #8892b0;
-            --border: #233554;
-        }
+/* Add this inside <style> tags */
+:root {
+    --bg: #0a192f;
+    --card: #112240;
+    --accent: #64ffda; /* Neon Green from your site */
+    --text: #ccd6f6;
+    --text-dim: #8892b0;
+}
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg-color); 
-            color: var(--text-main);
-            line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            padding: 40px 20px;
-        }
+body {
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    font-family: 'Inter', sans-serif;
+}
 
-        /* Container */
-        .cv-wrapper {
-            width: 1000px;
-            display: flex;
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
+.cv-card {
+    display: flex;
+    width: 1000px;
+    background: var(--card);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
 
-        /* Sidebar */
-        .sidebar {
-            width: 320px;
-            background: var(--sidebar-bg);
-            padding: 40px 30px;
-            border-right: 1px solid var(--border);
-        }
+/* Sidebar Styling */
+.sidebar {
+    width: 30%;
+    background: #020c1b;
+    padding: 40px 30px;
+    border-right: 1px solid #233554;
+}
 
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 2px solid var(--accent);
-            margin: 0 auto 20px;
-            display: block;
-            object-fit: cover;
-        }
+.profile-frame img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    margin-bottom: 20px;
+}
 
-        .sidebar h1 { font-size: 24px; color: var(--accent); text-align: center; margin-bottom: 5px; }
-        .sidebar p.tagline { font-size: 14px; color: var(--text-dim); text-align: center; margin-bottom: 30px; }
+/* Bento Grid: The "Awe" part */
+.content { width: 70%; padding: 50px; }
 
-        .side-section { margin-bottom: 30px; }
-        .side-title { 
-            font-size: 12px; 
-            text-transform: uppercase; 
-            color: var(--accent); 
-            letter-spacing: 2px; 
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-        }
-        .side-info { font-size: 13px; color: var(--text-dim); }
+.bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    grid-auto-rows: 1fr; /* Equal height */
+    gap: 20px;
+}
 
-        /* Main Content Area */
-        .main-content {
-            flex: 1;
-            padding: 50px;
-        }
+.bento-box {
+    background: rgba(2, 12, 27, 0.3);
+    border: 1px solid #233554;
+    padding: 25px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
 
-        /* The Grid for Uniform Boxes */
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-auto-rows: 1fr; /* This forces all boxes in a row to be equal height */
-            gap: 25px;
-        }
+.bento-box:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+}
 
-        .box {
-            background: rgba(2, 12, 27, 0.4);
-            border: 1px solid var(--border);
-            padding: 25px;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
+h4 { color: var(--accent); text-transform: uppercase; margin-bottom: 15px; }
+.date { font-size: 12px; color: var(--accent); }
 
-        .box:hover { border-color: var(--accent); }
-
-        .box-title { 
-            font-size: 14px; 
-            color: var(--accent); 
-            text-transform: uppercase; 
-            margin-bottom: 15px; 
-            font-weight: 600;
-        }
-
-        .box-text { font-size: 14px; color: var(--text-dim); }
-        .highlight { color: var(--text-main); font-weight: 600; display: block; margin-bottom: 5px; }
-        .date { font-size: 12px; color: var(--accent); margin-bottom: 8px; display: block; }
-
-        /* Floating Download Button */
-        .download-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            padding: 12px 25px;
-            background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            transition: 0.3s;
-            z-index: 100;
-        }
-
-        .download-btn:hover {
-            background: rgba(100, 255, 218, 0.1);
-            transform: translateY(-3px);
-        }
-
-        /* Print Settings to keep it looking good as PDF */
-        @media print {
-            .download-btn { display: none; }
-            body { background: white; padding: 0; }
-            .cv-wrapper { box-shadow: none; border: 1px solid #ddd; width: 100%; }
-            .sidebar { background: #f8f8f8; color: black; border-right: 1px solid #ccc; }
-            .box { background: white; border: 1px solid #eee; }
-            .side-title, .box-title, .sidebar h1 { color: #0a192f; }
-            .box-text, .side-info { color: #333; }
-        }
-    </style>
-</head>
-<body>
-
-    <button class="download-btn" onclick="window.print()">Download CV</button>
-
-    <div class="cv-wrapper">
-        <div class="sidebar">
-            <img src="https://via.placeholder.com/140" alt="Ahmad Bandar" class="profile-img">
-            <h1>Ahmad Bandar</h1>
-            <p class="tagline">Data Science Student</p>
-
-            <div class="side-section">
-                <div class="side-title">Contact</div>
-                <div class="side-info">
-                    [span_2](start_span)📧 bandarahmad104@gmail.com[span_2](end_span)<br>
-                    [span_3](start_span)📞 81101811[span_3](end_span)<br>
-                    [span_4](start_span)📍 Saksakiyeh[span_4](end_span)
-                </div>
-            </div>
-
-            <div class="side-section">
-                <div class="side-title">Languages</div>
-                [span_5](start_span)<div class="side-info">English, Arabic[span_5](end_span)</div>
-            </div>
-
-            <div class="side-section">
-                <div class="side-title">Personal</div>
-                [span_6](start_span)<div class="side-info">Born: 6 Nov 2007[span_6](end_span)</div>
-            </div>
-        </div>
-
-        <div class="main-content">
-            <div class="grid-container">
-                
-                <div class="box">
-                    <div class="box-title">About Me</div>
-                    <div class="box-text">
-                        [span_7](start_span)Aspiring Data Science student at USJ with a strong foundation in analytical thinking[span_7](end_span). 
-                        [span_8](start_span)As a professional athlete, I bring discipline, teamwork, and resilience to the technical world[span_8](end_span).
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="box-title">Education</div>
-                    <div class="box-text">
-                        [span_9](start_span)<span class="highlight">BS in Data Science[span_9](end_span)</span>
-                        [span_10](start_span)<span class="date">Sep 2025 - Present[span_10](end_span)</span>
-                        [span_11](start_span)Université Saint-Joseph (USJ)[span_11](end_span)
-                        [span_12](start_span)<p style="margin-top: 5px;">Focus on Python, statistics, and AI foundations[span_12](end_span).</p>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="box-title">Employment</div>
-                    <div class="box-text">
-                        [span_13](start_span)<span class="highlight">Professional Athlete[span_13](end_span)</span>
-                        [span_14](start_span)<span class="date">Aug 2019 - Present[span_14](end_span)</span>
-                        [span_15](start_span)Saksakiyeh Football Club[span_15](end_span)
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="box-title">Skills & Hobbies</div>
-                    <div class="box-text">
-                        [span_16](start_span)• Python & Statistical Modeling[span_16](end_span)<br>
-                        [span_17](start_span)• Data Visualization[span_17](end_span)<br>
-                        [span_18](start_span)• eSports & Gaming[span_18](end_span)
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
+/* Hide button when printing */
+@media print {
+    .download-fab { display: none; }
+}
