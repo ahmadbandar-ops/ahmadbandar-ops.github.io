@@ -5,162 +5,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahmad Bandar - CV</title>
     <style>
-        * { box-sizing: border-box; }
+        :root {
+            --bg-color: #0a192f;
+            --card-bg: #112240;
+            --text-main: #ccd6f6;
+            --text-dim: #8892b0;
+            --accent: #64ffda;
+            --border: #233554;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body { 
-            font-family: 'Inter', 'Segoe UI', sans-serif; 
-            background: #0a192f; /* Dark blue background from your site */
-            color: #ccd6f6;
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-color); 
+            color: var(--text-main);
             display: flex; 
             justify-content: center; 
-            padding: 40px 20px; 
-            margin: 0; 
+            padding: 50px 20px;
         }
-        
+
         .cv-container { 
-            width: 900px; 
-            background: #112240; /* Slightly lighter navy for the card */
+            width: 1000px; 
+            background: var(--card-bg); 
             display: flex; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3); 
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
         /* Sidebar */
         .sidebar { 
-            width: 300px; 
+            width: 320px; 
             background: #020c1b; 
-            padding: 40px 25px; 
-            border-right: 1px solid #233554;
+            padding: 40px 30px; 
+            border-right: 1px solid var(--border);
         }
-        .profile-img { 
-            width: 140px; height: 140px; border-radius: 50%; 
-            border: 3px solid #64ffda; /* Neon green border */
-            object-fit: cover; margin: 0 auto 20px; display: block; 
-        }
-        .sidebar h2 { font-size: 22px; text-align: center; color: #64ffda; margin-bottom: 5px; }
-        .sidebar .subtitle { text-align: center; font-size: 13px; color: #8892b0; margin-bottom: 30px; }
         
-        .sidebar-title { 
-            font-size: 14px; color: #64ffda; margin-bottom: 15px; 
-            text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #233554; padding-bottom: 5px;
+        .profile-circle {
+            width: 150px; height: 150px; border-radius: 50%;
+            border: 2px solid var(--accent);
+            margin: 0 auto 25px;
+            background: url('YOUR_IMAGE_LINK') center/cover; /* Hot hon link l-soura */
         }
-        .sidebar-item { font-size: 13px; margin-bottom: 12px; color: #a8b2d1; }
+
+        .sidebar h2 { color: var(--accent); font-size: 24px; text-align: center; margin-bottom: 5px; }
+        .sidebar .role { text-align: center; color: var(--text-dim); font-size: 14px; margin-bottom: 40px; }
+
+        .side-section { margin-bottom: 30px; }
+        .side-title { 
+            color: var(--accent); font-size: 12px; text-transform: uppercase; 
+            letter-spacing: 2px; margin-bottom: 15px; border-bottom: 1px solid var(--border);
+            padding-bottom: 5px;
+        }
+        .side-content { font-size: 13px; color: var(--text-dim); line-height: 1.8; }
 
         /* Main Content */
-        .main-content { flex: 1; padding: 40px; display: flex; flex-direction: column; gap: 20px; }
-        
-        /* Uniform Grid Boxes */
-        .grid-container {
+        .main-content { flex: 1; padding: 50px; }
+
+        /* Equal Box Grid */
+        .grid-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-auto-rows: 1fr; /* This makes all boxes in a row the same height */
+            gap: 25px;
         }
 
         .box { 
-            background: #112240;
-            border: 1px solid #233554; 
-            padding: 20px; 
-            border-radius: 4px; 
-            min-height: 200px; /* Same size for all */
+            background: rgba(17, 34, 64, 0.5);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box-title { color: var(--accent); font-size: 14px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
+        .box-body { font-size: 14px; color: var(--text-dim); line-height: 1.6; flex-grow: 1; }
+        
+        .highlight { color: var(--text-main); font-weight: bold; display: block; margin-bottom: 4px; }
+        .date-tag { font-size: 12px; color: var(--accent); margin-bottom: 10px; display: block; }
+
+        /* Download Trigger (Hidden by default, used by JS) */
+        .download-btn {
+            position: fixed; bottom: 30px; right: 30px;
+            background: transparent; color: var(--accent);
+            border: 1px solid var(--accent); padding: 12px 24px;
+            border-radius: 4px; cursor: pointer; font-weight: bold;
             transition: 0.3s;
         }
-        .box:hover { border-color: #64ffda; }
-        
-        .box-title { color: #64ffda; font-size: 16px; font-weight: bold; margin-bottom: 15px; text-transform: uppercase; }
-        .box-content { font-size: 13px; line-height: 1.6; color: #a8b2d1; }
-        
-        .item-header { font-weight: bold; color: #ccd6f6; margin-bottom: 5px; display: block; }
-        .date { color: #8892b0; font-size: 12px; display: block; margin-bottom: 10px; }
-
-        /* Print Button */
-        .no-print { position: fixed; bottom: 30px; right: 30px; z-index: 1000; }
-        .btn-download { 
-            padding: 15px 30px; background: transparent; color: #64ffda; 
-            border: 1px solid #64ffda; border-radius: 4px; cursor: pointer; 
-            font-weight: bold; transition: 0.3s; 
-        }
-        .btn-download:hover { background: rgba(100, 255, 218, 0.1); }
+        .download-btn:hover { background: rgba(100, 255, 218, 0.1); }
 
         @media print {
-            .no-print { display: none; }
-            body { background: white; color: black; padding: 0; }
-            .cv-container { width: 100%; box-shadow: none; background: white; }
-            .sidebar { background: #f8f8f8; color: black; border-right: 1px solid #ddd; }
-            .box { border: 1px solid #ddd; background: white; min-height: auto; margin-bottom: 10px;}
-            .box-title, .sidebar h2, .sidebar-title { color: #000; }
-            .box-content, .sidebar-item { color: #333; }
+            .download-btn { display: none; }
+            body { background: white; padding: 0; }
+            .cv-container { box-shadow: none; border: 1px solid #ddd; width: 100%; }
+            .sidebar { background: #f4f4f4; color: black; }
+            .box { border: 1px solid #eee; background: white; }
+            .box-title, .sidebar h2, .side-title { color: #112240; }
         }
     </style>
 </head>
 <body>
 
-    <div class="no-print">
-        <button class="btn-download" onclick="window.print()">Download CV</button>
-    </div>
+    <button class="download-btn" onclick="window.print()">Download CV</button>
 
     <div class="cv-container">
         <div class="sidebar">
-            [span_4](start_span)<img src="YOUR_IMAGE_URL_HERE" alt="Ahmad Bandar" class="profile-img">[span_4](end_span)
-            [span_5](start_span)<h2>Ahmad Bandar</h2>[span_5](end_span)
-            [span_6](start_span)[span_7](start_span)<div class="subtitle">Data Science Student</div>[span_6](end_span)[span_7](end_span)
+            <div class="profile-circle"></div>
+            [span_0](start_span)<h2>Ahmad Bandar[span_0](end_span)</h2>
+            [span_1](start_span)<div class="role">Data Science Student[span_1](end_span)</div>
 
-            [span_8](start_span)<div class="sidebar-title">Personal details</div>[span_8](end_span)
-            [span_9](start_span)<div class="sidebar-item">📧 bandarahmad104@gmail.com</div>[span_9](end_span)
-            [span_10](start_span)<div class="sidebar-item">📞 81101811</div>[span_10](end_span)
-            [span_11](start_span)<div class="sidebar-item">📍 Saksakiyeh</div>[span_11](end_span)
-            [span_12](start_span)<div class="sidebar-item">🎂 6 November 2007</div>[span_12](end_span)
+            <div class="side-section">
+                <div class="side-title">Personal Details</div>
+                <div class="side-content">
+                    [span_2](start_span)📧 bandarahmad104@gmail.com[span_2](end_span)<br>
+                    [span_3](start_span)📞 81101811[span_3](end_span)<br>
+                    [span_4](start_span)📍 Saksakiyeh[span_4](end_span)<br>
+                    [span_5](start_span)🎂 6 November 2007[span_5](end_span)
+                </div>
+            </div>
 
-            [span_13](start_span)<div class="sidebar-title">Languages</div>[span_13](end_span)
-            [span_14](start_span)<div class="sidebar-item">English</div>[span_14](end_span)
-            [span_15](start_span)<div class="sidebar-item">Arabic</div>[span_15](end_span)
+            <div class="side-section">
+                <div class="side-title">Languages</div>
+                [span_6](start_span)<div class="side-content">English[span_6](end_span)[span_7](start_span), Arabic[span_7](end_span)</div>
+            </div>
 
-            [span_16](start_span)<div class="sidebar-title">Hobbies</div>[span_16](end_span)
-            [span_17](start_span)<div class="sidebar-item">Data visualization challenges</div>[span_17](end_span)
-            [span_18](start_span)<div class="sidebar-item">eSports & Gaming</div>[span_18](end_span)
+            <div class="side-section">
+                <div class="side-title">Hobbies</div>
+                [span_8](start_span)<div class="side-content">Data visualization, eSports & Gaming[span_8](end_span)</div>
+            </div>
         </div>
 
         <div class="main-content">
-            
-            <div class="grid-container">
+            <div class="grid-layout">
+                
                 <div class="box">
                     <div class="box-title">About Me</div>
-                    <div class="box-content">
-                        [span_19](start_span)Aspiring Data Science student at USJ with a strong foundation in analytical thinking[span_19](end_span). 
-                        [span_20](start_span)As a professional athlete, I bring discipline, teamwork, and resilience[span_20](end_span). 
-                        [span_21](start_span)Passionate about leveraging data to drive insights[span_21](end_span).
+                    <div class="box-body">
+                        [span_9](start_span)Aspiring Data Science student at USJ with a strong foundation in analytical thinking[span_9](end_span). 
+                        [span_10](start_span)Professional athlete bringing discipline and teamwork to the technical world[span_10](end_span).
                     </div>
                 </div>
 
                 <div class="box">
                     <div class="box-title">Education</div>
-                    <div class="box-content">
-                        [span_22](start_span)<span class="item-header">BS in Data Science</span>[span_22](end_span)
-                        [span_23](start_span)<span class="date">Sep 2025 - Present</span>[span_23](end_span)
-                        [span_24](start_span)Université Saint-Joseph (USJ)[span_24](end_span)
-                        [span_25](start_span)<p>Focus on Python, statistics, and AI foundations[span_25](end_span).</p>
+                    <div class="box-body">
+                        [span_11](start_span)<span class="highlight">BS in Data Science[span_11](end_span)</span>
+                        [span_12](start_span)<span class="date-tag">Sep 2025 - Present[span_12](end_span)</span>
+                        [span_13](start_span)Université Saint-Joseph (USJ)[span_13](end_span)
                     </div>
                 </div>
 
                 <div class="box">
                     <div class="box-title">Employment</div>
-                    <div class="box-content">
-                        [span_26](start_span)<span class="item-header">Professional Athlete</span>[span_26](end_span)
-                        [span_27](start_span)<span class="date">Aug 2019 - Present</span>[span_27](end_span)
-                        [span_28](start_span)Saksakiyeh Football Club[span_28](end_span)
+                    <div class="box-body">
+                        [span_14](start_span)<span class="highlight">Professional Athlete[span_14](end_span)</span>
+                        [span_15](start_span)<span class="date-tag">Aug 2019 - Present[span_15](end_span)</span>
+                        [span_16](start_span)Saksakiyeh Football Club[span_16](end_span)
                     </div>
                 </div>
 
                 <div class="box">
                     <div class="box-title">Skills</div>
-                    <div class="box-content">
-                        [span_29](start_span)[span_30](start_span)• Python Programming[span_29](end_span)[span_30](end_span)<br>
-                        [span_31](start_span)• Statistical Analysis[span_31](end_span)<br>
-                        [span_32](start_span)• Data Visualization[span_32](end_span)<br>
-                        [span_33](start_span)• Mathematical Foundations[span_33](end_span)
+                    <div class="box-body">
+                        [span_17](start_span)• Python Programming[span_17](end_span)<br>
+                        [span_18](start_span)• Statistical Analysis[span_18](end_span)<br>
+                        [span_19](start_span)• Data Visualization[span_19](end_span)<br>
+                        [span_20](start_span)• Mathematical Foundations[span_20](end_span)
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 
