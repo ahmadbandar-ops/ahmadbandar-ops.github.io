@@ -9,57 +9,16 @@
     <style>
         body { background-color: #000; color: white; scroll-behavior: smooth; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .orange-glow { box-shadow: 0 0 25px rgba(255, 100, 0, 0.4); }
-        .text-glow { text-shadow: 0 0 10px rgba(255, 100, 0, 0.8); }
-        .bg-3d {
-            background: radial-gradient(circle at center, #2a1500 0%, #000 80%);
-            position: relative;
-        }
+        .bg-3d { background: radial-gradient(circle at center, #2a1500 0%, #000 80%); position: relative; }
     </style>
 </head>
 <body>
-
     <section class="h-screen flex flex-col justify-center items-center bg-3d text-center p-5 relative">
-        <nav class="absolute top-0 w-full p-6 flex justify-between items-center max-w-6xl">
-            <div class="text-3xl font-black text-orange-500 tracking-tighter">AB</div>
-            <div class="hidden md:flex space-x-8 uppercase text-xs font-bold tracking-widest text-gray-400">
-                <a href="#skills" class="hover:text-orange-500 transition">Skills</a>
-                <a href="#about" class="hover:text-orange-500 transition">About</a>
-                <a href="#contact" class="hover:text-orange-500 transition border-b border-orange-500 pb-1">Hire Me</a>
-            </div>
-        </nav>
-
-        <h1 data-aos="zoom-in" data-aos-duration="1200" class="text-7xl md:text-9xl font-black mb-4 italic tracking-tighter">
-            AHMAD <span class="text-orange-500 text-glow">BANDAR</span>
+        <h1 data-aos="zoom-in" class="text-7xl md:text-9xl font-black mb-4 italic tracking-tighter text-white">
+            AHMAD <span class="text-orange-500">BANDAR</span>
         </h1>
-        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 font-light" data-aos="fade-up" data-aos-delay="400">
-            Data Science Student @ <span class="text-white font-bold">USJ</span>. Solving complex problems with <span class="text-orange-500">Logic</span> and <span class="text-orange-500">Code</span>.
+        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10" data-aos="fade-up">
+            Data Science @ <span class="text-white font-bold">USJ</span> | Football Player
         </p>
-        <a href="#skills" class="bg-orange-600 hover:bg-white hover:text-black text-white font-black py-4 px-12 rounded-full transition-all duration-300 orange-glow uppercase tracking-widest text-sm">
-            View Expertise
-        </a>
+        <a href="#skills" class="bg-orange-600 text-white font-black py-4 px-12 rounded-full orange-glow uppercase text-sm">View Expertise</a>
     </section>
-
-    <section id="skills" class="py-24 px-5 bg-zinc-950 border-y border-zinc-900">
-        <div class="max-w-5xl mx-auto text-center mb-16">
-            <h2 data-aos="fade-up" class="text-5xl font-black text-orange-500 uppercase italic mb-4">Technical Skills</h2>
-            <div class="h-1 w-20 bg-orange-500 mx-auto"></div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div data-aos="fade-right" class="bg-zinc-900/50 p-10 rounded-3xl border border-orange-500/10 hover:border-orange-500/40 transition duration-500 group">
-                <div class="text-5xl mb-6 group-hover:scale-110 transition duration-300">📈</div>
-                <h3 class="text-2xl font-bold mb-4">Mathematics & Logic</h3>
-                <p class="text-gray-400 mb-6">Advanced calculus and statistical modeling are the foundation of my Data Science journey.</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-black px-4 py-1 rounded-full text-xs border border-zinc-700">Calculus</span>
-                    <span class="bg-black px-4 py-1 rounded-full text-xs border border-zinc-700">Statistics</span>
-                    <span class="bg-black px-4 py-1 rounded-full text-xs border border-zinc-700">Logic</span>
-                </div>
-            </div>
-
-            <div data-aos="fade-left" class="bg-zinc-900/50 p-10 rounded-3xl border border-orange-500/10 hover:border-orange-500/40 transition duration-500 group">
-                <div class="text-5xl mb-6 group-hover:scale-110 transition duration-300">🐍</div>
-                <h3 class="text-2xl font-bold mb-4">Programming</h3>
-                <p class="text-gray-400 mb-6">Writing clean, efficient code to automate and analyze. Experienced in modern tech stacks.</p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-orange-500/10 text-orange-500 px-4 py-1 rounded-full text-xs font-mono">Python</span>
