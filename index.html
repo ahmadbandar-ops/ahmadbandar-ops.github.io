@@ -3,152 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Bandar | 3D Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <title>Ahmad Bandar | Data & Sports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        :root {
-            --accent: #00d4ff;
-            --glass: rgba(255, 255, 255, 0.05);
+        :root { --accent: #00d4ff; --glass: rgba(255, 255, 255, 0.05); }
+        body, html { margin: 0; padding: 0; background: #050505; color: white; font-family: 'Montserrat', sans-serif; overflow: hidden; }
+
+        /* 3D Background Overlay */
+        .spline-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+
+        .page {
+            position: absolute; width: 100%; height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: all 0.8s cubic-bezier(0.8, 0, 0.2, 1); z-index: 2;
         }
 
-        body, html {
-            margin: 0; padding: 0;
-            width: 100%; height: 100%;
-            background: #050505;
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            overflow: hidden;
-        }
+        .hidden { transform: translateY(100%); opacity: 0; }
 
-        /* Container for 3D Scene */
-        .spline-container {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 1;
-        }
-
-        /* Overlay to make text readable */
-        .overlay {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at center, transparent, rgba(0,0,0,0.4));
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        /* Content Layer */
-        .content {
-            position: relative;
-            z-index: 3;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        /* Chart Card */
+        .stats-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 90%;
+            max-width: 450px;
             text-align: center;
         }
 
-        .tagline {
-            letter-spacing: 8px;
-            color: var(--accent);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            animation: fadeIn 2s ease;
-        }
-
-        h1 {
-            font-size: clamp(3.5rem, 12vw, 7rem);
-            line-height: 0.85;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            filter: drop-shadow(0 0 20px rgba(255,255,255,0.2));
-        }
+        canvas { max-width: 100%; margin-top: 20px; }
 
         .btn-3d {
-            padding: 18px 45px;
-            background: var(--glass);
-            border: 1px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(15px);
-            color: white;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.4s;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            padding: 15px 40px; background: var(--glass); border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(15px); color: white; border-radius: 50px; cursor: pointer;
+            transition: 0.4s; text-transform: uppercase; font-weight: bold; margin-top: 20px;
         }
 
-        .btn-3d:hover {
-            background: white;
-            color: black;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-        }
+        .btn-3d:hover { background: white; color: black; transform: scale(1.05); }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Section Transition */
-        .page {
-            position: absolute;
-            width: 100%; height: 100vh;
-            transition: transform 0.8s cubic-bezier(0.8, 0, 0.2, 1);
-        }
-
-        .about-page {
-            background: #0a0a0a;
-            top: 100%; /* Hidden below */
-            z-index: 4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+        h1 { font-size: clamp(3rem, 10vw, 6rem); line-height: 0.85; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="spline-container">
+    <div class="spline-bg">
         <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.28/build/spline-viewer.js"></script>
         <spline-viewer url="https://prod.spline.design/6Wq1Q7nUCSpY93p5/scene.splinecode"></spline-viewer>
     </div>
 
-    <div class="overlay"></div>
-
     <section id="home" class="page">
-        <div class="content">
-            <p class="tagline">Data Science | Athlete</p>
-            <h1>AHMAD<br>BANDAR</h1>
-            <button class="btn-3d" onclick="goAbout()">Explore My World</button>
-        </div>
+        <p style="letter-spacing: 5px; color: var(--accent);">FOOTBALLER & DATA SCIENTIST</p>
+        <h1>AHMAD<br>BANDAR</h1>
+        <button class="btn-3d" onclick="showStats()">View My Stats</button>
     </section>
 
-    <section id="about" class="page about-page">
-        <div style="max-width: 600px; text-align: center; padding: 20px;">
-            <h2 style="font-size: 3rem; margin-bottom: 20px;">PROFILE</h2>
-            <p style="font-size: 1.2rem; line-height: 1.8; opacity: 0.8;">
-                A 18-year-old Data Science student at <b>USJ</b>, combining analytical thinking with the discipline of a <b>Football Player</b>.
-            </p>
-            <br>
-            <button class="btn-3d" onclick="goHome()">Back Home</button>
+    <section id="stats" class="page hidden">
+        <div class="stats-card">
+            <h2 style="color: var(--accent);">ATHLETE PERFORMANCE</h2>
+            <canvas id="radarChart"></canvas>
+            <button class="btn-3d" onclick="showHome()">Back Home</button>
         </div>
     </section>
 
     <script>
-        function goAbout() {
-            document.getElementById('about').style.transform = 'translateY(-100%)';
-            document.getElementById('home').style.transform = 'translateY(-100%)';
+        function showStats() {
+            document.getElementById('home').classList.add('hidden');
+            document.getElementById('stats').classList.remove('hidden');
+            initChart();
         }
 
-        function goHome() {
-            document.getElementById('about').style.transform = 'translateY(0)';
-            document.getElementById('home').style.transform = 'translateY(0)';
+        function showHome() {
+            document.getElementById('stats').classList.add('hidden');
+            document.getElementById('home').classList.remove('hidden');
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('radarChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Speed', 'Stamina', 'Passing', 'Shooting', 'Dribbling', 'Tactics'],
+                    datasets: [{
+                        label: 'Ahmad Skills',
+                        data: [90, 85, 80, 75, 88, 92], // غير هول الأرقام لتمثل مهاراتك الحقيقية
+                        backgroundColor: 'rgba(0, 212, 255, 0.2)',
+                        borderColor: '#00d4ff',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#fff'
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255,255,255,0.1)' },
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            pointLabels: { color: '#fff', font: { size: 12 } },
+                            ticks: { display: false }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
         }
     </script>
-
 </body>
 </html>
