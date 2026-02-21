@@ -3,86 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Bandar | Portfolio</title>
+    <title>Ahmad Bandar | Data Science & Athlete</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        body { background-color: #000; color: white; scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
-        .orange-glow { box-shadow: 0 0 20px rgba(255, 165, 0, 0.5); }
+        body { background-color: #000; color: white; scroll-behavior: smooth; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .orange-glow { box-shadow: 0 0 25px rgba(255, 100, 0, 0.4); }
+        .text-glow { text-shadow: 0 0 10px rgba(255, 100, 0, 0.8); }
         .bg-3d {
-            background: radial-gradient(circle at center, #221200 0%, #000 70%);
-            position: relative; overflow: hidden;
+            background: radial-gradient(circle at center, #2a1500 0%, #000 80%);
+            position: relative;
         }
     </style>
 </head>
 <body>
 
-    <section class="h-screen flex flex-col justify-center items-center bg-3d text-center p-5">
+    <section class="h-screen flex flex-col justify-center items-center bg-3d text-center p-5 relative">
         <nav class="absolute top-0 w-full p-6 flex justify-between items-center max-w-6xl">
-            <div class="text-2xl font-bold text-orange-500">AB.</div>
-            <div class="space-x-6 uppercase text-sm tracking-widest">
+            <div class="text-3xl font-black text-orange-500 tracking-tighter">AB</div>
+            <div class="hidden md:flex space-x-8 uppercase text-xs font-bold tracking-widest text-gray-400">
+                <a href="#skills" class="hover:text-orange-500 transition">Skills</a>
                 <a href="#about" class="hover:text-orange-500 transition">About</a>
-                <a href="#contact" class="hover:text-orange-500 transition">Contact</a>
+                <a href="#contact" class="hover:text-orange-500 transition border-b border-orange-500 pb-1">Hire Me</a>
             </div>
         </nav>
 
-        <h1 data-aos="zoom-out" data-aos-duration="1500" class="text-6xl md:text-8xl font-black mb-4 italic">
-            AHMAD <span class="text-orange-500 text-shadow">BANDAR</span>
+        <h1 data-aos="zoom-in" data-aos-duration="1200" class="text-7xl md:text-9xl font-black mb-4 italic tracking-tighter">
+            AHMAD <span class="text-orange-500 text-glow">BANDAR</span>
         </h1>
-        <p class="text-gray-400 max-w-lg mb-8" data-aos="fade-up" data-aos-delay="500">
-            Data Scientist @ USJ | Football Player | Shaping the future with code and grit.
+        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 font-light" data-aos="fade-up" data-aos-delay="400">
+            Data Science Student @ <span class="text-white font-bold">USJ</span>. Solving complex problems with <span class="text-orange-500">Logic</span> and <span class="text-orange-500">Code</span>.
         </p>
-        <a href="#about" class="bg-orange-600 hover:bg-orange-500 text-black font-bold py-3 px-10 rounded-full transition orange-glow">
-            LEARN MORE
+        <a href="#skills" class="bg-orange-600 hover:bg-white hover:text-black text-white font-black py-4 px-12 rounded-full transition-all duration-300 orange-glow uppercase tracking-widest text-sm">
+            View Expertise
         </a>
     </section>
 
-    <section id="about" class="py-20 px-5 max-w-5xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-10 items-center">
-            <div data-aos="fade-right">
-                <h2 class="text-4xl font-bold mb-6 text-orange-500 underline decoration-2">The Full Story</h2>
-                <ul class="space-y-4 text-lg">
-                    <li><strong>Age:</strong> 18 Years</li>
-                    <li><strong>Born:</strong> June 11, 2007</li>
-                    <li><strong>Education:</strong> Data Science @ USJ</li>
-                    <li><strong>Passion:</strong> Professional Football</li>
-                </ul>
-                <p class="mt-6 text-gray-400 leading-relaxed">
-                    Based in Lebanon, I bridge the gap between technical data analysis and the competitive world of sports. 
-                    Whether it's on the field or behind the screen, I aim for precision and impact.
-                </p>
-            </div>
-            <div data-aos="fade-left" class="relative">
-                <img src="image_94e14a.jpg" alt="Ahmad Bandar" class="rounded-2xl border-2 border-orange-500/30 orange-glow">
-            </div>
+    <section id="skills" class="py-24 px-5 bg-zinc-950 border-y border-zinc-900">
+        <div class="max-w-5xl mx-auto text-center mb-16">
+            <h2 data-aos="fade-up" class="text-5xl font-black text-orange-500 uppercase italic mb-4">Technical Skills</h2>
+            <div class="h-1 w-20 bg-orange-500 mx-auto"></div>
         </div>
-    </section>
 
-    <section id="contact" class="py-20 bg-zinc-900 text-center">
-        <h2 class="text-3xl font-bold mb-10" data-aos="fade-up">Let's Connect</h2>
-        <div class="flex flex-wrap justify-center gap-8" data-aos="fade-up">
-            <a href="https://wa.me/96181101811" class="hover:text-orange-500 transition">
-                <p class="text-sm text-gray-500 font-bold uppercase">WhatsApp</p>
-                <span class="text-xl">+961 81 101 811</span>
-            </a>
-            <a href="https://instagram.com/ahmad.bandar.5203" class="hover:text-orange-500 transition">
-                <p class="text-sm text-gray-500 font-bold uppercase">Instagram</p>
-                <span class="text-xl">@ahmad.bandar.5203</span>
-            </a>
-            <a href="mailto:bandarahmad104@gmail.com" class="hover:text-orange-500 transition">
-                <p class="text-sm text-gray-500 font-bold uppercase">Email</p>
-                <span class="text-xl">bandarahmad104@gmail.com</span>
-            </a>
-        </div>
-    </section>
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div data-aos="fade-right" class="bg-zinc-900/50 p-10 rounded-3xl border border-orange-500/10 hover:border-orange-500/40 transition duration-500 group">
+                <div class="text-5xl mb-6 group-hover:scale-110 transition duration-300">📈</div>
+                <h3 class="text-2xl font-bold mb-4">Mathematics & Logic</h3>
+                <p class="text-gray-400 mb-6">Advanced calculus and statistical modeling are the foundation of my Data Science journey.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-black px-4 py-1 rounded-full text-xs border border-zinc-700">Calculus</span>
+                    <span class="bg-black px-4 py-1 rounded-full text-xs border border-zinc-700">Statistics</span>
+                    <span class="bg-black px-4 py-1 rounded-full text-xs border border-zinc-700">Logic</span>
+                </div>
+            </div>
 
-    <footer class="p-10 text-center text-gray-600 text-xs border-t border-zinc-800">
-        &copy; 2026 Ahmad Bandar. Built for the future.
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
-    </script>
-</body>
-</html>
+            <div data-aos="fade-left" class="bg-zinc-900/50 p-10 rounded-3xl border border-orange-500/10 hover:border-orange-500/40 transition duration-500 group">
+                <div class="text-5xl mb-6 group-hover:scale-110 transition duration-300">🐍</div>
+                <h3 class="text-2xl font-bold mb-4">Programming</h3>
+                <p class="text-gray-400 mb-6">Writing clean, efficient code to automate and analyze. Experienced in modern tech stacks.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-orange-500/10 text-orange-500 px-4 py-1 rounded-full text-xs font-mono">Python</span>
