@@ -1,233 +1,144 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ahmad Bandar | Data Science Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <title>Ahmad Bandar | Digital Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #64ffda;
-            --navy: #0a192f;
-            --light-navy: #112240;
-            --slate: #8892b0;
-            --white: #e6f1ff;
+            --primary: #ffffff;
+            --accent: #00d4ff;
+            --bg-dark: #0a0a0a;
+            --glass: rgba(255, 255, 255, 0.1);
         }
 
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: var(--navy);
-            color: var(--slate);
-            line-height: 1.6;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
 
-        /* Particles Canvas */
-        #particles-js {
-            position: fixed;
+        body { background-color: var(--bg-dark); color: var(--primary); overflow: hidden; }
+
+        .page {
+            position: absolute;
             width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background: rgba(10, 25, 47, 0.85);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 90%;
-            z-index: 100;
-            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
-        }
-
-        .logo { color: var(--primary); font-weight: bold; font-size: 22px; font-family: monospace; }
-        nav a { color: var(--white); text-decoration: none; margin-left: 25px; font-size: 14px; transition: 0.3s; }
-        nav a:hover { color: var(--primary); }
-
-        header {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 10%;
-            position: relative;
-            z-index: 2;
+            align-items: center;
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
         }
 
-        header h1 { font-size: clamp(40px, 8vw, 75px); color: var(--white); margin: 10px 0; font-weight: 800; }
-        header span { color: var(--primary); font-family: monospace; }
+        .active { opacity: 1; pointer-events: all; transform: scale(1); }
+        .next { transform: translateX(100%); }
+        .prev { transform: translateX(-100%); }
 
-        /* الألوان المتحركة لقسم About */
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Background Overlay */
+        .bg-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), 
+                        url('YOUR_IMAGE_URL_HERE'); /* حط رابط صورتك هون */
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
         }
 
-        #about {
-            padding: 100px 10%;
-            position: relative;
-            z-index: 2;
-            background: linear-gradient(-45deg, #0a192f, #112240, #1d3359, #0a192f);
-            background-size: 400% 400%;
-            animation: gradientBG 12s ease infinite;
-            border-radius: 20px;
-            margin: 40px 5%;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        section { padding: 100px 10%; position: relative; z-index: 2; }
-        h3 { color: var(--white); font-size: 30px; display: flex; align-items: center; gap: 15px; margin-bottom: 40px; }
-        h3 span { color: var(--primary); font-family: monospace; font-size: 20px; }
-        h3::after { content: ""; height: 1px; background: var(--light-navy); flex-grow: 1; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-
-        .cv-card {
-            background: rgba(17, 34, 64, 0.8);
-            padding: 30px;
-            border-radius: 12px;
-            transition: 0.4s;
-            border: 1px solid transparent;
-            backdrop-filter: blur(5px);
-        }
-
-        .cv-card:hover { 
-            transform: translateY(-10px); 
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
-        }
-
-        .btn-main {
-            padding: 15px 30px;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 5px;
+        h1 { font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 900; line-height: 0.9; margin-bottom: 20px; }
+        
+        .btn {
+            padding: 15px 35px;
+            border: 1px solid var(--glass);
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            margin: 10px;
             display: inline-block;
-            margin-top: 30px;
+            text-decoration: none;
+        }
+
+        .btn:hover { background: white; color: black; box-shadow: 0 0 25px var(--accent); }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .contact-link {
+            display: block;
+            background: rgba(255,255,255,0.05);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 15px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
             transition: 0.3s;
         }
 
-        .btn-main:hover { background: rgba(100, 255, 218, 0.1); }
+        .contact-link:hover { background: rgba(255,255,255,0.15); transform: translateY(-3px); }
 
-        .profile-img {
-            width: 160px; height: 160px; border-radius: 50%;
-            border: 4px solid var(--primary); object-fit: cover;
-            margin-bottom: 25px;
-        }
-
-        .contact-section { text-align: center; background: rgba(17, 34, 64, 0.5); border-radius: 20px; }
-
-        .skill-tag { 
-            background: rgba(100, 255, 218, 0.1); color: var(--primary); 
-            padding: 5px 12px; border-radius: 4px; font-size: 12px; font-family: monospace;
-            margin-right: 5px; margin-top: 5px; display: inline-block;
-        }
-
-        footer { text-align: center; padding: 40px; font-size: 12px; font-family: monospace; opacity: 0.6; }
     </style>
 </head>
 <body>
 
-<div id="particles-js"></div>
+    <section id="home" class="page active">
+        <div class="bg-overlay"></div>
+        <p style="letter-spacing: 5px; color: var(--accent);">DATA SCIENCE | ATHLETE</p>
+        <h1>AHMAD<br>BANDAR</h1>
+        <button class="btn" onclick="showPage('about')">Get to know me</button>
+    </section>
 
-<nav>
-    <div class="logo">AB_</div>
-    <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </div>
-</nav>
-
-<header>
-    <span>00. Introduction</span>
-    <h1>Ahmad Bandar.</h1>
-    <h2 style="color: var(--slate)">Analyzing Data. Building Futures.</h2>
-    <p style="max-width: 500px">I am a Data Science student at USJ, bridge-building between complex analytics and athletic discipline.</p>
-    <a href="cv.pdf" target="_blank" class="btn-main">Download CV</a>
-</header>
-
-<section id="about">
-    <h3><span>01.</span> Education & Experience</h3>
-    <div class="grid">
-        <div class="cv-card">
-            <h4 style="color: var(--white)">B.S. Data Science</h4>
-            <p>USJ (Université Saint-Joseph)</p>
-            <p style="font-size: 14px">Deep diving into Algorithms, Math, and Machine Learning.</p>
-        </div>
-        <div class="cv-card">
-            <h4 style="color: var(--white)">Athlete Mindset</h4>
-            <p>Professional Footballer</p>
-            <p style="font-size: 14px">Applying teamwork and performance analysis on and off the field.</p>
-        </div>
-    </div>
-</section>
-
-<section id="projects">
-    <h3><span>02.</span> Technical Projects</h3>
-    <div class="grid">
-        <div class="cv-card">
-            <i class="fas fa-chart-line" style="color: var(--primary); font-size: 30px"></i>
-            <h4 style="color: var(--white)">Sports Performance Analysis</h4>
-            <p>Analyzing football player metrics using Python libraries.</p>
-            <div class="skills-list">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">DataViz</span>
+    <section id="about" class="page next">
+        <div class="card">
+            <h2 style="margin-bottom: 20px;">Profile</h2>
+            <p><b>Born:</b> 11.06.2007 (18 Years old)</p>
+            <p><b>Study:</b> Data Science @ USJ</p>
+            <p><b>Sport:</b> Football Player</p>
+            <div style="margin-top: 30px;">
+                <button class="btn" onclick="showPage('contact')">Contact Info</button>
+                <button class="btn" onclick="showPage('home')" style="opacity: 0.6;">Back</button>
             </div>
         </div>
-        <div class="cv-card">
-            <i class="fas fa-code" style="color: var(--primary); font-size: 30px"></i>
-            <h4 style="color: var(--white)">Portfolio 2.0</h4>
-            <p>Interactive web-based CV with animated backgrounds.</p>
-            <div class="skills-list">
-                <span class="skill-tag">HTML5</span>
-                <span class="skill-tag">CSS3</span>
-            </div>
+    </section>
+
+    <section id="contact" class="page next">
+        <div class="card">
+            <h2 style="margin-bottom: 20px;">Let's Connect</h2>
+            <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="contact-link">📸 @ahmad.bandar.5203</a>
+            <a href="tel:+96181101811" class="contact-link">📞 +961 81 101 811</a>
+            <a href="mailto:bandarahmad104@gmail.com" class="contact-link">✉️ bandarahmad104@gmail.com</a>
+            <br>
+            <button class="btn" onclick="showPage('home')">Home</button>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="contact" class="contact-section">
-    <img src="image.png" alt="Ahmad Bandar" class="profile-img">
-    <h3 style="border:none; justify-content: center">Contact</h3>
-    <div style="font-size: 25px">
-        <a href="mailto:bandarahmad104@gmail.com" style="color: var(--white); margin: 0 15px"><i class="fas fa-envelope"></i></a>
-        <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" style="color: var(--white); margin: 0 15px"><i class="fab fa-instagram"></i></a>
-        <a href="tel:81101811" style="color: var(--white); margin: 0 15px"><i class="fas fa-phone"></i></a>
-    </div>
-</section>
-
-<footer>
-    Designed by Ahmad Bandar © 2026
-</footer>
-
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script>
-    particlesJS('particles-js', {
-        particles: {
-            number: { value: 80 },
-            color: { value: '#64ffda' },
-            shape: { type: 'circle' },
-            opacity: { value: 0.5 },
-            size: { value: 3 },
-            line_linked: { enable: true, distance: 150, color: '#64ffda', opacity: 0.2, width: 1 },
-            move: { enable: true, speed: 2 }
-        },
-        interactivity: {
-            events: { onhover: { enable: true, mode: 'repulse' } }
+    <script>
+        function showPage(id) {
+            // Reset all pages
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+                p.classList.add('next');
+            });
+            // Show target page
+            const target = document.getElementById(id);
+            target.classList.add('active');
+            target.classList.remove('next');
         }
-    });
-</script>
+    </script>
 
 </body>
 </html>
