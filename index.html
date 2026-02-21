@@ -1,55 +1,233 @@
-<div class="cv-card">
-    <aside class="sidebar">
-        <div class="profile-frame">
-            <img src="YOUR_IMAGE_HERE" alt="Ahmad Bandar">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ahmad Bandar | Data Science Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #64ffda;
+            --navy: #0a192f;
+            --light-navy: #112240;
+            --slate: #8892b0;
+            --white: #e6f1ff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--navy);
+            color: var(--slate);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Particles Canvas */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 90%;
+            z-index: 100;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .logo { color: var(--primary); font-weight: bold; font-size: 22px; font-family: monospace; }
+        nav a { color: var(--white); text-decoration: none; margin-left: 25px; font-size: 14px; transition: 0.3s; }
+        nav a:hover { color: var(--primary); }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 { font-size: clamp(40px, 8vw, 75px); color: var(--white); margin: 10px 0; font-weight: 800; }
+        header span { color: var(--primary); font-family: monospace; }
+
+        /* الألوان المتحركة لقسم About */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #about {
+            padding: 100px 10%;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(-45deg, #0a192f, #112240, #1d3359, #0a192f);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            border-radius: 20px;
+            margin: 40px 5%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        section { padding: 100px 10%; position: relative; z-index: 2; }
+        h3 { color: var(--white); font-size: 30px; display: flex; align-items: center; gap: 15px; margin-bottom: 40px; }
+        h3 span { color: var(--primary); font-family: monospace; font-size: 20px; }
+        h3::after { content: ""; height: 1px; background: var(--light-navy); flex-grow: 1; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+        .cv-card {
+            background: rgba(17, 34, 64, 0.8);
+            padding: 30px;
+            border-radius: 12px;
+            transition: 0.4s;
+            border: 1px solid transparent;
+            backdrop-filter: blur(5px);
+        }
+
+        .cv-card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
+        }
+
+        .btn-main {
+            padding: 15px 30px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 30px;
+            transition: 0.3s;
+        }
+
+        .btn-main:hover { background: rgba(100, 255, 218, 0.1); }
+
+        .profile-img {
+            width: 160px; height: 160px; border-radius: 50%;
+            border: 4px solid var(--primary); object-fit: cover;
+            margin-bottom: 25px;
+        }
+
+        .contact-section { text-align: center; background: rgba(17, 34, 64, 0.5); border-radius: 20px; }
+
+        .skill-tag { 
+            background: rgba(100, 255, 218, 0.1); color: var(--primary); 
+            padding: 5px 12px; border-radius: 4px; font-size: 12px; font-family: monospace;
+            margin-right: 5px; margin-top: 5px; display: inline-block;
+        }
+
+        footer { text-align: center; padding: 40px; font-size: 12px; font-family: monospace; opacity: 0.6; }
+    </style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<nav>
+    <div class="logo">AB_</div>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<header>
+    <span>00. Introduction</span>
+    <h1>Ahmad Bandar.</h1>
+    <h2 style="color: var(--slate)">Analyzing Data. Building Futures.</h2>
+    <p style="max-width: 500px">I am a Data Science student at USJ, bridge-building between complex analytics and athletic discipline.</p>
+    <a href="cv.pdf" target="_blank" class="btn-main">Download CV</a>
+</header>
+
+<section id="about">
+    <h3><span>01.</span> Education & Experience</h3>
+    <div class="grid">
+        <div class="cv-card">
+            <h4 style="color: var(--white)">B.S. Data Science</h4>
+            <p>USJ (Université Saint-Joseph)</p>
+            <p style="font-size: 14px">Deep diving into Algorithms, Math, and Machine Learning.</p>
         </div>
-        <h1>Ahmad Bandar</h1>
-        <p class="subtitle">Data Science Student</p>
+        <div class="cv-card">
+            <h4 style="color: var(--white)">Athlete Mindset</h4>
+            <p>Professional Footballer</p>
+            <p style="font-size: 14px">Applying teamwork and performance analysis on and off the field.</p>
+        </div>
+    </div>
+</section>
 
-        <section class="side-group">
-            <h3>Contact</h3>
-            [span_2](start_span)<p>📧 bandarahmad104@gmail.com[span_2](end_span)</p>
-            [span_3](start_span)<p>📞 81101811[span_3](end_span)</p>
-            [span_4](start_span)<p>📍 Saksakiyeh[span_4](end_span)</p>
-        </section>
-
-        <section class="side-group">
-            <h3>Languages</h3>
-            [span_5](start_span)<p>English, Arabic[span_5](end_span)</p>
-        </section>
-    </aside>
-
-    <main class="content">
-        <div class="bento-grid">
-            <div class="bento-box">
-                <h4>About Me</h4>
-                [span_6](start_span)<p>Aspiring Data Science student at USJ with a strong foundation in analytical thinking.[span_6](end_span) [span_7](start_span)As a professional athlete, I bring discipline and teamwork to the technical world.[span_7](end_span)</p>
-            </div>
-
-            <div class="bento-box">
-                <h4>Education</h4>
-                [span_8](start_span)<p><strong>BS in Data Science</strong>[span_8](end_span)</p>
-                [span_9](start_span)<p class="date">Sep 2025 - Present[span_9](end_span)</p>
-                [span_10](start_span)<p>Université Saint-Joseph (USJ)[span_10](end_span)</p>
-            </div>
-
-            <div class="bento-box">
-                <h4>Experience</h4>
-                [span_11](start_span)<p><strong>Professional Athlete</strong>[span_11](end_span)</p>
-                [span_12](start_span)<p class="date">Aug 2019 - Present[span_12](end_span)</p>
-                [span_13](start_span)<p>Saksakiyeh Football Club[span_13](end_span)</p>
-            </div>
-
-            <div class="bento-box">
-                <h4>Technical Skills</h4>
-                <ul>
-                    [span_14](start_span)<li>Python & Statistics[span_14](end_span)</li>
-                    [span_15](start_span)<li>Data Visualization[span_15](end_span)</li>
-                    [span_16](start_span)<li>Predictive Modeling[span_16](end_span)</li>
-                </ul>
+<section id="projects">
+    <h3><span>02.</span> Technical Projects</h3>
+    <div class="grid">
+        <div class="cv-card">
+            <i class="fas fa-chart-line" style="color: var(--primary); font-size: 30px"></i>
+            <h4 style="color: var(--white)">Sports Performance Analysis</h4>
+            <p>Analyzing football player metrics using Python libraries.</p>
+            <div class="skills-list">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">DataViz</span>
             </div>
         </div>
-    </main>
-</div>
+        <div class="cv-card">
+            <i class="fas fa-code" style="color: var(--primary); font-size: 30px"></i>
+            <h4 style="color: var(--white)">Portfolio 2.0</h4>
+            <p>Interactive web-based CV with animated backgrounds.</p>
+            <div class="skills-list">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-<button class="download-fab" onclick="window.print()">Download CV</button>
+<section id="contact" class="contact-section">
+    <img src="image.png" alt="Ahmad Bandar" class="profile-img">
+    <h3 style="border:none; justify-content: center">Contact</h3>
+    <div style="font-size: 25px">
+        <a href="mailto:bandarahmad104@gmail.com" style="color: var(--white); margin: 0 15px"><i class="fas fa-envelope"></i></a>
+        <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" style="color: var(--white); margin: 0 15px"><i class="fab fa-instagram"></i></a>
+        <a href="tel:81101811" style="color: var(--white); margin: 0 15px"><i class="fas fa-phone"></i></a>
+    </div>
+</section>
+
+<footer>
+    Designed by Ahmad Bandar © 2026
+</footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80 },
+            color: { value: '#64ffda' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.5 },
+            size: { value: 3 },
+            line_linked: { enable: true, distance: 150, color: '#64ffda', opacity: 0.2, width: 1 },
+            move: { enable: true, speed: 2 }
+        },
+        interactivity: {
+            events: { onhover: { enable: true, mode: 'repulse' } }
+        }
+    });
+</script>
+
+</body>
+</html>
