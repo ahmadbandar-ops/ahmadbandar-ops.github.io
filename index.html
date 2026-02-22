@@ -3,80 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Ahmad Bandar | Data Science & Athlete</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="title" content="Ahmad Bandar Portfolio">
+    <meta name="description" content="Data Science student at USJ and Football player. Explore my projects and gallery.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahmadbandar.github.io/"> <meta property="og:title" content="Ahmad Bandar | Official Portfolio">
+    <meta property="og:description" content="USJ Data Science | Footballer | Tech & Logic">
+    <meta property="og:image" content="image_94e14a.jpg"> <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
         body { background-color: #000; color: white; scroll-behavior: smooth; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .orange-glow { box-shadow: 0 0 30px rgba(255, 100, 0, 0.4); }
-        .bg-3d { background: radial-gradient(circle at center, #2a1500 0%, #000 85%); position: relative; }
-        .skill-card:hover { transform: translateY(-10px); border-color: #f97316; transition: all 0.4s ease; }
+        .bg-3d { background: radial-gradient(circle at center, #1a0d00 0%, #000 90%); }
+        @keyframes breathing {
+            0%, 100% { box-shadow: 0 0 15px rgba(255, 100, 0, 0.2); border-color: rgba(255, 100, 0, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(255, 100, 0, 0.5); border-color: rgba(255, 100, 0, 0.5); }
+        }
+        .animate-glow { animation: breathing 3s ease-in-out infinite; }
+        .swiper { width: 100%; max-width: 600px; height: 450px; border-radius: 20px; }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; border: 1px solid #333; }
     </style>
 </head>
 <body>
 
     <section class="h-screen flex flex-col justify-center items-center bg-3d text-center p-5 relative">
-        <h1 data-aos="zoom-in" data-aos-duration="1500" class="text-6xl md:text-9xl font-black mb-4 italic tracking-tighter uppercase text-white">
+        <h1 data-aos="zoom-in" class="text-6xl md:text-9xl font-black mb-4 italic tracking-tighter uppercase text-white">
             Ahmad <span class="text-orange-500">Bandar</span>
         </h1>
-        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10" data-aos="fade-up" data-aos-delay="500">
-            Data Science @ <span class="text-white font-bold">USJ</span> | Professional Footballer
-        </p>
-        <a href="#skills" class="bg-orange-600 hover:bg-white hover:text-black text-white font-black py-4 px-12 rounded-full transition-all orange-glow uppercase text-sm tracking-widest">
-            Explore My World
-        </a>
+        <p class="text-gray-400 text-lg md:text-xl mb-10" data-aos="fade-up">Data Science @ USJ | Footballer</p>
+        <div class="flex gap-4">
+            <a href="#projects" class="bg-orange-600 text-white font-bold py-3 px-8 rounded-full animate-glow uppercase text-xs">Projects</a>
+            <a href="#gallery" class="border border-zinc-700 text-white font-bold py-3 px-8 rounded-full uppercase text-xs hover:bg-white hover:text-black transition">Gallery</a>
+        </div>
     </section>
 
-    <section id="skills" class="py-24 px-5 bg-black border-y border-zinc-900">
-        <div class="max-w-5xl mx-auto text-center mb-16">
-            <h2 data-aos="fade-up" class="text-5xl font-black text-orange-500 uppercase italic mb-4">Technical Mastery</h2>
-            <p class="text-zinc-500 italic">"Logic is the foundation of every goal."</p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div data-aos="flip-left" class="skill-card bg-zinc-900 p-10 rounded-3xl border border-zinc-800">
-                <div class="text-5xl mb-6">📈</div>
-                <h3 class="text-2xl font-bold mb-3">Math & Logic</h3>
-                <p class="text-gray-400">Advanced Calculus, Statistics, and Data Modeling expert at USJ.</p>
-            </div>
-            <div data-aos="flip-right" class="skill-card bg-zinc-900 p-10 rounded-3xl border border-zinc-800">
-                <div class="text-5xl mb-6">🐍</div>
-                <h3 class="text-2xl font-bold mb-3">Programming</h3>
-                <p class="text-gray-400">Building intelligent systems using Python, HTML, and CSS.</p>
+    <section id="projects" class="py-20 px-5 bg-zinc-950">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-black text-orange-500 uppercase mb-10 italic">USJ Projects</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-6 bg-zinc-900 rounded-2xl border border-zinc-800 hover:border-orange-500 transition">
+                    <h3 class="text-xl font-bold mb-2">Mathematics & Logic</h3>
+                    <p class="text-gray-500 text-sm">Advanced analysis and problem-solving skills developed at USJ.</p>
+                </div>
+                <div class="p-6 bg-zinc-900 rounded-2xl border border-zinc-800 hover:border-orange-500 transition">
+                    <h3 class="text-xl font-bold mb-2">Python & HTML</h3>
+                    <p class="text-gray-500 text-sm">Coding data-driven websites and automation scripts.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-24 px-5 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
+    <section id="about" class="py-20 px-5 max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right">
-                <img src="image.png" alt="Ahmad Bandar" class="rounded-2xl border-2 border-orange-500/30 orange-glow w-full shadow-2xl">
+                <img src="image_94e14a.jpg" alt="Profile" class="rounded-2xl border-2 border-orange-500/20 animate-glow w-full shadow-2xl">
             </div>
             <div data-aos="fade-left" class="space-y-6">
-                <h2 class="text-6xl font-black uppercase text-white leading-none italic">The <span class="text-orange-500">Story</span></h2>
-                <div class="flex gap-6 text-sm font-bold text-gray-500 tracking-widest uppercase">
-                    <span>18 Years Old</span>
-                    <span>11.06.2007</span>
-                </div>
-                <p class="text-gray-400 text-lg leading-relaxed">
-                    Student at <span class="text-white font-bold underline decoration-orange-500">USJ</span> specializing in Data Science. 
-                    I bridge the gap between technical data analysis and the high-performance world of Football.
-                </p>
-                <div class="pt-6 border-t border-zinc-800 space-y-3">
-                    <p class="text-orange-500 font-bold">Contact:</p>
-                    <a href="https://wa.me/96181101811" class="block text-2xl font-black">+961 81 101 811</a>
-                    <a href="https://instagram.com/ahmad.bandar.5203" class="block text-xl text-gray-300 hover:text-orange-500">@ahmad.bandar.5203</a>
-                    <a href="mailto:bandarahmad104@gmail.com" class="block text-gray-500">bandarahmad104@gmail.com</a>
-                </div>
+                <h2 class="text-5xl font-black uppercase italic text-orange-500">About Me</h2>
+                <p class="text-gray-400 text-lg">18 years old. Born June 11, 2007. I balance the precision of Data Science at USJ with the intensity of Football.</p>
             </div>
         </div>
     </section>
 
-    <footer class="py-10 text-center text-zinc-800 border-t border-zinc-900">
-        <p class="uppercase tracking-[0.5em] text-[10px]">Ahmad Bandar &copy; 2026</p>
-    </footer>
+    <section id="gallery" class="py-20 px-5 bg-zinc-950 text-center">
+        <h2 class="text-4xl font-black text-white uppercase mb-12 italic">On The <span class="text-orange-500">Field</span></h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="image_3e687a.jpg"></div>
+                <div class="swiper-slide"><img src="image_3e68f8.jpg"></div>
+                <div class="swiper-slide"><img src="image_3e6fc0.jpg"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
 
+    <section id="contact" class="py-20 text-center border-t border-zinc-900">
+        <h2 class="text-2xl font-bold mb-8 uppercase tracking-widest text-orange-500">Let's Connect</h2>
+        <div class="flex flex-col md:flex-row justify-center gap-10 font-bold text-white">
+            <a href="https://wa.me/96181101811" target="_blank" class="hover:text-orange-500 transition">WhatsApp: 81 101 811</a>
+            <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="hover:text-orange-500 transition">Instagram: @ahmad.bandar.5203</a>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, once: true });</script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        var swiper = new Swiper(".mySwiper", {
+            pagination: { el: ".swiper-pagination", clickable: true },
+            autoplay: { delay: 3000 },
+            loop: true,
+            effect: "coverflow",
+            coverflowEffect: { rotate: 50, stretch: 0, depth: 100, modifier: 1, slideShadows: true },
+        });
+    </script>
 </body>
 </html>
