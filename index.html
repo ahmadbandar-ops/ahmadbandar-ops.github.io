@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Bandar | Data Science & Athlete</title>
+    <title>Ahmad Bandar | Professional Portfolio</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -13,46 +13,55 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
         body { background-color: #000; color: white; scroll-behavior: smooth; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         
-        /* Custom Loader */
+        /* 1. Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #f97316; border-radius: 10px; }
+
+        /* 2. Loader */
         #loader {
             position: fixed; inset: 0; background: #000; z-index: 9999;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             transition: opacity 0.8s ease-out;
         }
 
-        /* 3D Canvas & Spotlight */
+        /* 3. Animated Gradient Text */
+        .gradient-text {
+            background: linear-gradient(90deg, #fff, #f97316, #fff);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            animation: gradient-move 3s linear infinite;
+        }
+        @keyframes gradient-move {
+            to { background-position: 200% center; }
+        }
+
+        /* 4. Background & Spotlight */
         #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         #spotlight {
             position: fixed; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(255,100,0,0.1) 0%, rgba(0,0,0,0) 70%);
+            background: radial-gradient(circle, rgba(255,100,0,0.08) 0%, rgba(0,0,0,0) 70%);
             border-radius: 50%; pointer-events: none; z-index: 5;
             transform: translate(-50%, -50%); transition: 0.1s;
         }
 
         .hero-content { position: relative; z-index: 10; }
-        .glass-card { background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255, 100, 0, 0.1); }
         
-        @keyframes breathing {
-            0%, 100% { box-shadow: 0 0 15px rgba(255, 100, 0, 0.2); border-color: rgba(255, 100, 0, 0.2); }
-            50% { box-shadow: 0 0 35px rgba(255, 100, 0, 0.5); border-color: rgba(255, 100, 0, 0.5); }
-        }
-        .animate-glow { animation: breathing 3s ease-in-out infinite; }
-        
+        /* 5. Magnetic Button Wrap */
+        .magnetic-wrap { display: inline-block; transition: transform 0.2s ease-out; }
+
         .swiper { width: 100%; max-width: 600px; height: 450px; border-radius: 20px; }
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
-        
-        /* Typed Cursor Style */
-        .typed-cursor { color: #f97316; font-size: 1.5rem; }
     </style>
 </head>
 <body>
 
     <div id="loader">
-        <h2 class="text-orange-500 font-black text-2xl tracking-[0.3em] uppercase mb-4 animate-pulse">Ahmad Bandar</h2>
+        <h2 class="text-orange-500 font-black text-2xl tracking-[0.3em] uppercase mb-4">Ahmad Bandar</h2>
         <div class="w-48 h-1 bg-zinc-900 rounded-full overflow-hidden">
             <div id="loader-bar" class="bg-orange-600 h-full w-0 transition-all duration-300"></div>
         </div>
-        <p id="loader-text" class="mt-2 text-xs text-zinc-500 font-mono">0%</p>
     </div>
 
     <div id="spotlight"></div>
@@ -64,43 +73,47 @@
     <section class="h-screen flex flex-col justify-center items-center bg-black text-center p-5 relative overflow-hidden">
         <canvas id="hero-canvas"></canvas>
         <div class="hero-content">
-            <h1 data-aos="zoom-in" class="text-6xl md:text-9xl font-black mb-4 italic tracking-tighter uppercase text-white">
-                Ahmad <span class="text-orange-500" style="text-shadow: 0 0 30px rgba(255,100,0,0.6);">Bandar</span>
+            <h1 data-aos="zoom-in" class="text-7xl md:text-9xl font-black mb-4 italic tracking-tighter uppercase text-white leading-none">
+                Ahmad <br> <span class="gradient-text">Bandar</span>
             </h1>
             
             <div class="h-8 mb-10">
-                <span id="typed" class="text-gray-400 text-lg md:text-xl tracking-widest uppercase font-mono"></span>
+                <span id="typed" class="text-zinc-500 text-lg md:text-xl tracking-[0.3em] uppercase font-mono"></span>
             </div>
 
-            <div class="flex gap-4 justify-center">
-                <a href="#projects" class="bg-orange-600 text-white font-bold py-3 px-8 rounded-full animate-glow uppercase text-xs">Projects</a>
-                <a href="#gallery" class="border border-zinc-700 text-white font-bold py-3 px-8 rounded-full uppercase text-xs hover:bg-white hover:text-black transition">Gallery</a>
+            <div class="flex gap-6 justify-center">
+                <div class="magnetic-wrap">
+                    <a href="#projects" class="bg-orange-600 text-white font-bold py-4 px-10 rounded-full uppercase text-xs tracking-widest block hover:shadow-[0_0_20px_rgba(249,115,22,0.4)] transition">Explore</a>
+                </div>
+                <div class="magnetic-wrap">
+                    <a href="#gallery" class="border border-zinc-800 text-white font-bold py-4 px-10 rounded-full uppercase text-xs tracking-widest block hover:bg-white hover:text-black transition">Gallery</a>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="projects" class="py-24 px-5 bg-zinc-950">
         <div class="max-w-5xl mx-auto">
-            <h2 class="text-4xl font-black text-orange-500 uppercase mb-12 italic">Technical Stats</h2>
-            <div class="grid md:grid-cols-2 gap-10 mb-16">
-                <div class="space-y-6">
+            <h2 class="text-3xl font-black text-orange-500 uppercase mb-16 italic tracking-widest">Performance Stats</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-8">
                     <div>
-                        <div class="flex justify-between mb-2 text-xs font-bold uppercase tracking-widest"><span>Python & Data</span><span class="text-orange-500">85%</span></div>
-                        <div class="h-1 bg-zinc-800 rounded-full"><div class="bg-orange-500 h-full w-[85%] transition-all duration-1000"></div></div>
+                        <div class="flex justify-between mb-3 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500"><span>Python Logic</span><span>85%</span></div>
+                        <div class="h-[2px] bg-zinc-900 w-full"><div class="bg-orange-500 h-full w-[85%]"></div></div>
                     </div>
                     <div>
-                        <div class="flex justify-between mb-2 text-xs font-bold uppercase tracking-widest"><span>Mathematics</span><span class="text-orange-500">92%</span></div>
-                        <div class="h-1 bg-zinc-800 rounded-full"><div class="bg-orange-500 h-full w-[92%] transition-all duration-1000"></div></div>
+                        <div class="flex justify-between mb-3 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500"><span>Mathematics</span><span>92%</span></div>
+                        <div class="h-[2px] bg-zinc-900 w-full"><div class="bg-orange-500 h-full w-[92%]"></div></div>
                     </div>
                 </div>
-                <div class="space-y-6">
+                <div class="space-y-8">
                     <div>
-                        <div class="flex justify-between mb-2 text-xs font-bold uppercase tracking-widest"><span>Strategic Logic</span><span class="text-orange-500">88%</span></div>
-                        <div class="h-1 bg-zinc-800 rounded-full"><div class="bg-orange-500 h-full w-[88%] transition-all duration-1000"></div></div>
+                        <div class="flex justify-between mb-3 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500"><span>Data Analysis</span><span>80%</span></div>
+                        <div class="h-[2px] bg-zinc-900 w-full"><div class="bg-orange-500 h-full w-[80%]"></div></div>
                     </div>
                     <div>
-                        <div class="flex justify-between mb-2 text-xs font-bold uppercase tracking-widest"><span>Physical Performance</span><span class="text-orange-500">95%</span></div>
-                        <div class="h-1 bg-zinc-800 rounded-full"><div class="bg-orange-500 h-full w-[95%] transition-all duration-1000"></div></div>
+                        <div class="flex justify-between mb-3 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500"><span>On-Field Stamina</span><span>95%</span></div>
+                        <div class="h-[2px] bg-zinc-900 w-full"><div class="bg-orange-500 h-full w-[95%]"></div></div>
                     </div>
                 </div>
             </div>
@@ -108,31 +121,29 @@
     </section>
 
     <section id="about" class="py-24 px-5 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
             <div data-aos="fade-right">
-                <img src="image.png" alt="Ahmad" class="rounded-3xl border-2 border-orange-500/20 animate-glow w-full">
+                <img src="image.png" alt="Ahmad" class="rounded-2xl border border-zinc-800 grayscale hover:grayscale-0 transition duration-700 w-full shadow-2xl">
             </div>
             <div data-aos="fade-left">
-                <h2 class="text-6xl font-black uppercase italic text-white mb-6">The <span class="text-orange-500">DNA</span></h2>
-                <p class="text-gray-400 text-xl leading-relaxed">18 years old. Bridging Data Science at USJ with Midfield Mastery on the pitch.</p>
+                <h2 class="text-6xl font-black uppercase italic text-white mb-8">Creative <span class="text-orange-500">Drive.</span></h2>
+                <p class="text-zinc-500 text-xl leading-relaxed">Born in 2007. Data Science student at USJ. I thrive where logic meets physical performance.</p>
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="py-24 px-5 bg-zinc-950 text-center">
-        <h2 class="text-5xl font-black text-white uppercase mb-12 italic">The <span class="text-orange-500">Action</span></h2>
+    <section id="gallery" class="py-24 px-5 bg-zinc-950">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"><img src="image_3e687a.jpg"></div>
                 <div class="swiper-slide"><img src="image_3e68f8.jpg"></div>
                 <div class="swiper-slide"><img src="image_3e6fc0.jpg"></div>
             </div>
-            <div class="swiper-pagination"></div>
         </div>
     </section>
 
     <footer class="py-10 text-center border-t border-zinc-900">
-        <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="text-orange-500 font-bold tracking-widest uppercase hover:text-white transition">@ahmad.bandar.5203</a>
+        <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="text-[10px] font-black tracking-[0.5em] uppercase text-zinc-600 hover:text-orange-500 transition">Instagram / @ahmad.bandar.5203</a>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -144,25 +155,22 @@
 
         // Loader
         let progress = 0;
-        const bar = document.getElementById('loader-bar');
-        const text = document.getElementById('loader-text');
         const interval = setInterval(() => {
-            progress += Math.random() * 15;
+            progress += 10;
+            document.getElementById('loader-bar').style.width = progress + '%';
             if (progress >= 100) {
-                progress = 100; clearInterval(interval);
+                clearInterval(interval);
                 setTimeout(() => {
                     document.getElementById('loader').style.opacity = '0';
                     setTimeout(() => document.getElementById('loader').style.display = 'none', 800);
-                }, 500);
+                }, 400);
             }
-            bar.style.width = progress + '%';
-            text.innerText = Math.floor(progress) + '%';
         }, 100);
 
-        // Typed Effect
+        // Typed
         new Typed('#typed', {
-            strings: ['Data Science @ USJ', 'Midfield Maestro', 'Logic & Code Enthusiast'],
-            typeSpeed: 50, backSpeed: 30, loop: true
+            strings: ['Data Science @ USJ', 'Midfielder', 'Tech Enthusiast'],
+            typeSpeed: 60, backSpeed: 40, loop: true
         });
 
         // Spotlight
@@ -172,13 +180,24 @@
             spotlight.style.top = e.clientY + 'px';
         });
 
-        // Swiper
-        new Swiper(".mySwiper", { 
-            effect: "coverflow", centeredSlides: true, slidesPerView: "auto", loop: true, autoplay: { delay: 2500 },
-            pagination: { el: ".swiper-pagination" } 
+        // Magnetic Effect
+        const magnets = document.querySelectorAll('.magnetic-wrap');
+        magnets.forEach((m) => {
+            m.addEventListener('mousemove', (e) => {
+                const rect = m.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                m.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            m.addEventListener('mouseleave', () => { m.style.transform = 'translate(0,0)'; });
         });
 
-        // 3D Particles
+        // Swiper
+        new Swiper(".mySwiper", { 
+            effect: "coverflow", centeredSlides: true, slidesPerView: "auto", loop: true, autoplay: { delay: 2000 }
+        });
+
+        // Particles
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -189,9 +208,9 @@
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 - 0.25;
+                this.size = Math.random() * 1.5;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = Math.random() * 0.4 - 0.2;
             }
             update() {
                 this.x += this.speedX; this.y += this.speedY;
@@ -199,11 +218,11 @@
                 if(this.y > canvas.height || this.y < 0) this.speedY *= -1;
             }
             draw() {
-                ctx.fillStyle = 'rgba(255, 100, 0, 0.4)';
+                ctx.fillStyle = 'rgba(249, 115, 22, 0.3)';
                 ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
             }
         }
-        function init() { for (let i = 0; i < 80; i++) particles.push(new Particle()); }
+        function init() { for (let i = 0; i < 60; i++) particles.push(new Particle()); }
         function animate() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
         init(); animate();
     </script>
