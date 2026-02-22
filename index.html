@@ -3,22 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Bandar | Data Science & Athlete</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Ahmad Bandar | Digital Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #000; color: white; scroll-behavior: smooth; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .orange-glow { box-shadow: 0 0 25px rgba(255, 100, 0, 0.4); }
-        .bg-3d { background: radial-gradient(circle at center, #2a1500 0%, #000 80%); position: relative; }
+        :root {
+            --primary: #ffffff;
+            --accent: #00d4ff;
+            --bg-dark: #0a0a0a;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+
+        body { background-color: var(--bg-dark); color: var(--primary); overflow: hidden; }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .active { opacity: 1; pointer-events: all; transform: scale(1); }
+        .next { transform: translateX(100%); }
+        .prev { transform: translateX(-100%); }
+
+        /* Background Overlay */
+        .bg-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), 
+                        url('YOUR_IMAGE_URL_HERE'); /* حط رابط صورتك هون */
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        h1 { font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 900; line-height: 0.9; margin-bottom: 20px; }
+        
+        .btn {
+            padding: 15px 35px;
+            border: 1px solid var(--glass);
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            margin: 10px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn:hover { background: white; color: black; box-shadow: 0 0 25px var(--accent); }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .contact-link {
+            display: block;
+            background: rgba(255,255,255,0.05);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 15px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .contact-link:hover { background: rgba(255,255,255,0.15); transform: translateY(-3px); }
+
     </style>
 </head>
 <body>
-    <section class="h-screen flex flex-col justify-center items-center bg-3d text-center p-5 relative">
-        <h1 data-aos="zoom-in" class="text-7xl md:text-9xl font-black mb-4 italic tracking-tighter text-white">
-            AHMAD <span class="text-orange-500">BANDAR</span>
-        </h1>
-        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10" data-aos="fade-up">
-            Data Science @ <span class="text-white font-bold">USJ</span> | Football Player
-        </p>
-        <a href="#skills" class="bg-orange-600 text-white font-black py-4 px-12 rounded-full orange-glow uppercase text-sm">View Expertise</a>
+
+    <section id="home" class="page active">
+        <div class="bg-overlay"></div>
+        <p style="letter-spacing: 5px; color: var(--accent);">DATA SCIENCE | ATHLETE</p>
+        <h1>AHMAD<br>BANDAR</h1>
+        <button class="btn" onclick="showPage('about')">Get to know me</button>
     </section>
+
+    <section id="about" class="page next">
+        <div class="card">
+            <h2 style="margin-bottom: 20px;">Profile</h2>
+            <p><b>Born:</b> 11.06.2007 (18 Years old)</p>
+            <p><b>Study:</b> Data Science @ USJ</p>
+            <p><b>Sport:</b> Football Player</p>
+            <div style="margin-top: 30px;">
+                <button class="btn" onclick="showPage('contact')">Contact Info</button>
+                <button class="btn" onclick="showPage('home')" style="opacity: 0.6;">Back</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="page next">
+        <div class="card">
+            <h2 style="margin-bottom: 20px;">Let's Connect</h2>
+            <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="contact-link">📸 @ahmad.bandar.5203</a>
+            <a href="tel:+96181101811" class="contact-link">📞 +961 81 101 811</a>
+            <a href="mailto:bandarahmad104@gmail.com" class="contact-link">✉️ bandarahmad104@gmail.com</a>
+            <br>
+            <button class="btn" onclick="showPage('home')">Home</button>
+        </div>
+    </section>
+
+    <script>
+        function showPage(id) {
+            // Reset all pages
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+                p.classList.add('next');
+            });
+            // Show target page
+            const target = document.getElementById(id);
+            target.classList.add('active');
+            target.classList.remove('next');
+        }
+    </script>
+
+</body>
+</html>
