@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Bandar | Digital Portfolio</title>
+    <title>Ahmad Bandar | Future Vision</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -11,170 +11,118 @@
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
-        body { background-color: #000; color: white; scroll-behavior: smooth; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        body { background-color: #000; color: white; scroll-behavior: smooth; font-family: 'Inter', sans-serif; overflow-x: hidden; cursor: none; }
         
+        /* 1. Custom Mouse Follower */
+        #cursor-follower {
+            position: fixed; width: 100px; height: 100px; border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 50%; pointer-events: none; z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+            transition: transform 0.15s ease-out; transform: translate(-50%, -50%);
+        }
+        #cursor-follower span { font-size: 7px; color: #f97316; font-weight: 900; animation: spin 8s linear infinite; letter-spacing: 2px; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* 2. Noise Texture Overlay */
+        .noise {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.04; pointer-events: none; z-index: 9998;
+        }
+
+        /* 3. Digital Glitch Effect */
+        .glitch:hover {
+            animation: glitch-anim 0.2s cubic-bezier(.25,.46,.45,.94) both infinite;
+            text-shadow: 3px 0 #ff00c1, -3px 0 #00fff9;
+        }
+        @keyframes glitch-anim {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+
         /* Custom Scrollbar & Progress */
-        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #f97316; border-radius: 10px; }
-        #progress-container { position: fixed; top: 38px; left: 0; width: 100%; height: 2px; z-index: 100; }
-        #progress-bar { height: 100%; background: #f97316; width: 0%; transition: width 0.1s; }
+        ::-webkit-scrollbar-thumb { background: #f97316; }
+        #progress-bar { position: fixed; top: 38px; left: 0; height: 2px; background: #f97316; width: 0%; z-index: 100; transition: width 0.1s; }
 
-        /* Loader */
-        #loader {
-            position: fixed; inset: 0; background: #000; z-index: 9999;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            transition: opacity 0.8s ease-out;
-        }
-
-        /* Gradient Text */
-        .gradient-text {
-            background: linear-gradient(90deg, #fff, #f97316, #fff);
-            background-size: 200% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            animation: gradient-move 3s linear infinite;
-        }
+        /* Other Styles */
+        #loader { position: fixed; inset: 0; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s; }
+        .gradient-text { background: linear-gradient(90deg, #fff, #f97316, #fff); background-size: 200% auto; color: transparent; -webkit-background-clip: text; animation: gradient-move 3s linear infinite; }
         @keyframes gradient-move { to { background-position: 200% center; } }
-
-        /* Status Pulse Tag */
-        .status-pulse {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(34, 197, 94, 0.05); border: 1px solid rgba(34, 197, 94, 0.2);
-            padding: 6px 14px; border-radius: 50px; color: #4ade80; font-size: 10px; font-weight: 900;
-            text-transform: uppercase; letter-spacing: 1px;
-        }
-        .pulse-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; animation: pulse-green 2s infinite; }
-        @keyframes pulse-green { 
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); } 
-            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); } 
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } 
-        }
-
-        /* Infinite Ticker */
         .ticker-wrap { background: #080808; padding: 12px 0; border-bottom: 1px solid #111; overflow: hidden; }
         .ticker { display: flex; white-space: nowrap; animation: ticker-move 25s linear infinite; }
-        .ticker span { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 5px; color: #444; padding-right: 60px; }
+        .ticker span { font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 5px; color: #333; padding-right: 60px; }
         @keyframes ticker-move { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* Spotlight & Background */
-        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.4; }
-        #spotlight {
-            position: fixed; width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(255,100,0,0.07) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%; pointer-events: none; z-index: 5;
-            transform: translate(-50%, -50%); transition: 0.1s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        /* 3D Tilt & Magnetic */
-        .tilt-box { transition: transform 0.2s ease-out; transform-style: preserve-3d; perspective: 1000px; }
-        .magnetic-wrap { display: inline-block; transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
-
+        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.3; }
+        #spotlight { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,100,0,0.05) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; pointer-events: none; z-index: 5; transform: translate(-50%, -50%); transition: 0.1s; }
+        .tilt-box { transition: transform 0.2s ease-out; transform-style: preserve-3d; }
+        .magnetic-wrap { display: inline-block; transition: transform 0.3s; }
         .swiper { width: 100%; max-width: 600px; height: 450px; border-radius: 20px; }
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
-
-        /* Timeline Style */
-        .timeline-item { border-left: 1px solid #1f2937; padding-left: 20px; position: relative; margin-bottom: 40px; }
-        .timeline-item::before { content: ''; position: absolute; left: -4px; top: 0; width: 7px; height: 7px; background: #f97316; border-radius: 50%; }
     </style>
 </head>
 <body>
 
+    <div id="cursor-follower"><span>EXPLORE • STRATEGY • LOGIC • </span></div>
+
+    <div class="noise"></div>
+
     <div id="loader">
         <h2 class="text-orange-500 font-black text-2xl tracking-[0.4em] uppercase mb-4">Ahmad Bandar</h2>
-        <div class="w-40 h-[1px] bg-zinc-900 overflow-hidden">
-            <div id="loader-bar" class="bg-orange-600 h-full w-0 transition-all duration-300"></div>
-        </div>
+        <div class="w-40 h-[1px] bg-zinc-900 overflow-hidden"><div id="loader-bar" class="bg-orange-600 h-full w-0 transition-all duration-300"></div></div>
     </div>
 
-    <div id="progress-container"><div id="progress-bar"></div></div>
+    <div id="progress-bar"></div>
 
     <div id="spotlight"></div>
 
     <div class="ticker-wrap fixed top-0 w-full z-50">
         <div class="ticker">
-            <span>Data Science @ USJ</span> <span>Professional Midfielder</span> <span>Logic & Code Enthusiast</span> <span>Established 2007</span>
-            <span>Data Science @ USJ</span> <span>Professional Midfielder</span> <span>Logic & Code Enthusiast</span> <span>Established 2007</span>
+            <span>Data Science @ USJ</span> <span>Professional Midfielder</span> <span>Logic Enthusiast</span> <span>Ahmad Bandar</span>
+            <span>Data Science @ USJ</span> <span>Professional Midfielder</span> <span>Logic Enthusiast</span> <span>Ahmad Bandar</span>
         </div>
     </div>
 
     <section class="h-screen flex flex-col justify-center items-center bg-black text-center p-5 relative overflow-hidden">
         <canvas id="hero-canvas"></canvas>
         <div class="hero-content relative z-10">
-            <div class="status-pulse mb-8" data-aos="fade-down" data-aos-delay="1000">
-                <span class="pulse-dot"></span> Available for Data Strategy
-            </div>
-
-            <h1 data-aos="zoom-in" data-aos-duration="1200" class="text-7xl md:text-[9rem] font-black italic uppercase leading-none text-white tracking-tighter">
+            <h1 data-aos="zoom-in" class="glitch text-7xl md:text-[10rem] font-black italic uppercase leading-none text-white tracking-tighter">
                 Ahmad <br> <span class="gradient-text">Bandar</span>
             </h1>
-
             <div class="h-8 mt-6 mb-12">
-                <span id="typed" class="text-zinc-500 text-xs md:text-sm tracking-[0.5em] uppercase font-mono"></span>
+                <span id="typed" class="text-zinc-600 text-xs md:text-sm tracking-[0.5em] uppercase font-mono"></span>
             </div>
-
             <div class="flex gap-6 justify-center">
-                <div class="magnetic-wrap">
-                    <a href="#projects" class="bg-white text-black font-black py-4 px-10 rounded-full uppercase text-[10px] tracking-widest hover:bg-orange-600 hover:text-white transition-all block">Explore</a>
-                </div>
-                <div class="magnetic-wrap">
-                    <a href="https://wa.me/96181101811" target="_blank" class="border border-zinc-800 text-white font-black py-4 px-10 rounded-full uppercase text-[10px] tracking-widest hover:border-orange-500 transition-all block">Direct Chat</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-32 px-5 bg-zinc-950 border-y border-zinc-900">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-24">
-            <div>
-                <h2 class="text-2xl font-black text-orange-500 uppercase italic mb-16 tracking-widest">Core Metrics</h2>
-                <div class="space-y-12">
-                    <div class="group">
-                        <div class="flex justify-between mb-4 text-[10px] font-black uppercase text-zinc-600 group-hover:text-orange-500 transition-colors"><span>Data Modeling</span><span>85%</span></div>
-                        <div class="h-[1px] bg-zinc-900 w-full"><div class="bg-orange-600 h-full w-[85%]"></div></div>
-                    </div>
-                    <div class="group">
-                        <div class="flex justify-between mb-4 text-[10px] font-black uppercase text-zinc-600 group-hover:text-orange-500 transition-colors"><span>Field Stamina</span><span>95%</span></div>
-                        <div class="h-[1px] bg-zinc-900 w-full"><div class="bg-orange-600 h-full w-[95%]"></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div data-aos="fade-left">
-                <h2 class="text-2xl font-black text-white uppercase italic mb-16 tracking-widest">Timeline</h2>
-                <div class="timeline-item">
-                    <h4 class="text-orange-500 font-black text-xs uppercase tracking-widest">2025 - Present</h4>
-                    <p class="text-white font-bold mt-1">Data Science Student @ USJ</p>
-                    <p class="text-zinc-500 text-sm mt-2 font-mono">Exploring AI, statistics, and logical systems.</p>
-                </div>
-                <div class="timeline-item">
-                    <h4 class="text-zinc-600 font-black text-xs uppercase tracking-widest">Active Evolution</h4>
-                    <p class="text-white font-bold mt-1">Professional Midfield Development</p>
-                    <p class="text-zinc-500 text-sm mt-2 font-mono">Integrating physical strategy with data precision.</p>
-                </div>
+                <div class="magnetic-wrap"><a href="#projects" class="bg-white text-black font-black py-4 px-10 rounded-full uppercase text-[10px] tracking-widest hover:bg-orange-600 hover:text-white transition-all block shadow-2xl">Discover</a></div>
+                <div class="magnetic-wrap"><a href="https://wa.me/96181101811" target="_blank" class="border border-zinc-800 text-white font-black py-4 px-10 rounded-full uppercase text-[10px] tracking-widest hover:border-orange-500 transition-all block">Protocol</a></div>
             </div>
         </div>
     </section>
 
     <section id="about" class="py-32 px-5 max-w-6xl mx-auto flex flex-col items-center">
-        <div class="tilt-box relative max-w-sm cursor-crosshair" id="tilt-card" data-aos="zoom-in">
-            <img src="image.png" alt="Ahmad Profile" class="rounded-xl shadow-2xl border border-zinc-800 grayscale hover:grayscale-0 transition duration-1000">
-            <div class="absolute -bottom-6 -left-6 bg-orange-600 p-8 rounded-lg font-black text-black text-xs uppercase tracking-[0.2em]">Ahmad / 07</div>
+        <div class="tilt-box relative max-w-sm" id="tilt-card" data-aos="zoom-in">
+            <img src="image.png" alt="Ahmad Profile" class="rounded-lg shadow-2xl border border-zinc-900 grayscale hover:grayscale-0 transition duration-1000 shadow-orange-900/20">
+            <div class="absolute -bottom-6 -right-6 bg-orange-600 p-8 rounded-lg font-black text-black text-[10px] uppercase tracking-[0.3em] shadow-2xl">Access: 2007-X</div>
         </div>
     </section>
 
     <section id="gallery" class="py-32 px-5 bg-zinc-950 border-t border-zinc-900">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="image_3e687a.jpg" alt="Field 1"></div>
-                <div class="swiper-slide"><img src="image_3e68f8.jpg" alt="Field 2"></div>
-                <div class="swiper-slide"><img src="image_3e6fc0.jpg" alt="Field 3"></div>
+                <div class="swiper-slide"><img src="image_3e687a.jpg"></div>
+                <div class="swiper-slide"><img src="image_3e68f8.jpg"></div>
+                <div class="swiper-slide"><img src="image_3e6fc0.jpg"></div>
             </div>
         </div>
     </section>
 
     <footer class="py-20 text-center border-t border-zinc-900">
-        <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="text-[10px] font-black tracking-[1em] uppercase text-zinc-700 hover:text-orange-500 transition-all">Instagram / @ahmad.bandar.5203</a>
+        <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="text-[9px] font-black tracking-[1.5em] uppercase text-zinc-800 hover:text-orange-500 transition-all">TERMINAL / AHB-07</a>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -183,6 +131,13 @@
     
     <script>
         AOS.init({ duration: 1000, once: true });
+
+        // MOUSE FOLLOWER
+        const follower = document.getElementById('cursor-follower');
+        document.addEventListener('mousemove', (e) => {
+            follower.style.left = e.clientX + 'px';
+            follower.style.top = e.clientY + 'px';
+        });
 
         // PROGRESS BAR
         window.onscroll = function() {
@@ -193,25 +148,20 @@
         };
 
         // LOADER
-        let prg = 0; const int = setInterval(() => { prg += 10; document.getElementById('loader-bar').style.width = prg + '%'; if(prg>=100){ clearInterval(int); setTimeout(()=> {document.getElementById('loader').style.opacity='0'; setTimeout(()=>document.getElementById('loader').style.display='none', 800);}, 400);}}, 80);
+        let prg = 0; const int = setInterval(() => { prg += 10; document.getElementById('loader-bar').style.width = prg + '%'; if(prg>=100){ clearInterval(int); setTimeout(()=> {document.getElementById('loader').style.opacity='0'; setTimeout(()=>document.getElementById('loader').style.display='none', 800);}, 400);}}, 60);
 
-        // TYPED EFFECT
-        new Typed('#typed', { 
-            strings: ['Solving Logic at USJ', 'Commanding the Midfield', 'Building Digital Future'], 
-            typeSpeed: 50, backSpeed: 30, loop: true 
-        });
+        // TYPED
+        new Typed('#typed', { strings: ['Solving Logic at USJ', 'Mastering the Pitch', 'Digital Architecture'], typeSpeed: 40, loop: true });
 
         // SPOTLIGHT
         const spot = document.getElementById('spotlight');
-        document.addEventListener('mousemove', (e) => { 
-            spot.style.left = e.clientX + 'px'; spot.style.top = e.clientY + 'px'; 
-        });
+        document.addEventListener('mousemove', (e) => { spot.style.left = e.clientX + 'px'; spot.style.top = e.clientY + 'px'; });
 
-        // MAGNETIC BUTTONS
+        // MAGNETIC
         document.querySelectorAll('.magnetic-wrap').forEach(m => {
             m.addEventListener('mousemove', (e) => {
                 const r = m.getBoundingClientRect();
-                m.style.transform = `translate(${(e.clientX - r.left - r.width/2)*0.4}px, ${(e.clientY - r.top - r.height/2)*0.4}px)`;
+                m.style.transform = `translate(${(e.clientX - r.left - r.width/2)*0.5}px, ${(e.clientY - r.top - r.height/2)*0.5}px)`;
             });
             m.addEventListener('mouseleave', () => m.style.transform = '');
         });
@@ -222,42 +172,32 @@
             const r = card.getBoundingClientRect();
             const x = (e.clientX - r.left) / r.width - 0.5;
             const y = (e.clientY - r.top) / r.height - 0.5;
-            card.style.transform = `perspective(1000px) rotateY(${x * 25}deg) rotateX(${y * -25}deg) scale(1.05)`;
+            card.style.transform = `perspective(1000px) rotateY(${x * 30}deg) rotateX(${y * -30}deg) scale(1.05)`;
         });
         card.addEventListener('mouseleave', () => card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)');
 
         // SWIPER
-        new Swiper(".mySwiper", { 
-            effect: "coverflow", centeredSlides: true, slidesPerView: "auto", loop: true, 
-            autoplay: { delay: 2500 }
-        });
+        new Swiper(".mySwiper", { effect: "coverflow", centeredSlides: true, slidesPerView: "auto", loop: true, autoplay: { delay: 3000 } });
 
-        // BACKGROUND PARTICLES
+        // PARTICLES
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
         function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resize);
-        resize();
+        window.addEventListener('resize', resize); resize();
         class Particle {
             constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.5;
-                this.speedX = Math.random() * 0.4 - 0.2;
-                this.speedY = Math.random() * 0.4 - 0.2;
+                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5; this.speedX = Math.random() * 0.4 - 0.2; this.speedY = Math.random() * 0.4 - 0.2;
             }
             update() {
                 this.x += this.speedX; this.y += this.speedY;
                 if(this.x > canvas.width || this.x < 0) this.speedX *= -1;
                 if(this.y > canvas.height || this.y < 0) this.speedY *= -1;
             }
-            draw() {
-                ctx.fillStyle = 'rgba(249, 115, 22, 0.3)';
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
-            }
+            draw() { ctx.fillStyle = 'rgba(249, 115, 22, 0.4)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
         }
-        function init() { for (let i = 0; i < 60; i++) particles.push(new Particle()); }
+        function init() { for (let i = 0; i < 50; i++) particles.push(new Particle()); }
         function animate() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
         init(); animate();
     </script>
