@@ -16,36 +16,59 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
         body { background-color: #000; color: white; scroll-behavior: smooth; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .bg-3d { background: radial-gradient(circle at center, #1a0d00 0%, #000 90%); }
         
-        /* Animated Glow Effect */
+        /* 3D Animated Background */
+        .bg-3d { 
+            background: radial-gradient(circle at center, #1a0d00 0%, #000 90%); 
+            overflow: hidden;
+        }
+
+        /* Floating Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: 1;
+            opacity: 0.4;
+            animation: float 20s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30vw, 20vh) scale(1.2); }
+            66% { transform: translate(-20vw, 40vh) scale(0.8); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
         @keyframes breathing {
             0%, 100% { box-shadow: 0 0 15px rgba(255, 100, 0, 0.2); border-color: rgba(255, 100, 0, 0.2); }
             50% { box-shadow: 0 0 35px rgba(255, 100, 0, 0.5); border-color: rgba(255, 100, 0, 0.5); }
         }
         .animate-glow { animation: breathing 3s ease-in-out infinite; }
-        
-        /* Slider Styling */
         .swiper { width: 100%; max-width: 600px; height: 450px; border-radius: 20px; }
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; border: 1px solid #333; }
-        
-        .orange-text-glow { text-shadow: 0 0 15px rgba(249, 115, 22, 0.5); }
     </style>
 </head>
 <body>
 
     <section class="h-screen flex flex-col justify-center items-center bg-3d text-center p-5 relative">
-        <h1 data-aos="zoom-in" data-aos-duration="1200" class="text-6xl md:text-9xl font-black mb-4 italic tracking-tighter uppercase text-white">
-            Ahmad <span class="text-orange-500 orange-text-glow">Bandar</span>
-        </h1>
-        <p class="text-gray-400 text-lg md:text-xl mb-10 tracking-widest uppercase" data-aos="fade-up" data-aos-delay="400">
-            Data Science @ <span class="text-white font-bold">USJ</span> | Athlete
-        </p>
-        <div class="flex gap-4" data-aos="fade-up" data-aos-delay="600">
-            <a href="#projects" class="bg-orange-600 text-white font-bold py-3 px-8 rounded-full animate-glow uppercase text-xs tracking-widest">Projects</a>
-            <a href="#gallery" class="border border-zinc-700 text-white font-bold py-3 px-8 rounded-full uppercase text-xs tracking-widest hover:bg-white hover:text-black transition duration-300">Gallery</a>
+        <div class="orb w-64 h-64 bg-orange-900 top-10 left-10"></div>
+        <div class="orb w-80 h-80 bg-orange-700 bottom-20 right-10" style="animation-duration: 25s; animation-delay: -5s;"></div>
+        <div class="orb w-40 h-40 bg-orange-500 top-1/2 left-1/4" style="animation-duration: 15s; animation-delay: -2s;"></div>
+
+        <div class="relative z-10">
+            <h1 data-aos="zoom-in" data-aos-duration="1200" class="text-6xl md:text-9xl font-black mb-4 italic tracking-tighter uppercase text-white">
+                Ahmad <span class="text-orange-500" style="text-shadow: 0 0 20px rgba(255,100,0,0.5);">Bandar</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl mb-10 tracking-widest uppercase" data-aos="fade-up" data-aos-delay="400">
+                Data Science @ <span class="text-white font-bold">USJ</span> | Athlete
+            </p>
+            <div class="flex gap-4 justify-center" data-aos="fade-up" data-aos-delay="600">
+                <a href="#projects" class="bg-orange-600 text-white font-bold py-3 px-8 rounded-full animate-glow uppercase text-xs tracking-widest">Projects</a>
+                <a href="#gallery" class="border border-zinc-700 text-white font-bold py-3 px-8 rounded-full uppercase text-xs tracking-widest hover:bg-white hover:text-black transition duration-300">Gallery</a>
+            </div>
         </div>
-        <div class="absolute bottom-10 animate-bounce text-orange-500">
+
+        <div class="absolute bottom-10 animate-bounce text-orange-500 z-10">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
@@ -59,12 +82,12 @@
                 <div data-aos="flip-up" class="p-8 bg-zinc-900 rounded-3xl border border-zinc-800 hover:border-orange-500 transition duration-500 group">
                     <div class="text-orange-500 mb-4 text-3xl font-bold">01</div>
                     <h3 class="text-2xl font-bold mb-3 text-white">Mathematics & Logic</h3>
-                    <p class="text-gray-400 leading-relaxed">Advanced Calculus, Statistics, and Data Modeling expert at USJ, focusing on logical efficiency.</p>
+                    <p class="text-gray-400 leading-relaxed">Advanced Calculus, Statistics, and Data Modeling expert at USJ.</p>
                 </div>
                 <div data-aos="flip-up" data-aos-delay="200" class="p-8 bg-zinc-900 rounded-3xl border border-zinc-800 hover:border-orange-500 transition duration-500 group">
                     <div class="text-orange-500 mb-4 text-3xl font-bold">02</div>
                     <h3 class="text-2xl font-bold mb-3 text-white">Programming</h3>
-                    <p class="text-gray-400 leading-relaxed">Building intelligent data-driven systems using Python and modern Web Technologies.</p>
+                    <p class="text-gray-400 leading-relaxed">Building intelligent data-driven systems using Python and modern Web Tech.</p>
                 </div>
             </div>
         </div>
@@ -72,20 +95,14 @@
 
     <section id="about" class="py-24 px-5 max-w-6xl mx-auto">
         <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div data-aos="fade-right" class="relative">
-                <img src="image.png" alt="Ahmad Bandar" class="rounded-3xl border-2 border-orange-500/20 animate-glow w-full shadow-2xl relative z-10">
-                <div class="absolute -inset-4 bg-orange-600/10 blur-3xl rounded-full z-0"></div>
+            <div data-aos="fade-right">
+                <img src="image.png" alt="Ahmad Bandar" class="rounded-3xl border-2 border-orange-500/20 animate-glow w-full shadow-2xl">
             </div>
             <div data-aos="fade-left" class="space-y-6">
                 <h2 class="text-6xl font-black uppercase italic text-white leading-none">The <span class="text-orange-500">Story</span></h2>
-                <div class="flex gap-4 text-sm font-bold text-zinc-500 tracking-tighter uppercase">
-                    <span>18 Years Old</span>
-                    <span class="text-orange-500">•</span>
-                    <span>11.06.2007</span>
-                </div>
                 <p class="text-gray-400 text-xl leading-relaxed">
-                    Student at <span class="text-white font-bold underline decoration-orange-500">USJ</span> specializing in Data Science. 
-                    I bridge the gap between technical data analysis and the high-performance world of Football.
+                    18 years old. Born: 11.06.2007. <br>
+                    Student at <span class="text-white font-bold underline decoration-orange-500">USJ</span> in Data Science.
                 </p>
             </div>
         </div>
@@ -95,24 +112,21 @@
         <h2 data-aos="fade-up" class="text-5xl font-black text-white uppercase mb-12 italic">On The <span class="text-orange-500">Pitch</span></h2>
         <div class="swiper mySwiper" data-aos="zoom-in">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="image_3e687a.jpg" alt="Ahmad Football 1"></div>
-                <div class="swiper-slide"><img src="image_3e68f8.jpg" alt="Ahmad Football 2"></div>
-                <div class="swiper-slide"><img src="image_3e6fc0.jpg" alt="Ahmad Football 3"></div>
+                <div class="swiper-slide"><img src="image_3e687a.jpg"></div>
+                <div class="swiper-slide"><img src="image_3e68f8.jpg"></div>
+                <div class="swiper-slide"><img src="image_3e6fc0.jpg"></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
-        <p class="text-zinc-600 mt-8 text-sm uppercase tracking-widest italic">Slide for more action</p>
     </section>
 
     <footer id="contact" class="py-20 text-center border-t border-zinc-900">
-        <div data-aos="fade-up" class="space-y-8">
-            <h2 class="text-3xl font-black uppercase text-orange-500">Let's Connect</h2>
-            <div class="flex flex-col md:flex-row justify-center gap-12 text-xl font-bold">
-                <a href="https://wa.me/96181101811" target="_blank" class="hover:text-orange-500 transition duration-300">WhatsApp</a>
-                <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="hover:text-orange-500 transition duration-300">Instagram</a>
-                <a href="mailto:bandarahmad104@gmail.com" class="hover:text-orange-500 transition duration-300">Email</a>
+        <div class="flex flex-col items-center gap-8">
+            <h2 class="text-2xl font-black text-orange-500 uppercase tracking-widest">Connect</h2>
+            <div class="flex gap-10 font-bold">
+                <a href="https://wa.me/96181101811" target="_blank" class="hover:text-orange-500">WhatsApp</a>
+                <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="hover:text-orange-500">Instagram</a>
             </div>
-            <p class="text-zinc-800 text-[10px] uppercase tracking-[0.5em] pt-10">Ahmad Bandar © 2026</p>
         </div>
     </footer>
 
@@ -120,22 +134,26 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
-        
         var swiper = new Swiper(".mySwiper", {
             effect: "coverflow",
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: "auto",
             loop: true,
-            autoplay: { delay: 2500, disableOnInteraction: false },
-            coverflowEffect: {
-                rotate: 30,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-            },
+            autoplay: { delay: 2500 },
+            coverflowEffect: { rotate: 30, stretch: 0, depth: 100, modifier: 1, slideShadows: true },
             pagination: { el: ".swiper-pagination", clickable: true },
+        });
+
+        // Parallax Effect for Orbs
+        document.addEventListener("mousemove", (e) => {
+            const orbs = document.querySelectorAll(".orb");
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 20;
+                orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
         });
     </script>
 </body>
