@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Bandar | Digital Protocol</title>
+    <title>Ahmad Bandar | Future Protocol</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -23,52 +23,53 @@
         #cursor-follower span { font-size: 7px; color: #f97316; font-weight: 900; animation: spin 8s linear infinite; letter-spacing: 2px; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* 2. Noise Texture Overlay */
-        .noise {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://grainy-gradients.vercel.app/noise.svg');
-            opacity: 0.04; pointer-events: none; z-index: 9998;
+        /* 2. 3D Cube Styles */
+        .cube-container {
+            position: absolute; width: 250px; height: 250px;
+            perspective: 1000px; z-index: 2; opacity: 0.5;
+            pointer-events: none; transition: transform 0.1s ease-out;
+        }
+        .cube {
+            position: relative; width: 100%; height: 100%;
+            transform-style: preserve-3d;
+            animation: rotate-cube 20s infinite linear;
+        }
+        .face {
+            position: absolute; width: 150px; height: 150px;
+            background: rgba(249, 115, 22, 0.03);
+            border: 1px solid rgba(249, 115, 22, 0.4);
+            backdrop-filter: blur(2px);
+        }
+        .front  { transform: translateZ(75px); }
+        .back   { transform: rotateY(180deg) translateZ(75px); }
+        .right  { transform: rotateY(90deg) translateZ(75px); }
+        .left   { transform: rotateY(-90deg) translateZ(75px); }
+        .top    { transform: rotateX(90deg) translateZ(75px); }
+        .bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+        @keyframes rotate-cube {
+            from { transform: rotateX(0deg) rotateY(0deg); }
+            to { transform: rotateX(360deg) rotateY(360deg); }
         }
 
-        /* 3. Digital Glitch Effect */
-        .glitch:hover {
-            animation: glitch-anim 0.2s cubic-bezier(.25,.46,.45,.94) both infinite;
-            text-shadow: 3px 0 #ff00c1, -3px 0 #00fff9;
-        }
-        @keyframes glitch-anim {
-            0% { transform: translate(0); }
-            20% { transform: translate(-3px, 3px); }
-            40% { transform: translate(-3px, -3px); }
-            60% { transform: translate(3px, 3px); }
-            80% { transform: translate(3px, -3px); }
-            100% { transform: translate(0); }
-        }
+        /* Glitch & Noise */
+        .noise { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.04; pointer-events: none; z-index: 9998; }
+        .glitch:hover { animation: glitch-anim 0.2s infinite; text-shadow: 3px 0 #ff00c1, -3px 0 #00fff9; }
+        @keyframes glitch-anim { 0%, 100% { transform: translate(0); } 20% { transform: translate(-3px, 3px); } 80% { transform: translate(3px, -3px); } }
 
-        /* Progress Bar */
-        #progress-bar { position: fixed; top: 38px; left: 0; height: 2px; background: #f97316; width: 0%; z-index: 100; transition: width 0.1s; }
-
-        /* Loader */
+        /* General Layout */
+        #progress-bar { position: fixed; top: 38px; left: 0; height: 2px; background: #f97316; width: 0%; z-index: 100; }
         #loader { position: fixed; inset: 0; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.8s; }
-        
-        /* Layout Elements */
         .gradient-text { background: linear-gradient(90deg, #fff, #f97316, #fff); background-size: 200% auto; color: transparent; -webkit-background-clip: text; animation: gradient-move 3s linear infinite; }
         @keyframes gradient-move { to { background-position: 200% center; } }
-        
         .ticker-wrap { background: #080808; padding: 12px 0; border-bottom: 1px solid #111; overflow: hidden; }
         .ticker { display: flex; white-space: nowrap; animation: ticker-move 25s linear infinite; }
-        .ticker span { font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 5px; color: #333; padding-right: 60px; }
-        @keyframes ticker-move { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        
-        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.3; }
-        #spotlight { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,100,0,0.05) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; pointer-events: none; z-index: 5; transform: translate(-50%, -50%); transition: 0.1s; }
-        
-        .tilt-box { transition: transform 0.2s ease-out; transform-style: preserve-3d; }
-        .magnetic-wrap { display: inline-block; transition: transform 0.3s; }
-        
-        /* Timeline */
+        .ticker span { font-size: 9px; font-weight: 900; color: #333; padding-right: 60px; letter-spacing: 5px; }
+        @keyframes ticker-move { 100% { transform: translateX(-50%); } }
+        #hero-canvas { position: absolute; inset: 0; z-index: 1; opacity: 0.3; }
+        #spotlight { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, rgba(249,115,22,0.05) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 5; transform: translate(-50%, -50%); }
         .timeline-item { border-left: 1px solid #1f2937; padding-left: 20px; position: relative; margin-bottom: 40px; }
         .timeline-item::before { content: ''; position: absolute; left: -4px; top: 0; width: 7px; height: 7px; background: #f97316; border-radius: 50%; }
-
         .swiper { width: 100%; max-width: 600px; height: 450px; border-radius: 20px; }
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
     </style>
@@ -80,7 +81,7 @@
 
     <div id="loader">
         <h2 class="text-orange-500 font-black text-2xl tracking-[0.4em] uppercase mb-4">Ahmad Bandar</h2>
-        <div class="w-40 h-[1px] bg-zinc-900 overflow-hidden"><div id="loader-bar" class="bg-orange-600 h-full w-0"></div></div>
+        <div class="w-40 h-[1px] bg-zinc-900 overflow-hidden"><div id="loader-bar" class="bg-orange-600 h-full w-0 transition-all duration-300"></div></div>
     </div>
 
     <div id="progress-bar"></div>
@@ -95,6 +96,15 @@
 
     <section class="h-screen flex flex-col justify-center items-center bg-black text-center p-5 relative overflow-hidden">
         <canvas id="hero-canvas"></canvas>
+        
+        <div class="cube-container" id="cube-3d">
+            <div class="cube">
+                <div class="face front"></div><div class="face back"></div>
+                <div class="face right"></div><div class="face left"></div>
+                <div class="face top"></div><div class="face bottom"></div>
+            </div>
+        </div>
+
         <div class="hero-content relative z-10">
             <h1 data-aos="zoom-in" class="glitch text-7xl md:text-[10rem] font-black italic uppercase leading-none text-white tracking-tighter">
                 Ahmad <br> <span class="gradient-text">Bandar</span>
@@ -103,12 +113,8 @@
                 <span id="typed" class="text-zinc-600 text-xs md:text-sm tracking-[0.5em] uppercase font-mono"></span>
             </div>
             <div class="flex gap-6 justify-center">
-                <div class="magnetic-wrap">
-                    <a href="#projects" class="bg-white text-black font-black py-4 px-10 rounded-full uppercase text-[10px] tracking-widest hover:bg-orange-600 hover:text-white transition-all block shadow-2xl">Discover</a>
-                </div>
-                <div class="magnetic-wrap">
-                    <a href="https://wa.me/96181101811" target="_blank" class="border border-zinc-800 text-white font-black py-4 px-10 rounded-full uppercase text-[10px] tracking-widest hover:border-orange-500 transition-all block">Protocol</a>
-                </div>
+                <div class="magnetic-wrap"><a href="#projects" class="bg-white text-black font-black py-4 px-10 rounded-full uppercase text-[10px] tracking-widest hover:bg-orange-600 hover:text-white transition-all block shadow-2xl">Discover</a></div>
+                <div class="magnetic-wrap"><a href="https://wa.me/96181101811" target="_blank" class="border border-zinc-800 text-white font-black py-4 px-10 rounded-full uppercase text-[10px] tracking-widest hover:border-orange-500 transition-all block">Protocol</a></div>
             </div>
         </div>
     </section>
@@ -117,7 +123,7 @@
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-24">
             <div data-aos="fade-right">
                 <h2 class="text-2xl font-black text-orange-500 uppercase italic mb-16 tracking-widest">Capabilities</h2>
-                <div class="space-y-12 text-left">
+                <div class="space-y-12">
                     <div class="group">
                         <div class="flex justify-between mb-4 text-[10px] font-black uppercase text-zinc-600 group-hover:text-orange-500 transition-colors"><span>Data Analytics</span><span>85%</span></div>
                         <div class="h-[1px] bg-zinc-900 w-full"><div class="bg-orange-600 h-full w-[85%]"></div></div>
@@ -128,18 +134,12 @@
                     </div>
                 </div>
             </div>
-
             <div data-aos="fade-left">
                 <h2 class="text-2xl font-black text-white uppercase italic mb-16 tracking-widest">Path</h2>
                 <div class="timeline-item">
                     <h4 class="text-orange-500 font-black text-xs uppercase tracking-widest">2025 - Present</h4>
                     <p class="text-white font-bold mt-1">Data Science @ USJ</p>
-                    <p class="text-zinc-500 text-sm mt-2 font-mono italic">Decoding patterns & AI structures.</p>
-                </div>
-                <div class="timeline-item">
-                    <h4 class="text-zinc-600 font-black text-xs uppercase tracking-widest">Ongoing</h4>
-                    <p class="text-white font-bold mt-1">Midfielder / Athlete</p>
-                    <p class="text-zinc-500 text-sm mt-2 font-mono italic">Executing strategy on the field.</p>
+                    <p class="text-zinc-500 text-sm mt-2 font-mono">Decoding patterns & AI structures.</p>
                 </div>
             </div>
         </div>
@@ -152,8 +152,8 @@
         </div>
     </section>
 
-    <section id="gallery" class="py-32 px-5 bg-zinc-950 border-t border-zinc-900">
-        <div class="swiper mySwiper">
+    <section id="gallery" class="py-32 px-5 bg-zinc-950 border-t border-zinc-900 text-center">
+        <div class="swiper mySwiper mx-auto">
             <div class="swiper-wrapper">
                 <div class="swiper-slide"><img src="image_3e687a.jpg"></div>
                 <div class="swiper-slide"><img src="image_3e68f8.jpg"></div>
@@ -173,45 +173,40 @@
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        // MOUSE FOLLOWER
+        // 3D CUBE MOUSE FOLLOW
+        const cube = document.getElementById('cube-3d');
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.clientX) / 20;
+            const y = (window.innerHeight / 2 - e.clientY) / 20;
+            cube.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // CURSOR
         const follower = document.getElementById('cursor-follower');
         document.addEventListener('mousemove', (e) => {
             follower.style.left = e.clientX + 'px';
             follower.style.top = e.clientY + 'px';
         });
 
-        // PROGRESS BAR
+        // SCROLL PROGRESS
         window.onscroll = function() {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("progress-bar").style.width = scrolled + "%";
+            document.getElementById("progress-bar").style.width = (winScroll / height) * 100 + "%";
         };
 
         // LOADER
         let prg = 0; const int = setInterval(() => { 
-            prg += 10; 
-            document.getElementById('loader-bar').style.width = prg + '%'; 
-            if(prg>=100){ 
-                clearInterval(int); 
-                setTimeout(()=> {
-                    document.getElementById('loader').style.opacity='0'; 
-                    setTimeout(()=>document.getElementById('loader').style.display='none', 800);
-                }, 400);
-            }
+            prg += 10; document.getElementById('loader-bar').style.width = prg + '%'; 
+            if(prg>=100){ clearInterval(int); setTimeout(()=> { document.getElementById('loader').style.opacity='0'; setTimeout(()=>document.getElementById('loader').style.display='none', 800); }, 400); }
         }, 60);
 
         // TYPED
-        new Typed('#typed', { 
-            strings: ['Solving Logic at USJ', 'Mastering the Pitch', 'Digital Architecture'], 
-            typeSpeed: 40, loop: true 
-        });
+        new Typed('#typed', { strings: ['Solving Logic at USJ', 'Mastering the Pitch', 'Digital Architecture'], typeSpeed: 40, loop: true });
 
         // SPOTLIGHT
         const spot = document.getElementById('spotlight');
-        document.addEventListener('mousemove', (e) => { 
-            spot.style.left = e.clientX + 'px'; spot.style.top = e.clientY + 'px'; 
-        });
+        document.addEventListener('mousemove', (e) => { spot.style.left = e.clientX + 'px'; spot.style.top = e.clientY + 'px'; });
 
         // MAGNETIC
         document.querySelectorAll('.magnetic-wrap').forEach(m => {
@@ -222,28 +217,20 @@
             m.addEventListener('mouseleave', () => m.style.transform = '');
         });
 
-        // 3D TILT
+        // 3D PHOTO TILT
         const card = document.getElementById('tilt-card');
-        if(card) {
-            card.addEventListener('mousemove', (e) => {
-                const r = card.getBoundingClientRect();
-                const x = (e.clientX - r.left) / r.width - 0.5;
-                const y = (e.clientY - r.top) / r.height - 0.5;
-                card.style.transform = `perspective(1000px) rotateY(${x * 30}deg) rotateX(${y * -30}deg) scale(1.05)`;
-            });
-            card.addEventListener('mouseleave', () => card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)');
-        }
+        card.addEventListener('mousemove', (e) => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width - 0.5;
+            const y = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform = `perspective(1000px) rotateY(${x * 30}deg) rotateX(${y * -30}deg) scale(1.05)`;
+        });
+        card.addEventListener('mouseleave', () => card.style.transform = '');
 
         // SWIPER
-        new Swiper(".mySwiper", { 
-            effect: "coverflow", 
-            centeredSlides: true, 
-            slidesPerView: "auto", 
-            loop: true, 
-            autoplay: { delay: 3000 } 
-        });
+        new Swiper(".mySwiper", { effect: "coverflow", centeredSlides: true, slidesPerView: "auto", loop: true, autoplay: { delay: 3000 } });
 
-        // PARTICLES
+        // PARTICLES BACKGROUND
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -261,7 +248,7 @@
             }
             draw() { ctx.fillStyle = 'rgba(249, 115, 22, 0.4)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
         }
-        function init() { for (let i = 0; i < 50; i++) particles.push(new Particle()); }
+        function init() { for (let i = 0; i < 40; i++) particles.push(new Particle()); }
         function animate() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
         init(); animate();
     </script>
