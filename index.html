@@ -16,40 +16,31 @@
         #custom-cursor { position: fixed; width: 12px; height: 12px; background: #f97316; border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.1s; transform: translate(-50%, -50%); }
         #mouse-line { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
 
-        /* Floating Tags */
-        .glass-tag {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(249, 115, 22, 0.3);
-            backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 100px;
-            font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #f97316;
-            display: inline-block; margin: 5px; animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-
-        /* OVERLAP PHOTO STYLE */
+        /* Floating Cutout */
         .floating-cutout {
             animation: extreme-float 5s ease-in-out infinite;
             filter: drop-shadow(0 0 30px rgba(249, 115, 22, 0.4));
-            position: relative;
-            z-index: 50; /* Higher than text */
         }
         @keyframes extreme-float {
             0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.02); }
+            50% { transform: translateY(-20px) scale(1.03); }
         }
 
         .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         #loader { position: fixed; inset: 0; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         
-        .timeline-item { border-left: 1px solid #1f2937; padding-left: 20px; position: relative; margin-bottom: 40px; }
-        .timeline-item::before { content: ''; position: absolute; left: -4px; top: 0; width: 7px; height: 7px; background: #f97316; border-radius: 50%; }
-        
+        /* Swiper & Contact Styles */
         .swiper { width: 100%; max-width: 600px; height: 450px; border-radius: 20px; }
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; filter: grayscale(100%); transition: 0.5s; }
         .swiper-slide img:hover { filter: grayscale(0%); }
-
         .contact-btn { border: 1px solid rgba(249, 115, 22, 0.2); transition: all 0.4s ease; cursor: pointer; }
         .contact-btn:hover { background: #f97316; color: black; box-shadow: 0 0 30px rgba(249, 115, 22, 0.4); }
+        .glass-tag {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(249, 115, 22, 0.3);
+            backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 100px;
+            font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #f97316;
+            display: inline-block; margin: 5px;
+        }
     </style>
 </head>
 <body>
@@ -57,26 +48,26 @@
     <svg id="mouse-line"><line id="line" x1="0" y1="0" x2="0" y2="0" stroke="#f97316" stroke-width="0.5" stroke-dasharray="4" opacity="0.4" /></svg>
 
     <div id="loader">
-        <h2 style="font-family: 'Syncopate'" class="text-orange-500 font-bold text-xl tracking-[0.5em]">INITIALIZING</h2>
+        <h2 style="font-family: 'Syncopate'" class="text-orange-500 font-bold text-xl tracking-[0.5em]">SYSTEM ONLINE</h2>
     </div>
 
-    <section class="h-screen flex flex-col justify-center items-center relative border-b border-zinc-900 pt-20">
-        <div class="text-center relative">
-            
-            <div class="absolute -top-32 md:-top-48 left-1/2 -translate-x-1/2 w-56 md:w-80 z-50 pointer-events-none">
-                <img src="ahmad-cutout.png..jpg" class="floating-cutout" alt="Ahmad">
-            </div>
+    <section class="min-h-screen flex flex-col justify-center items-center relative border-b border-zinc-900 pt-20 pb-10">
+        
+        <div class="mb-6 md:mb-10 z-20">
+            <img src="ahmad-cutout.png..jpg" class="floating-cutout w-56 md:w-80" alt="Ahmad">
+        </div>
 
-            <h1 data-aos="fade-down" class="text-7xl md:text-[11rem] font-black uppercase leading-[0.85] tracking-tighter relative z-10">
+        <div class="text-center z-10">
+            <h1 data-aos="fade-up" class="text-6xl md:text-[10rem] font-black uppercase leading-none tracking-tighter">
                 AHMAD <br> <span class="gradient-text">BANDAR</span>
             </h1>
             
-            <div class="mt-12 flex flex-wrap justify-center gap-4 max-w-xl mx-auto relative z-20">
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
                 <div class="glass-tag">Data Scientist</div>
-                <div class="glass-tag" style="animation-delay: 0.5s;">Midfield Strategist</div>
+                <div class="glass-tag">Midfield Strategist</div>
             </div>
 
-            <div class="mt-12 relative z-20">
+            <div class="mt-12">
                 <a href="#contact" class="group px-12 py-4 font-black text-[10px] tracking-[0.3em] uppercase border border-zinc-800 hover:border-orange-500 transition-all">
                     DISCOVER PROTOCOL
                 </a>
@@ -89,8 +80,11 @@
             <div data-aos="fade-right"><canvas id="skillsChart"></canvas></div>
             <div data-aos="fade-left">
                 <h2 class="text-2xl font-black text-white uppercase italic mb-10 tracking-widest italic">Evolution</h2>
-                <div class="timeline-item"><p class="text-orange-500 text-xs font-bold uppercase">2025</p><p class="font-bold">Data Science @ USJ</p></div>
-                <div class="timeline-item"><p class="text-orange-500 text-xs font-bold uppercase">Strategy</p><p class="font-bold">Professional Midfielder</p></div>
+                <p class="text-zinc-400 mb-4">Tracking progress and strategic development across data science and athletics.</p>
+                <div class="border-l border-orange-500 pl-4 py-2 mb-4">
+                    <p class="text-orange-500 text-xs font-bold uppercase">Current Focus</p>
+                    <p class="font-bold">Data Science @ USJ</p>
+                </div>
             </div>
         </div>
     </section>
@@ -120,7 +114,7 @@
     </section>
 
     <footer class="py-10 text-center border-t border-zinc-800">
-        <p class="text-[9px] font-black tracking-[1.5em] text-zinc-900 uppercase">Ahmad Bandar © 2026</p>
+        <p class="text-[9px] font-black tracking-[1.5em] text-zinc-600 uppercase">Ahmad Bandar © 2026</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -141,8 +135,8 @@
             line.setAttribute('x2', e.clientX);
             line.setAttribute('y2', e.clientY);
 
-            const xVal = (e.clientX - window.innerWidth / 2) / 70;
-            const yVal = (e.clientY - window.innerHeight / 2) / 70;
+            const xVal = (e.clientX - window.innerWidth / 2) / 80;
+            const yVal = (e.clientY - window.innerHeight / 2) / 80;
             title.style.transform = `perspective(1000px) rotateX(${-yVal}deg) rotateY(${xVal}deg)`;
         });
 
