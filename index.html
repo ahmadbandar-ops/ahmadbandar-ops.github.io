@@ -36,6 +36,16 @@
             50% { transform: translateY(-10px) rotate(2deg); }
         }
 
+        /* Floating Cutout Animation */
+        .floating-cutout {
+            animation: extreme-float 5s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(249, 115, 22, 0.5));
+        }
+        @keyframes extreme-float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-25px) scale(1.03); }
+        }
+
         .gradient-text {
             background: linear-gradient(180deg, #fff 30%, #f97316 100%);
             -webkit-background-clip: text;
@@ -53,28 +63,14 @@
         .timeline-item { border-left: 1px solid #1f2937; padding-left: 20px; position: relative; margin-bottom: 40px; }
         .timeline-item::before { content: ''; position: absolute; left: -4px; top: 0; width: 7px; height: 7px; background: #f97316; border-radius: 50%; }
         
-        /* Swiper Styles */
         .swiper { width: 100%; max-width: 600px; height: 450px; border-radius: 20px; }
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; filter: grayscale(100%); transition: 0.5s; }
         .swiper-slide img:hover { filter: grayscale(0%); }
 
-        /* Smooth 3D Transition for Image */
-        #tilt-card {
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            transform-style: preserve-3d;
-        }
+        #tilt-card { transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); transform-style: preserve-3d; }
 
-        /* Contact Button Style */
-        .contact-btn {
-            border: 1px solid rgba(249, 115, 22, 0.2); 
-            transition: all 0.4s ease;
-        }
-        .contact-btn:hover { 
-            background: #f97316; 
-            color: black; 
-            border-color: #f97316; 
-            box-shadow: 0 0 30px rgba(249, 115, 22, 0.4); 
-        }
+        .contact-btn { border: 1px solid rgba(249, 115, 22, 0.2); transition: all 0.4s ease; }
+        .contact-btn:hover { background: #f97316; color: black; border-color: #f97316; box-shadow: 0 0 30px rgba(249, 115, 22, 0.4); }
     </style>
 </head>
 <body>
@@ -85,16 +81,23 @@
         <h2 style="font-family: 'Syncopate'" class="text-orange-500 font-bold text-xl tracking-[0.5em]">LOADING SYSTEM</h2>
     </div>
 
-    <section class="h-screen flex flex-col justify-center items-center relative border-b border-zinc-900">
-        <div class="text-center z-10">
-            <h1 data-aos="fade-down" class="text-8xl md:text-[11rem] font-black uppercase leading-none tracking-tighter">
+    <section class="h-screen flex flex-col justify-center items-center relative border-b border-zinc-900 pt-32">
+        <div class="text-center z-10 relative">
+            
+            <div class="absolute -top-40 md:-top-64 left-1/2 -translate-x-1/2 w-48 md:w-72 z-20 pointer-events-none">
+                <img src="ahmad-cutout.png" class="floating-cutout" alt="Ahmad">
+            </div>
+
+            <h1 data-aos="fade-down" class="text-8xl md:text-[11rem] font-black uppercase leading-none tracking-tighter relative z-10">
                 AHMAD <br> <span class="gradient-text">BANDAR</span>
             </h1>
+            
             <div class="mt-8 flex flex-wrap justify-center gap-4 max-w-xl mx-auto">
                 <div class="glass-tag" style="animation-delay: 0s;">Data Scientist</div>
                 <div class="glass-tag" style="animation-delay: 0.5s;">Midfield Strategist</div>
                 <div class="glass-tag" style="animation-delay: 1s;">AI Enthusiast</div>
             </div>
+
             <div class="mt-12">
                 <a href="#contact" class="group relative px-12 py-4 font-black text-[10px] tracking-[0.3em] uppercase">
                     <span class="absolute inset-0 border border-zinc-800 group-hover:border-orange-500 transition-colors"></span>
@@ -183,7 +186,6 @@
             const yVal = (e.clientY - centerY) / 60;
             title.style.transform = `perspective(1000px) rotateX(${-yVal}deg) rotateY(${xVal}deg)`;
 
-            // Smooth 3D Tilt for Photo
             const r = card.getBoundingClientRect();
             const cardX = (e.clientX - (r.left + r.width/2)) / (window.innerWidth/2);
             const cardY = (e.clientY - (r.top + r.height/2)) / (window.innerHeight/2);
@@ -194,7 +196,6 @@
             card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)`;
         });
 
-        // Radar Chart
         new Chart(document.getElementById('skillsChart'), {
             type: 'radar',
             data: {
