@@ -16,31 +16,20 @@
         #custom-cursor { position: fixed; width: 12px; height: 12px; background: #f97316; border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.1s; transform: translate(-50%, -50%); }
         #mouse-line { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
 
-        /* Floating Cutout */
-        .floating-cutout {
-            animation: extreme-float 5s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px rgba(249, 115, 22, 0.4));
+        /* Progress Bar Animation */
+        .progress-line { height: 6px; background: #1a1a1a; border-radius: 10px; position: relative; overflow: hidden; }
+        .progress-line span { 
+            height: 100%; background: #f97316; position: absolute; left: 0; top: 0; 
+            border-radius: 10px; width: 0; transition: width 1.5s cubic-bezier(1, 0, 0, 1); 
         }
-        @keyframes extreme-float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.03); }
-        }
+
+        .floating-cutout { animation: extreme-float 5s ease-in-out infinite; filter: drop-shadow(0 0 30px rgba(249, 115, 22, 0.4)); }
+        @keyframes extreme-float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-20px) scale(1.03); } }
 
         .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         #loader { position: fixed; inset: 0; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        
-        /* Swiper & Contact Styles */
-        .swiper { width: 100%; max-width: 600px; height: 450px; border-radius: 20px; }
-        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; filter: grayscale(100%); transition: 0.5s; }
-        .swiper-slide img:hover { filter: grayscale(0%); }
         .contact-btn { border: 1px solid rgba(249, 115, 22, 0.2); transition: all 0.4s ease; cursor: pointer; }
         .contact-btn:hover { background: #f97316; color: black; box-shadow: 0 0 30px rgba(249, 115, 22, 0.4); }
-        .glass-tag {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(249, 115, 22, 0.3);
-            backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 100px;
-            font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #f97316;
-            display: inline-block; margin: 5px;
-        }
     </style>
 </head>
 <body>
@@ -52,38 +41,46 @@
     </div>
 
     <section class="min-h-screen flex flex-col justify-center items-center relative border-b border-zinc-900 pt-20 pb-10">
-        
-        <div class="mb-6 md:mb-10 z-20">
-            <img src="ahmad-cutout.png..jpg" class="floating-cutout w-56 md:w-80" alt="Ahmad">
-        </div>
-
+        <div class="mb-6 z-20"><img src="ahmad-cutout.png..jpg" class="floating-cutout w-56 md:w-80" alt="Ahmad"></div>
         <div class="text-center z-10">
-            <h1 data-aos="fade-up" class="text-6xl md:text-[10rem] font-black uppercase leading-none tracking-tighter">
-                AHMAD <br> <span class="gradient-text">BANDAR</span>
-            </h1>
-            
-            <div class="mt-8 flex flex-wrap justify-center gap-4">
-                <div class="glass-tag">Data Scientist</div>
-                <div class="glass-tag">Midfield Strategist</div>
-            </div>
-
-            <div class="mt-12">
-                <a href="#contact" class="group px-12 py-4 font-black text-[10px] tracking-[0.3em] uppercase border border-zinc-800 hover:border-orange-500 transition-all">
-                    DISCOVER PROTOCOL
-                </a>
-            </div>
+            <h1 data-aos="fade-up" class="text-6xl md:text-[10rem] font-black uppercase leading-none tracking-tighter">AHMAD <br> <span class="gradient-text">BANDAR</span></h1>
+            <div class="mt-12"><a href="#contact" class="px-12 py-4 font-black text-[10px] tracking-[0.3em] uppercase border border-zinc-800 hover:border-orange-500 transition-all">DISCOVER PROTOCOL</a></div>
         </div>
     </section>
 
-    <section id="projects" class="py-32 px-5 bg-zinc-950">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-24 items-center">
-            <div data-aos="fade-right"><canvas id="skillsChart"></canvas></div>
-            <div data-aos="fade-left">
-                <h2 class="text-2xl font-black text-white uppercase italic mb-10 tracking-widest italic">Evolution</h2>
-                <p class="text-zinc-400 mb-4">Tracking progress and strategic development across data science and athletics.</p>
-                <div class="border-l border-orange-500 pl-4 py-2 mb-4">
-                    <p class="text-orange-500 text-xs font-bold uppercase">Current Focus</p>
-                    <p class="font-bold">Data Science @ USJ</p>
+    <section id="projects" class="py-32 px-10 bg-black">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20">
+            
+            <div data-aos="fade-right">
+                <h2 class="text-2xl font-black text-orange-500 uppercase italic mb-10 tracking-widest">Capabilities</h2>
+                
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2 text-[10px] uppercase font-bold tracking-widest"><span>Logic & Strategy</span><span>95%</span></div>
+                    <div class="progress-line"><span data-width="95%"></span></div>
+                </div>
+
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2 text-[10px] uppercase font-bold tracking-widest"><span>Data Analysis</span><span>85%</span></div>
+                    <div class="progress-line"><span data-width="85%"></span></div>
+                </div>
+
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2 text-[10px] uppercase font-bold tracking-widest"><span>Coding (Python/SQL)</span><span>80%</span></div>
+                    <div class="progress-line"><span data-width="80%"></span></div>
+                </div>
+
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2 text-[10px] uppercase font-bold tracking-widest"><span>Vision & Speed</span><span>90%</span></div>
+                    <div class="progress-line"><span data-width="90%"></span></div>
+                </div>
+            </div>
+
+            <div data-aos="fade-left" class="flex flex-col justify-center">
+                <h2 class="text-2xl font-black text-white uppercase italic mb-6 tracking-widest">Evolution</h2>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-8">Systematic growth in data science and professional athletic performance.</p>
+                <div class="bg-zinc-900/50 p-6 border-l-2 border-orange-500">
+                    <span class="text-orange-500 text-[10px] font-black uppercase tracking-widest">Current Node</span>
+                    <h3 class="text-xl font-bold mt-1 uppercase">Data Science @ USJ</h3>
                 </div>
             </div>
         </div>
@@ -103,29 +100,21 @@
         <div data-aos="fade-up" class="relative z-10">
             <h3 class="text-5xl md:text-7xl font-black uppercase mb-12">Let's Connect</h3>
             <div class="flex flex-col md:flex-row justify-center gap-6 px-10">
-                <a href="https://api.whatsapp.com/send?phone=96181101811" target="_blank" class="contact-btn px-10 py-5 rounded-full font-black text-[10px] tracking-widest uppercase">
-                    WhatsApp Protocol
-                </a>
-                <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="contact-btn px-10 py-5 rounded-full font-black text-[10px] tracking-widest uppercase">
-                    Instagram Access
-                </a>
+                <a href="https://api.whatsapp.com/send?phone=96181101811" target="_blank" class="contact-btn px-10 py-5 rounded-full font-black text-[10px] tracking-widest uppercase">WhatsApp Protocol</a>
+                <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="contact-btn px-10 py-5 rounded-full font-black text-[10px] tracking-widest uppercase">Instagram Access</a>
             </div>
         </div>
     </section>
 
-    <footer class="py-10 text-center border-t border-zinc-800">
-        <p class="text-[9px] font-black tracking-[1.5em] text-zinc-600 uppercase">Ahmad Bandar © 2026</p>
-    </footer>
+    <footer class="py-10 text-center border-t border-zinc-900 text-zinc-700 text-[10px] font-black tracking-widest">AHMAD BANDAR © 2026</footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <script>
         AOS.init();
         const cursor = document.getElementById('custom-cursor');
         const line = document.getElementById('line');
-        const title = document.querySelector('h1');
 
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
@@ -134,20 +123,19 @@
             line.setAttribute('y1', window.innerHeight / 2);
             line.setAttribute('x2', e.clientX);
             line.setAttribute('y2', e.clientY);
-
-            const xVal = (e.clientX - window.innerWidth / 2) / 80;
-            const yVal = (e.clientY - window.innerHeight / 2) / 80;
-            title.style.transform = `perspective(1000px) rotateX(${-yVal}deg) rotateY(${xVal}deg)`;
         });
 
-        new Chart(document.getElementById('skillsChart'), {
-            type: 'radar',
-            data: {
-                labels: ['Logic', 'Code', 'Stats', 'Speed', 'Vision', 'Math'],
-                datasets: [{ data: [95, 80, 85, 90, 95, 85], backgroundColor: 'rgba(249, 115, 22, 0.2)', borderColor: '#f97316', borderWidth: 2 }]
-            },
-            options: { scales: { r: { grid: { color: '#222' }, angleLines: { color: '#222' }, ticks: { display: false }, pointLabels: { color: '#666', font: { size: 10, weight: '900' } } } }, plugins: { legend: { display: false } } }
-        });
+        // Animation lal-Progress Bars bas ta3mel scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const spans = entry.target.querySelectorAll('.progress-line span');
+                    spans.forEach(span => span.style.width = span.getAttribute('data-width'));
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(document.getElementById('projects'));
 
         new Swiper(".mySwiper", { effect: "coverflow", centeredSlides: true, slidesPerView: "auto", loop: true, autoplay: { delay: 3000 } });
         window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').style.display = 'none', 1000));
