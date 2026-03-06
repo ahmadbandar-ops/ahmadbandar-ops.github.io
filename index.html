@@ -6,123 +6,115 @@
     <title>Ahmad Bandar | Future Protocol</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Fira+Code&display=swap');
-        body { background-color: #000; color: white; scroll-behavior: smooth; font-family: 'Inter', sans-serif; overflow-x: hidden; cursor: none; }
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@900&display=swap');
         
-        /* Spotlight Mouse Effect */
-        #spotlight { position: fixed; width: 600px; height: 600px; background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 1; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s; }
+        body { background-color: #000; color: white; scroll-behavior: smooth; font-family: 'Inter', sans-serif; overflow-x: hidden; cursor: none; }
 
-        /* Custom Cursor */
-        #cursor-follower { position: fixed; width: 100px; height: 100px; border: 1px solid rgba(249, 115, 22, 0.4); border-radius: 50%; pointer-events: none; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: transform 0.1s ease-out; transform: translate(-50%, -50%); }
-        #cursor-follower span { font-size: 7px; color: #f97316; font-weight: 900; animation: spin 8s linear infinite; letter-spacing: 2px; text-transform: uppercase; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        /* Modern Line Follower (El-Khat yalle bel7aq el-mouse) */
+        #mouse-line {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 5;
+        }
 
-        /* 3D Cube & UI */
-        .cube-container { position: absolute; width: 250px; height: 250px; perspective: 1000px; z-index: 2; opacity: 0.5; pointer-events: none; }
-        .cube { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: rotate-cube 20s infinite linear; }
-        .face { position: absolute; width: 150px; height: 150px; background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.4); }
-        .front { transform: translateZ(75px); } .back { transform: rotateY(180deg) translateZ(75px); }
-        .right { transform: rotateY(90deg) translateZ(75px); } .left { transform: rotateY(-90deg) translateZ(75px); }
-        .top { transform: rotateX(90deg) translateZ(75px); } .bottom { transform: rotateX(-90deg) translateZ(75px); }
-        @keyframes rotate-cube { from { transform: rotateX(0deg) rotateY(0deg); } to { transform: rotateX(360deg) rotateY(360deg); } }
+        /* The New Floating Labels (Badal el-Terminal Box) */
+        .glass-tag {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #f97316;
+            display: inline-block;
+            margin: 5px;
+            animation: float 4s ease-in-out infinite;
+        }
 
-        .terminal-box { background: rgba(10, 10, 10, 0.8); border: 1px solid #222; border-radius: 8px; font-family: 'Fira Code', monospace; padding: 20px; max-width: 450px; margin: 20px auto; backdrop-filter: blur(10px); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(180deg, #fff 30%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #custom-cursor {
+            position: fixed; width: 12px; height: 12px; background: #f97316;
+            border-radius: 50%; pointer-events: none; z-index: 10000;
+            transition: transform 0.1s; transform: translate(-50%, -50%);
+        }
+
         #loader { position: fixed; inset: 0; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .gradient-text { background: linear-gradient(90deg, #fff, #f97316, #fff); background-size: 200% auto; color: transparent; -webkit-background-clip: text; animation: gradient-move 3s linear infinite; }
-        @keyframes gradient-move { to { background-position: 200% center; } }
-        .ticker-wrap { background: #080808; padding: 12px 0; border-bottom: 1px solid #111; overflow: hidden; position: fixed; top: 0; width: 100%; z-index: 50; }
-        .ticker { display: flex; white-space: nowrap; animation: ticker-move 25s linear infinite; }
-        .ticker span { font-size: 9px; font-weight: 900; color: #333; padding-right: 60px; letter-spacing: 5px; }
-        @keyframes ticker-move { 100% { transform: translateX(-50%); } }
     </style>
 </head>
 <body>
-    <div id="spotlight"></div>
-    <div id="cursor-follower"><span>Ahmad Bandar • Strategy • Data • </span></div>
-    
+    <div id="custom-cursor"></div>
+    <svg id="mouse-line"><line id="line" x1="0" y1="0" x2="0" y2="0" stroke="#f97316" stroke-width="0.5" stroke-dasharray="4" opacity="0.4" /></svg>
+
     <div id="loader">
-        <h2 class="text-orange-500 font-black text-2xl tracking-[0.4em] uppercase mb-4">Ahmad Bandar</h2>
-        <div class="w-40 h-[1px] bg-zinc-900 overflow-hidden"><div id="loader-bar" class="bg-orange-600 h-full w-0 transition-all duration-300"></div></div>
+        <h2 style="font-family: 'Syncopate'" class="text-orange-500 font-bold text-xl tracking-[0.5em]">LOADING SYSTEM</h2>
     </div>
 
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <span>Data Science @ USJ</span> <span>Professional Midfielder</span> <span>Logic Enthusiast</span> <span>Ahmad Bandar</span>
-            <span>Data Science @ USJ</span> <span>Professional Midfielder</span> <span>Logic Enthusiast</span> <span>Ahmad Bandar</span>
-        </div>
-    </div>
+    <section class="h-screen flex flex-col justify-center items-center relative">
+        <div class="text-center z-10">
+            <h1 data-aos="fade-down" class="text-8xl md:text-[11rem] font-black uppercase leading-none tracking-tighter">
+                AHMAD <br> <span class="gradient-text">BANDAR</span>
+            </h1>
+            
+            <div class="mt-8 flex flex-wrap justify-center gap-4 max-w-xl mx-auto">
+                <div class="glass-tag" style="animation-delay: 0s;">Data Scientist</div>
+                <div class="glass-tag" style="animation-delay: 0.5s;">Midfield Strategist</div>
+                <div class="glass-tag" style="animation-delay: 1s;">AI Enthusiast</div>
+                <div class="glass-tag" style="animation-delay: 1.5s;">Logic Protocol</div>
+            </div>
 
-    <section class="h-screen flex flex-col justify-center items-center bg-black text-center p-5 relative overflow-hidden">
-        <div class="cube-container" id="cube-3d"><div class="cube"><div class="face front"></div><div class="face back"></div><div class="face right"></div><div class="face left"></div><div class="face top"></div><div class="face bottom"></div></div></div>
-        <div class="hero-content relative z-10">
-            <h1 data-aos="zoom-in" class="text-7xl md:text-[9rem] font-black italic uppercase leading-none text-white tracking-tighter">Ahmad <br> <span class="gradient-text">Bandar</span></h1>
-            <div class="terminal-box"><div class="term-body text-orange-500 text-xs text-left" id="terminal-text"></div></div>
-            <div class="flex gap-6 justify-center mt-6">
-                <a href="#projects" class="bg-white text-black font-black py-4 px-10 rounded-full uppercase text-[10px] tracking-widest hover:bg-orange-600 hover:text-white transition-all">Discover</a>
-                <a href="https://wa.me/96181101811" target="_blank" class="border border-zinc-800 text-white font-black py-4 px-10 rounded-full uppercase text-[10px] tracking-widest hover:border-orange-500 transition-all">Protocol</a>
+            <div class="mt-12">
+                <a href="https://wa.me/96181101811" class="group relative px-12 py-4 font-black text-[10px] tracking-[0.3em] uppercase">
+                    <span class="absolute inset-0 border border-zinc-800 group-hover:border-orange-500 transition-colors"></span>
+                    CONTACT OPERATOR
+                </a>
             </div>
         </div>
     </section>
-    <section id="projects" class="py-32 px-5 bg-zinc-950 border-y border-zinc-900">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-24 items-center">
-            <div data-aos="fade-right"><canvas id="skillsChart"></canvas></div>
-            <div data-aos="fade-left">
-                <h2 class="text-2xl font-black text-white uppercase italic mb-12 tracking-widest">Path</h2>
-                <div class="border-l border-zinc-800 pl-6 mb-8"><h4 class="text-orange-500 font-black text-xs uppercase">2025 - USJ</h4><p class="text-white font-bold">Data Science Major</p></div>
-                <div class="border-l border-zinc-800 pl-6"><h4 class="text-orange-500 font-black text-xs uppercase">Athletics</h4><p class="text-white font-bold">Midfield Tactician</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 flex justify-center">
-        <div class="relative max-w-sm" id="tilt-card" style="transition: transform 0.1s ease-out; transform-style: preserve-3d;">
-            <img src="image.png" alt="Ahmad" class="rounded-lg border border-zinc-900 grayscale hover:grayscale-0 transition duration-700">
-            <div class="absolute -bottom-6 -right-6 bg-orange-600 p-6 rounded-lg font-black text-black text-[10px] uppercase tracking-widest shadow-2xl" style="transform: translateZ(50px);">Status: Active</div>
-        </div>
-    </section>
-
-    <footer class="py-20 text-center border-t border-zinc-900"><p class="text-[9px] font-black tracking-[1em] text-zinc-800">AHB-PROTOCOL-2026</p></footer>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         AOS.init();
-        const termText = ["> Ahmad_System_Online", "> Patterns_Identified", "> Midfield_Control: Active", "> Status: Optimal"];
-        let line = 0;
-        function typeTerminal() { if (line < termText.length) { const p = document.createElement('p'); p.textContent = termText[line]; document.getElementById('terminal-text').appendChild(p); line++; setTimeout(typeTerminal, 800); } }
-
-        // Spotlight & Cursor & Cube
-        const spot = document.getElementById('spotlight');
-        const follower = document.getElementById('cursor-follower');
-        const cube = document.getElementById('cube-3d');
         
+        const cursor = document.getElementById('custom-cursor');
+        const line = document.getElementById('line');
+        const title = document.querySelector('h1');
+
         document.addEventListener('mousemove', (e) => {
-            spot.style.left = e.clientX + 'px'; spot.style.top = e.clientY + 'px';
-            follower.style.left = e.clientX + 'px'; follower.style.top = e.clientY + 'px';
-            if(cube) cube.style.transform = `translate(${(window.innerWidth/2 - e.clientX)/25}px, ${(window.innerHeight/2 - e.clientY)/25}px)`;
+            // Cursor Follow
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+
+            // Geometric Line (Khat bel7aq el-mouse mn nos el-shishe)
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            line.setAttribute('x1', centerX);
+            line.setAttribute('y1', centerY);
+            line.setAttribute('x2', e.clientX);
+            line.setAttribute('y2', e.clientY);
+
+            // Subtle Tilt for the whole header
+            const xVal = (e.clientX - centerX) / 50;
+            const yVal = (e.clientY - centerY) / 50;
+            title.style.transform = `rotateX(${-yVal}deg) rotateY(${xVal}deg)`;
         });
 
-        // 3D Photo Tilt (M7assan)
-        const card = document.getElementById('tilt-card');
-        document.addEventListener('mousemove', (e) => {
-            const r = card.getBoundingClientRect();
-            const x = (e.clientX - r.left) / r.width - 0.5;
-            const y = (e.clientY - r.top) / r.height - 0.5;
-            card.style.transform = `perspective(1000px) rotateY(${x * 40}deg) rotateX(${y * -40}deg)`;
+        // Simple Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+            }, 1000);
         });
-
-        // Radar Chart
-        new Chart(document.getElementById('skillsChart'), {
-            type: 'radar',
-            data: { labels: ['Logic', 'Code', 'Stats', 'Speed', 'Vision', 'Math'], datasets: [{ data: [95, 80, 85, 90, 95, 85], backgroundColor: 'rgba(249, 115, 22, 0.2)', borderColor: '#f97316', borderWidth: 2 }] },
-            options: { scales: { r: { grid: { color: '#222' }, angleLines: { color: '#222' }, ticks: { display: false }, pointLabels: { color: '#666', font: { size: 10, weight: '900' } } } }, plugins: { legend: { display: false } } }
-        });
-
-        // Loader
-        let prg = 0; const int = setInterval(() => { prg += 10; document.getElementById('loader-bar').style.width = prg + '%'; if(prg>=100){ clearInterval(int); document.getElementById('loader').style.display='none'; typeTerminal(); } }, 50);
     </script>
 </body>
 </html>
