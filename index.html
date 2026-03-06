@@ -12,52 +12,33 @@
         
         body { background-color: #000; color: white; scroll-behavior: smooth; font-family: 'Inter', sans-serif; overflow-x: hidden; cursor: none; }
 
-        /* Modern Line Follower */
+        /* Mouse Follower */
+        #custom-cursor { position: fixed; width: 12px; height: 12px; background: #f97316; border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.1s; transform: translate(-50%, -50%); }
         #mouse-line { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
 
-        /* Glass Tags */
+        /* Floating Tags */
         .glass-tag {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(249, 115, 22, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 8px 20px;
-            border-radius: 100px;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #f97316;
-            display: inline-block;
-            margin: 5px;
-            animation: float 4s ease-in-out infinite;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(249, 115, 22, 0.3);
+            backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 100px;
+            font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #f97316;
+            display: inline-block; margin: 5px; animation: float 4s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(2deg); }
-        }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
 
-        /* Floating Cutout Animation */
+        /* OVERLAP PHOTO STYLE */
         .floating-cutout {
             animation: extreme-float 5s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px rgba(249, 115, 22, 0.5));
+            filter: drop-shadow(0 0 30px rgba(249, 115, 22, 0.4));
+            position: relative;
+            z-index: 50; /* Higher than text */
         }
         @keyframes extreme-float {
             0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-25px) scale(1.03); }
+            50% { transform: translateY(-20px) scale(1.02); }
         }
 
-        .gradient-text {
-            background: linear-gradient(180deg, #fff 30%, #f97316 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        #custom-cursor {
-            position: fixed; width: 12px; height: 12px; background: #f97316;
-            border-radius: 50%; pointer-events: none; z-index: 10000;
-            transition: transform 0.1s; transform: translate(-50%, -50%);
-        }
-
+        .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         #loader { position: fixed; inset: 0; background: #000; z-index: 99999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         
         .timeline-item { border-left: 1px solid #1f2937; padding-left: 20px; position: relative; margin-bottom: 40px; }
@@ -67,10 +48,8 @@
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; filter: grayscale(100%); transition: 0.5s; }
         .swiper-slide img:hover { filter: grayscale(0%); }
 
-        #tilt-card { transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); transform-style: preserve-3d; }
-
-        .contact-btn { border: 1px solid rgba(249, 115, 22, 0.2); transition: all 0.4s ease; }
-        .contact-btn:hover { background: #f97316; color: black; border-color: #f97316; box-shadow: 0 0 30px rgba(249, 115, 22, 0.4); }
+        .contact-btn { border: 1px solid rgba(249, 115, 22, 0.2); transition: all 0.4s ease; cursor: pointer; }
+        .contact-btn:hover { background: #f97316; color: black; box-shadow: 0 0 30px rgba(249, 115, 22, 0.4); }
     </style>
 </head>
 <body>
@@ -78,29 +57,27 @@
     <svg id="mouse-line"><line id="line" x1="0" y1="0" x2="0" y2="0" stroke="#f97316" stroke-width="0.5" stroke-dasharray="4" opacity="0.4" /></svg>
 
     <div id="loader">
-        <h2 style="font-family: 'Syncopate'" class="text-orange-500 font-bold text-xl tracking-[0.5em]">SYSTEM BOOT</h2>
+        <h2 style="font-family: 'Syncopate'" class="text-orange-500 font-bold text-xl tracking-[0.5em]">INITIALIZING</h2>
     </div>
 
-    <section class="h-screen flex flex-col justify-center items-center relative border-b border-zinc-900 pt-32">
-        <div class="text-center z-10 relative">
+    <section class="h-screen flex flex-col justify-center items-center relative border-b border-zinc-900 pt-20">
+        <div class="text-center relative">
             
-            <div class="absolute -top-40 md:-top-64 left-1/2 -translate-x-1/2 w-48 md:w-72 z-20 pointer-events-none">
+            <div class="absolute -top-32 md:-top-48 left-1/2 -translate-x-1/2 w-56 md:w-80 z-50 pointer-events-none">
                 <img src="ahmad-cutout.png..jpg" class="floating-cutout" alt="Ahmad">
             </div>
 
-            <h1 data-aos="fade-down" class="text-8xl md:text-[11rem] font-black uppercase leading-none tracking-tighter relative z-10">
+            <h1 data-aos="fade-down" class="text-7xl md:text-[11rem] font-black uppercase leading-[0.85] tracking-tighter relative z-10">
                 AHMAD <br> <span class="gradient-text">BANDAR</span>
             </h1>
             
-            <div class="mt-8 flex flex-wrap justify-center gap-4 max-w-xl mx-auto">
-                <div class="glass-tag" style="animation-delay: 0s;">Data Scientist</div>
+            <div class="mt-12 flex flex-wrap justify-center gap-4 max-w-xl mx-auto relative z-20">
+                <div class="glass-tag">Data Scientist</div>
                 <div class="glass-tag" style="animation-delay: 0.5s;">Midfield Strategist</div>
-                <div class="glass-tag" style="animation-delay: 1s;">AI Enthusiast</div>
             </div>
 
-            <div class="mt-12">
-                <a href="#projects" class="group relative px-12 py-4 font-black text-[10px] tracking-[0.3em] uppercase">
-                    <span class="absolute inset-0 border border-zinc-800 group-hover:border-orange-500 transition-colors"></span>
+            <div class="mt-12 relative z-20">
+                <a href="#contact" class="group px-12 py-4 font-black text-[10px] tracking-[0.3em] uppercase border border-zinc-800 hover:border-orange-500 transition-all">
                     DISCOVER PROTOCOL
                 </a>
             </div>
@@ -109,28 +86,12 @@
 
     <section id="projects" class="py-32 px-5 bg-zinc-950">
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-24 items-center">
-            <div data-aos="fade-right">
-                <h2 class="text-2xl font-black text-orange-500 uppercase italic mb-12 tracking-widest">Skill Metrics</h2>
-                <div class="w-full max-w-sm mx-auto"><canvas id="skillsChart"></canvas></div>
-            </div>
+            <div data-aos="fade-right"><canvas id="skillsChart"></canvas></div>
             <div data-aos="fade-left">
-                <h2 class="text-2xl font-black text-white uppercase italic mb-16 tracking-widest">Evolution</h2>
-                <div class="timeline-item">
-                    <h4 class="text-orange-500 font-black text-xs uppercase tracking-widest">2025 - Present</h4>
-                    <p class="text-white font-bold mt-1">Data Science @ USJ</p>
-                </div>
-                <div class="timeline-item">
-                    <h4 class="text-orange-500 font-black text-xs uppercase tracking-widest">Strategy</h4>
-                    <p class="text-white font-bold mt-1">Professional Midfielder</p>
-                </div>
+                <h2 class="text-2xl font-black text-white uppercase italic mb-10 tracking-widest italic">Evolution</h2>
+                <div class="timeline-item"><p class="text-orange-500 text-xs font-bold uppercase">2025</p><p class="font-bold">Data Science @ USJ</p></div>
+                <div class="timeline-item"><p class="text-orange-500 text-xs font-bold uppercase">Strategy</p><p class="font-bold">Professional Midfielder</p></div>
             </div>
-        </div>
-    </section>
-
-    <section class="py-32 flex flex-col items-center">
-        <div class="relative max-w-sm" id="tilt-card" data-aos="zoom-in">
-            <img src="image.png" alt="Ahmad" class="rounded-lg border border-zinc-900 grayscale hover:grayscale-0 transition duration-1000">
-            <div class="absolute -bottom-6 -right-6 bg-orange-600 p-8 rounded-lg font-black text-black text-[10px] uppercase tracking-[0.3em] shadow-2xl">Status: Active / 2007</div>
         </div>
     </section>
 
@@ -145,19 +106,21 @@
     </section>
 
     <section id="contact" class="py-40 bg-black text-center relative overflow-hidden">
-        <div data-aos="fade-up">
-            <h2 class="text-orange-500 font-black text-xs tracking-[1em] uppercase mb-4">Transmission</h2>
+        <div data-aos="fade-up" class="relative z-10">
             <h3 class="text-5xl md:text-7xl font-black uppercase mb-12">Let's Connect</h3>
-            <div class="flex flex-col md:flex-row justify-center gap-6 px-10 relative z-10">
-                <a href="https://wa.me/96181101811" target="_blank" class="contact-btn px-10 py-5 rounded-full font-black text-[10px] tracking-widest uppercase">WhatsApp Protocol</a>
-                <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="contact-btn px-10 py-5 rounded-full font-black text-[10px] tracking-widest uppercase">Instagram Access</a>
+            <div class="flex flex-col md:flex-row justify-center gap-6 px-10">
+                <a href="https://api.whatsapp.com/send?phone=96181101811" target="_blank" class="contact-btn px-10 py-5 rounded-full font-black text-[10px] tracking-widest uppercase">
+                    WhatsApp Protocol
+                </a>
+                <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="contact-btn px-10 py-5 rounded-full font-black text-[10px] tracking-widest uppercase">
+                    Instagram Access
+                </a>
             </div>
         </div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-600/5 rounded-full blur-[120px] -z-0"></div>
     </section>
 
-    <footer class="py-10 text-center border-t border-zinc-900">
-        <p class="text-[9px] font-black tracking-[1.5em] text-zinc-800 uppercase">Ahmad Bandar © 2026</p>
+    <footer class="py-10 text-center border-t border-zinc-800">
+        <p class="text-[9px] font-black tracking-[1.5em] text-zinc-900 uppercase">Ahmad Bandar © 2026</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -169,31 +132,18 @@
         const cursor = document.getElementById('custom-cursor');
         const line = document.getElementById('line');
         const title = document.querySelector('h1');
-        const card = document.getElementById('tilt-card');
 
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
-
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            line.setAttribute('x1', centerX);
-            line.setAttribute('y1', centerY);
+            line.setAttribute('x1', window.innerWidth / 2);
+            line.setAttribute('y1', window.innerHeight / 2);
             line.setAttribute('x2', e.clientX);
             line.setAttribute('y2', e.clientY);
 
-            const xVal = (e.clientX - centerX) / 60;
-            const yVal = (e.clientY - centerY) / 60;
+            const xVal = (e.clientX - window.innerWidth / 2) / 70;
+            const yVal = (e.clientY - window.innerHeight / 2) / 70;
             title.style.transform = `perspective(1000px) rotateX(${-yVal}deg) rotateY(${xVal}deg)`;
-
-            const r = card.getBoundingClientRect();
-            const cardX = (e.clientX - (r.left + r.width/2)) / (window.innerWidth/2);
-            const cardY = (e.clientY - (r.top + r.height/2)) / (window.innerHeight/2);
-            card.style.transform = `perspective(1000px) rotateY(${cardX * 20}deg) rotateX(${-cardY * 20}deg) scale(1.02)`;
-        });
-
-        document.addEventListener('mouseleave', () => {
-            card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)`;
         });
 
         new Chart(document.getElementById('skillsChart'), {
