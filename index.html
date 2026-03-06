@@ -3,158 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Bandar | Future Protocol</title>
+    <title>Ahmad Bandar | Digital Architect</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@400;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap');
         
         body { 
-            background-color: #000; 
-            color: white; 
-            scroll-behavior: smooth; 
-            font-family: 'Inter', sans-serif; 
-            overflow-x: hidden; 
-            cursor: none;
-            /* Background Grid Effect */
-            background-image: linear-gradient(rgba(249, 115, 22, 0.05) 1px, transparent 1px), 
-                              linear-gradient(90deg, rgba(249, 115, 22, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background-color: #000; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; cursor: none;
+            background-image: linear-gradient(rgba(249, 115, 22, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(249, 115, 22, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
-        /* Custom Mouse */
-        #custom-cursor { position: fixed; width: 12px; height: 12px; background: #f97316; border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.1s; transform: translate(-50%, -50%); }
-        #mouse-line { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
-
-        /* Floating Cutout */
-        .floating-cutout { animation: extreme-float 5s ease-in-out infinite; filter: drop-shadow(0 0 40px rgba(249, 115, 22, 0.3)); }
-        @keyframes extreme-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-
-        /* Progress Bars */
-        .progress-line { height: 6px; background: #1a1a1a; border-radius: 10px; position: relative; overflow: hidden; }
-        .progress-line span { height: 100%; background: #f97316; position: absolute; left: 0; top: 0; width: 0; transition: width 1.5s cubic-bezier(1, 0, 0, 1); }
-
-        .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        #custom-cursor { position: fixed; width: 10px; height: 10px; background: #f97316; border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.1s; transform: translate(-50%, -50%); }
         
-        /* Magnetic Button Base */
-        .magnetic-wrap { display: inline-block; transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
-        .contact-btn { border: 1px solid rgba(249, 115, 22, 0.2); transition: all 0.4s ease; cursor: pointer; display: block; }
-        .contact-btn:hover { background: #f97316; color: black; box-shadow: 0 0 30px rgba(249, 115, 22, 0.5); }
+        .nav-link { font-size: 10px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
+        .nav-link:hover { color: #f97316; }
 
-        #loader { position: fixed; inset: 0; background: #000; z-index: 99999; display: flex; justify-content: center; align-items: center; }
+        .page-section { display: none; min-height: 100vh; }
+        .page-section.active { display: block; }
+
+        /* Project Card Style */
+        .project-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .project-card:hover {
+            border-color: #f97316;
+            transform: translateY(-10px);
+            background: rgba(249, 115, 22, 0.02);
+        }
+
+        .floating-cutout { animation: float 6s ease-in-out infinite; filter: drop-shadow(0 0 30px rgba(249, 115, 22, 0.2)); }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        
+        .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
 <body>
+
     <div id="custom-cursor"></div>
-    <svg id="mouse-line"><line id="line" x1="0" y1="0" x2="0" y2="0" stroke="#f97316" stroke-width="0.5" stroke-dasharray="4" opacity="0.4" /></svg>
 
-    <div id="loader">
-        <h2 style="font-family: 'Syncopate'" class="text-orange-500 font-bold text-xl tracking-[0.5em]">CALIBRATING</h2>
-    </div>
+    <nav class="fixed top-0 w-full z-[100] px-10 py-8 flex justify-between items-center backdrop-blur-md bg-black/50 border-b border-white/5">
+        <div class="font-black text-xs tracking-[0.5em] text-orange-500">BANDAR.PROTOCOL</div>
+        <div class="flex gap-10">
+            <span class="nav-link" onclick="showSection('home')">Home</span>
+            <span class="nav-link" onclick="showSection('projects')">Projects</span>
+            <span class="nav-link" onclick="showSection('about')">The Strategy</span>
+        </div>
+    </nav>
 
-    <section class="min-h-screen flex flex-col justify-center items-center relative border-b border-zinc-900 pt-20 pb-10">
+    <section id="home" class="page-section active pt-32 flex flex-col justify-center items-center text-center">
         <div class="mb-6 z-20"><img src="ahmad-cutout.png..jpg" class="floating-cutout w-56 md:w-80" alt="Ahmad"></div>
-        <div class="text-center z-10">
-            <h1 data-aos="fade-up" class="text-6xl md:text-[10rem] font-black uppercase leading-none tracking-tighter">AHMAD <br> <span class="gradient-text">BANDAR</span></h1>
-            <div class="mt-12 magnetic-wrap">
-                <a href="#contact" class="contact-btn px-12 py-4 font-black text-[10px] tracking-[0.3em] uppercase border border-zinc-800">DISCOVER PROTOCOL</a>
-            </div>
-        </div>
+        <h1 data-aos="fade-up" class="text-7xl md:text-[10rem] font-black uppercase leading-none tracking-tighter">AHMAD <br> <span class="gradient-text">BANDAR</span></h1>
+        <p class="mt-6 text-zinc-500 tracking-[0.3em] text-[10px] uppercase">Data Scientist // Strategic Midfielder</p>
     </section>
 
-    <section id="projects" class="py-32 px-10 relative">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20">
-            <div data-aos="fade-right">
-                <h2 class="text-2xl font-black text-orange-500 uppercase italic mb-10 tracking-widest">Capabilities</h2>
-                <div class="mb-8 font-bold text-[10px] tracking-widest">LOGIC & STRATEGY <div class="progress-line mt-2"><span data-width="95%"></span></div></div>
-                <div class="mb-8 font-bold text-[10px] tracking-widest">DATA ANALYSIS <div class="progress-line mt-2"><span data-width="85%"></span></div></div>
-                <div class="mb-8 font-bold text-[10px] tracking-widest">CODING (PYTHON/SQL) <div class="progress-line mt-2"><span data-width="80%"></span></div></div>
-                <div class="mb-8 font-bold text-[10px] tracking-widest">VISION & SPEED <div class="progress-line mt-2"><span data-width="90%"></span></div></div>
-            </div>
-            <div data-aos="fade-left" class="flex flex-col justify-center">
-                <h2 class="text-2xl font-black text-white uppercase italic mb-6 tracking-widest">Evolution</h2>
-                <div class="bg-zinc-950/80 p-6 border-l-2 border-orange-500 backdrop-blur-md">
-                    <span class="text-orange-500 text-[10px] font-black uppercase">Active Node</span>
-                    <h3 class="text-xl font-bold mt-1 uppercase">Data Science @ USJ</h3>
+    <section id="projects" class="page-section pt-40 px-10">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-black uppercase mb-20 tracking-tighter italic">The Lab<span class="text-orange-500">.</span></h2>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="project-card p-10 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-6 text-[10px] font-black text-orange-500/20">01</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase">Predictive Analytics</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">Using Python and SQL to forecast player performance metrics in real-time environments.</p>
+                    <div class="flex gap-4 text-[9px] font-black text-orange-500 uppercase tracking-widest">
+                        <span>#Python</span> <span>#Pandas</span> <span>#Scikit</span>
+                    </div>
+                </div>
+
+                <div class="project-card p-10 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-6 text-[10px] font-black text-orange-500/20">02</div>
+                    <h3 class="text-2xl font-bold mb-4 uppercase">Visual Intelligence</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed mb-6">Interactive dashboards for tactical game analysis and strategic positioning data.</p>
+                    <div class="flex gap-4 text-[9px] font-black text-orange-500 uppercase tracking-widest">
+                        <span>#Tableau</span> <span>#PowerBI</span> <span>#Logic</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-32 bg-zinc-950/50 border-t border-zinc-900 backdrop-blur-sm">
-        <div class="swiper mySwiper mx-auto">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="image_3e687a.jpg"></div>
-                <div class="swiper-slide"><img src="image_3e68f8.jpg"></div>
-                <div class="swiper-slide"><img src="image_3e6fc0.jpg"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-40 text-center relative overflow-hidden">
-        <div data-aos="fade-up" class="relative z-10">
-            <h3 class="text-5xl md:text-7xl font-black uppercase mb-12">Let's Connect</h3>
-            <div class="flex flex-col md:flex-row justify-center gap-10">
-                <div class="magnetic-wrap">
-                    <a href="https://api.whatsapp.com/send?phone=96181101811" target="_blank" class="contact-btn px-10 py-5 rounded-full font-black text-[10px] tracking-[0.2em] uppercase">WhatsApp Protocol</a>
-                </div>
-                <div class="magnetic-wrap">
-                    <a href="https://instagram.com/ahmad.bandar.5203" target="_blank" class="contact-btn px-10 py-5 rounded-full font-black text-[10px] tracking-[0.2em] uppercase">Instagram Access</a>
+    <section id="about" class="page-section pt-40 px-10">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-5xl font-black uppercase mb-12 tracking-tighter italic text-orange-500">The Strategy</h2>
+            <div class="space-y-12 text-zinc-300 text-lg leading-relaxed">
+                <p>Based in Lebanon, I operate at the intersection of <span class="text-white font-bold">Data Science</span> and <span class="text-white font-bold">Professional Athletics</span>. My approach is purely analytical: breaking down complex systems into actionable insights.</p>
+                <div class="grid grid-cols-2 gap-10 border-t border-white/10 pt-10">
+                    <div>
+                        <h4 class="text-orange-500 font-black text-xs uppercase mb-4 tracking-widest">Education</h4>
+                        <p class="text-white font-bold">USJ - Data Science 2025</p>
+                    </div>
+                    <div>
+                        <h4 class="text-orange-500 font-black text-xs uppercase mb-4 tracking-widest">Physicality</h4>
+                        <p class="text-white font-bold">Midfield Strategist</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-10 text-center border-t border-zinc-900 text-zinc-700 text-[9px] font-black tracking-[1em]">AHMAD BANDAR © 2026</footer>
+    <footer class="py-20 text-center border-t border-white/5 mt-20">
+        <a href="https://api.whatsapp.com/send?phone=96181101811" class="text-xs font-black tracking-[0.5em] hover:text-orange-500 transition">INITIATE CONTACT</a>
+    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
     <script>
         AOS.init();
-        const cursor = document.getElementById('custom-cursor');
-        const line = document.getElementById('line');
-
-        // Mouse & Magnetic Logic
+        
+        // Custom Cursor
         document.addEventListener('mousemove', (e) => {
+            const cursor = document.getElementById('custom-cursor');
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
-            line.setAttribute('x1', window.innerWidth / 2);
-            line.setAttribute('y1', window.innerHeight / 2);
-            line.setAttribute('x2', e.clientX);
-            line.setAttribute('y2', e.clientY);
-
-            // Magnetic Suction Effect
-            const magnetics = document.querySelectorAll('.magnetic-wrap');
-            magnetics.forEach(wrap => {
-                const rect = wrap.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width/2;
-                const y = e.clientY - rect.top - rect.height/2;
-                const distance = Math.sqrt(x*x + y*y);
-
-                if (distance < 100) {
-                    wrap.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-                } else {
-                    wrap.style.transform = `translate(0px, 0px)`;
-                }
-            });
         });
 
-        // Skill Bars Animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.querySelectorAll('.progress-line span').forEach(span => {
-                        span.style.width = span.getAttribute('data-width');
-                    });
-                }
+        // Tab System Logic
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
             });
-        }, { threshold: 0.5 });
-        observer.observe(document.getElementById('projects'));
-
-        new Swiper(".mySwiper", { effect: "coverflow", centeredSlides: true, slidesPerView: "auto", loop: true, autoplay: { delay: 3000 } });
-        window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').style.display = 'none', 1000));
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Re-init AOS for animations
+            AOS.refresh();
+        }
     </script>
 </body>
 </html>
