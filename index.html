@@ -3,173 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Bandar | System Architect</title>
+    <title>Ahmad Bandar | Digital Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap');
         
-        body { 
-            background-color: #000; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; cursor: none;
-            scroll-behavior: smooth;
+        body { background: #050505; color: white; font-family: 'Inter', sans-serif; cursor: none; }
+
+        /* Bento Grid Container */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 180px);
+            gap: 15px;
+            max-width: 1100px;
+            margin: 100px auto;
+            padding: 20px;
         }
 
-        #custom-cursor { position: fixed; width: 10px; height: 10px; background: #f97316; border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.1s; transform: translate(-50%, -50%); }
-        
-        /* Background Tech Grid */
-        .bg-grid {
-            position: fixed; inset: 0; z-index: -1;
-            background-image: linear-gradient(rgba(249, 115, 22, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(249, 115, 22, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+        .bento-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
         }
 
-        /* Orbit & Animations */
-        .orbit-container { animation: spin 20s linear infinite; position: absolute; width: 350px; height: 350px; border: 1px dashed rgba(249, 115, 22, 0.1); border-radius: 50%; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        
-        .project-card { border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.4s; position: relative; overflow: hidden; }
-        .project-card:hover { border-color: #f97316; transform: scale(1.02); background: rgba(249, 115, 22, 0.02); }
-        .project-card::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.05), transparent); transition: 0.5s; }
-        .project-card:hover::after { left: 100%; }
+        .bento-item:hover {
+            border-color: #f97316;
+            background: rgba(249, 115, 22, 0.05);
+            transform: translateY(-5px);
+        }
 
-        .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* Specific Sizes for Bento */
+        .item-large { grid-column: span 2; grid-row: span 2; }
+        .item-wide { grid-column: span 2; }
+        .item-tall { grid-row: span 2; }
+
+        #custom-cursor { position: fixed; width: 8px; height: 8px; background: #f97316; border-radius: 50%; pointer-events: none; z-index: 10000; mix-blend-mode: difference; }
+
+        .orange-glow { box-shadow: 0 0 40px rgba(249, 115, 22, 0.2); }
     </style>
 </head>
 <body>
 
-    <div class="bg-grid"></div>
     <div id="custom-cursor"></div>
 
-    <header class="fixed top-0 w-full z-[110] px-6 py-4 flex justify-between items-center bg-black/80 backdrop-blur-xl border-b border-white/5 text-[9px] font-black tracking-[0.2em]">
-        <div class="flex items-center gap-4">
-            <span class="text-orange-500">SYSTEM: ONLINE</span>
-            <span class="text-zinc-600">|</span>
-            <span id="live-clock">00:00:00</span>
+    <div class="bento-grid" id="main-dashboard">
+        
+        <div class="bento-item item-large flex flex-col justify-end orange-glow">
+            <h1 class="text-4xl font-black uppercase tracking-tighter">Ahmad <br> <span class="text-orange-500">Bandar</span></h1>
+            <p class="text-[10px] text-zinc-500 mt-2 tracking-widest uppercase font-bold">Data Scientist & Midfield Strategist</p>
         </div>
-        <div class="flex gap-6 uppercase">
-            <a href="#home" class="hover:text-orange-500">Index</a>
-            <a href="#lab" class="hover:text-orange-500">Vault</a>
-            <a href="#tactics" class="hover:text-orange-500">Intel</a>
-            <a href="https://api.whatsapp.com/send?phone=96181101811" class="text-orange-500">[ CONTACT ]</a>
-        </div>
-    </header>
 
-    <section id="home" class="min-h-screen flex flex-col justify-center items-center relative">
-        <div class="relative flex justify-center items-center w-full h-[380px]">
-            <div class="orbit-container"></div>
-            <img src="ahmad-cutout.png..jpg" class="w-48 md:w-64 relative z-20 drop-shadow-[0_0_40px_rgba(249,115,22,0.4)]" alt="Ahmad">
+        <div class="bento-item item-tall flex justify-center items-center">
+            <img src="ahmad-cutout.png..jpg" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition" alt="Ahmad">
         </div>
-        <div class="text-center z-10 -mt-10">
-            <h1 class="text-6xl md:text-[8rem] font-black uppercase tracking-tighter leading-[0.8]">AHMAD <br> <span class="gradient-text">BANDAR</span></h1>
-            <p class="mt-6 text-[10px] tracking-[0.6em] text-zinc-500 uppercase">Data Architect & Midfield Strategist</p>
-        </div>
-    </section>
 
-    <section id="lab" class="py-32 px-10 border-t border-white/5">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex justify-between items-end mb-20">
-                <h2 class="text-5xl font-black uppercase italic italic">The Vault<span class="text-orange-500">.</span></h2>
-                <span class="text-[9px] text-zinc-600 font-black tracking-widest mb-2">FILTER: ALL_PROJECTS</span>
+        <div class="bento-item flex flex-col justify-center">
+            <span class="text-orange-500 font-black text-2xl tracking-tighter">98.2%</span>
+            <p class="text-[9px] text-zinc-500 uppercase font-bold">Logic Accuracy</p>
+        </div>
+
+        <div class="bento-item flex flex-col justify-center border-orange-500/40">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-[10px] font-black uppercase tracking-widest">Live Protocol</span>
             </div>
+            <p class="text-[9px] text-zinc-500 mt-1">System Authorized</p>
+        </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="project-card p-8 bg-zinc-950/50" data-aos="fade-up">
-                    <div class="text-orange-500 text-[10px] font-black mb-4">01 / ANALYSIS</div>
-                    <h3 class="text-xl font-bold mb-4 uppercase">Neural Scout</h3>
-                    <p class="text-zinc-500 text-xs leading-relaxed mb-8">AI-driven scouting engine using Python to identify underrated midfield talents.</p>
-                    <div class="h-[1px] w-full bg-white/5 mb-4"></div>
-                    <span class="text-[8px] font-black tracking-widest text-zinc-400">STATUS: DEPLOYED</span>
+        <div class="bento-item item-wide">
+            <h3 class="text-xs font-black uppercase tracking-[0.3em] mb-4 text-orange-500">Active Projects</h3>
+            <div class="space-y-3">
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                    <span class="text-[11px] font-bold">Neural Scout AI</span>
+                    <span class="text-[10px] text-zinc-600 tracking-tighter italic">In Development</span>
                 </div>
-
-                <div class="project-card p-8 bg-zinc-950/50" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-orange-500 text-[10px] font-black mb-4">02 / DATABASE</div>
-                    <h3 class="text-xl font-bold mb-4 uppercase">Logic Link SQL</h3>
-                    <p class="text-zinc-500 text-xs leading-relaxed mb-8">Complex relational architecture for managing professional athletic performance data.</p>
-                    <div class="h-[1px] w-full bg-white/5 mb-4"></div>
-                    <span class="text-[8px] font-black tracking-widest text-zinc-400">STATUS: ACTIVE</span>
-                </div>
-
-                <div class="project-card p-8 bg-zinc-950/50" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-orange-500 text-[10px] font-black mb-4">03 / VISUALS</div>
-                    <h3 class="text-xl font-bold mb-4 uppercase">Heat-Map UI</h3>
-                    <p class="text-zinc-500 text-xs leading-relaxed mb-8">Custom JavaScript visualization for real-time tactical movement tracking.</p>
-                    <div class="h-[1px] w-full bg-white/5 mb-4"></div>
-                    <span class="text-[8px] font-black tracking-widest text-zinc-400">STATUS: PROTOTYPE</span>
+                <div class="flex justify-between border-b border-white/5 pb-2">
+                    <span class="text-[11px] font-bold">Tactical Heatmap API</span>
+                    <span class="text-[10px] text-zinc-600 tracking-tighter italic">Live</span>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="tactics" class="py-32 px-10 bg-zinc-950/30">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-            <div data-aos="fade-right">
-                <h2 class="text-5xl font-black uppercase italic mb-10 text-orange-500">Intel</h2>
-                <div class="space-y-10">
-                    <blockquote class="border-l-2 border-orange-500 pl-6">
-                        <p class="text-lg italic text-zinc-300">"The way Ahmad bridges the gap between technical data and on-field strategy is unique. Pure intelligence."</p>
-                        <footer class="mt-4 text-[10px] font-black text-zinc-500 uppercase">— Technical Director / Lead Scout</footer>
-                    </blockquote>
-                    <div class="flex gap-10">
-                        <div>
-                            <span class="text-[10px] text-orange-500 font-black tracking-widest uppercase">Precision</span>
-                            <p class="text-4xl font-black mt-2">98.2%</p>
-                        </div>
-                        <div>
-                            <span class="text-[10px] text-orange-500 font-black tracking-widest uppercase">Logic</span>
-                            <p class="text-4xl font-black mt-2">Core</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div data-aos="zoom-in" class="relative group">
-                <div class="absolute -inset-1 bg-orange-500/20 blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
-                <div class="relative bg-black border border-white/10 p-4 rounded-xl">
-                    <canvas id="intelChart"></canvas>
-                </div>
+        <div class="bento-item item-large bg-zinc-950 overflow-hidden">
+             <div class="flex justify-between items-center mb-4">
+                 <span class="text-[10px] font-black uppercase tracking-widest text-orange-500">Spatial Intelligence</span>
+                 <span class="text-[8px] text-zinc-600">INTEL_V.01</span>
+             </div>
+             <div class="w-full h-full border border-zinc-800 rounded relative">
+                <div class="absolute left-1/2 h-full w-[1px] bg-zinc-800"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 border border-zinc-800 rounded-full"></div>
+                <div class="absolute top-1/4 left-1/2 w-6 h-6 bg-orange-500/20 blur-md rounded-full"></div>
+             </div>
+        </div>
+        
+
+        <div class="bento-item flex items-center justify-center hover:bg-orange-500 group">
+            <a href="https://api.whatsapp.com/send?phone=96181101811" target="_blank" class="text-[10px] font-black uppercase tracking-widest group-hover:text-black transition">WhatsApp</a>
+        </div>
+
+        <div class="bento-item flex items-center justify-center">
+            <div class="flex gap-2">
+                <span class="text-[10px] font-black text-zinc-400">PY</span>
+                <span class="text-[10px] font-black text-zinc-400">SQL</span>
+                <span class="text-[10px] font-black text-zinc-400">AI</span>
             </div>
         </div>
-    </section>
 
-    <footer class="py-20 text-center border-t border-white/5">
-        <p class="text-zinc-800 text-[8px] font-black tracking-[1.5em] uppercase">Ahmad Bandar / System Authorized / 2026</p>
-    </footer>
+    </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
-
-        // Custom Cursor
         document.addEventListener('mousemove', (e) => {
             const cursor = document.getElementById('custom-cursor');
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
-        });
-
-        // Live Clock
-        setInterval(() => {
-            const now = new Date();
-            document.getElementById('live-clock').innerText = now.toLocaleTimeString();
-        }, 1000);
-
-        // Intel Chart
-        const ctx = document.getElementById('intelChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'radar',
-            data: {
-                labels: ['CODING', 'STRATEGY', 'LOGIC', 'ANALYSIS', 'VISION'],
-                datasets: [{
-                    data: [85, 95, 98, 90, 95],
-                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
-                    borderColor: '#f97316',
-                    borderWidth: 2,
-                    pointBackgroundColor: '#f97316'
-                }]
-            },
-            options: {
-                scales: { r: { grid: { color: '#1a1a1a' }, angleLines: { color: '#1a1a1a' }, ticks: { display: false }, pointLabels: { color: '#666', font: { size: 10, weight: '900' } } } },
-                plugins: { legend: { display: false } }
-            }
         });
     </script>
 </body>
