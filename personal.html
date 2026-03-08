@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Bandar | Identity Protocol</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap');
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .bento-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 30px; transition: 0.4s; }
+        .bento-card:hover { border-color: #f97316; background: rgba(249,115,22,0.03); }
+        .skill-tag { background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.2); color: #f97316; padding: 4px 12px; border-radius: 100px; font-size: 10px; font-weight: 900; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+    <header class="fixed top-0 w-full z-[110] px-6 py-4 flex justify-between items-center bg-black/80 backdrop-blur-xl border-b border-white/5 text-[9px] font-black tracking-[0.2em]">
+        <div class="flex items-center gap-4">
+            <span class="text-orange-500">SYSTEM: ONLINE</span>
+        </div>
+        <div class="flex items-center gap-6 uppercase">
+            <a href="index.html" class="hover:text-orange-500 transition px-1">Index</a>
+            <a href="personal.html" class="text-white border-b border-orange-500 px-1">Profile</a>
+            <a href="index.html#lab" class="hover:text-orange-500 transition px-1">Vault</a>
+            <a href="https://api.whatsapp.com/send?phone=96181101811" target="_blank" class="hover:text-orange-500 transition px-1">[ Contact ]</a>
+            <a href="index2.html" class="text-orange-500 border border-orange-500/30 px-3 py-1.5 rounded-sm hover:bg-orange-500 hover:text-black transition duration-300">
+                FOOTBALL DNA
+            </a>
+        </div>
+    </header>
+
+    <section class="min-h-screen flex flex-col justify-center items-center px-6 pt-24">
+        <div class="text-center mb-16" data-aos="fade-down">
+            <h1 class="text-6xl md:text-8xl font-black uppercase italic gradient-text tracking-tighter leading-none">Identity</h1>
+            <p class="mt-4 text-zinc-500 tracking-[0.6em] text-[10px] uppercase font-bold">Personal Data Protocol</p>
+        </div>
+
+        <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="bento-card md:col-span-2" data-aos="fade-right">
+                <h3 class="text-orange-500 text-[10px] font-black tracking-widest italic mb-4 uppercase">01 / Education</h3>
+                <h2 class="text-3xl font-black uppercase italic">Data Science Student</h2>
+                <p class="text-zinc-500 text-sm mt-4 leading-relaxed">
+                    Studying **Data Science** at **Saint Joseph University of Beirut (USJ)**. 
+                    Specializing in building intelligent systems and mobile frameworks.
+                </p>
+            </div>
+
+            <div class="bento-card" data-aos="fade-left">
+                <h3 class="text-orange-500 text-[10px] font-black tracking-widest italic mb-4 uppercase">02 / Profile</h3>
+                <div class="space-y-4">
+                    <div>
+                        <span class="block text-[8px] text-zinc-600 font-black uppercase italic">Origin</span>
+                        <span class="text-sm font-bold">Lebanon / Turkey Explorer</span>
+                    </div>
+                    <div>
+                        <span class="block text-[8px] text-zinc-600 font-black uppercase italic">Status</span>
+                        <span class="text-sm font-bold text-green-500">Active Developer</span>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="bento-card md:col-span-3" data-aos="fade-up">
+                <h3 class="text-orange-500 text-[10px] font-black tracking-widest italic mb-6 uppercase">03 / Technical Stack</h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Flutter</span>
+                    <span class="skill-tag">HTML5 / CSS3</span>
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">VS Code</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">Mobile Automation</span>
+                </div>
+            </div>
+
+            <div class="bento-card md:col-span-3 bg-white text-black" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <h2 class="text-4xl font-black italic uppercase tracking-tighter">Current <br> Objective</h2>
+                    <p class="max-w-md text-sm font-bold leading-relaxed italic">
+                        "Developing high-performance software solutions by merging analytical data insights with modern mobile architecture."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 text-center border-t border-white/5 bg-black">
+        <p class="text-[9px] font-black tracking-[1.5em] text-zinc-800 uppercase italic italic">Ahmad Bandar // Protocol 2026</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>
