@@ -8,55 +8,136 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap');
+        
         body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Tactical Field */
         .pitch-full { background: #080808; border: 2px solid #1a1a1a; border-radius: 20px; position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
         .heatmap-zone { position: absolute; background: radial-gradient(circle, rgba(249,115,22,0.4) 0%, transparent 75%); border-radius: 50%; filter: blur(30px); animation: pulse 4s infinite; }
         @keyframes pulse { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.2); } }
+        
         .bento-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 30px; transition: 0.4s; }
+        .bento-card:hover { border-color: #f97316; }
     </style>
 </head>
 <body>
-    <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center backdrop-blur-md">
+
+    <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center backdrop-blur-md bg-black/20">
         <a href="index.html" class="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500 hover:text-white transition">← BACK TO SYSTEM</a>
-        <div class="text-[9px] font-black tracking-widest text-zinc-600 uppercase">Ahmad Bandar // Scouting Report</div>
+        <div class="text-[9px] font-black tracking-widest text-zinc-600 uppercase italic">Ahmad Bandar // Tactical Report 2026</div>
     </nav>
 
-    <section class="min-h-screen flex flex-col justify-center items-center px-10 pt-20">
-        <div class="text-center" data-aos="fade-down">
-            <h1 class="text-6xl md:text-8xl font-black uppercase italic gradient-text tracking-tighter">Tactical DNA</h1>
-            <p class="mt-4 text-zinc-500 tracking-[0.6em] text-[10px] uppercase">Mapping Intelligence on the Pitch</p>
+    <section class="min-h-screen flex flex-col justify-center items-center px-10 pt-24">
+        <div class="text-center mb-16" data-aos="fade-down">
+            <h1 class="text-6xl md:text-8xl font-black uppercase italic gradient-text tracking-tighter leading-none">Tactical DNA</h1>
+            <p class="mt-4 text-zinc-500 tracking-[0.6em] text-[10px] uppercase font-bold">Midfield Intelligence Visualization</p>
         </div>
 
-        <div class="max-w-6xl w-full mt-20" data-aos="zoom-in">
-            <div class="pitch-full">
+        <div class="max-w-6xl w-full" data-aos="zoom-in">
+            <div class="pitch-full shadow-2xl">
                 <div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/5"></div>
+                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-white/5 rounded-full"></div>
                 <div class="heatmap-zone w-64 h-64 top-1/4 left-1/2"></div>
                 <div class="absolute bottom-6 left-8 flex items-center gap-3">
                     <span class="w-2 h-2 bg-orange-500 rounded-full animate-ping"></span>
-                    <span class="text-[9px] font-black uppercase text-zinc-400">Deep Lying Playmaker Analysis</span>
+                    <span class="text-[9px] font-black uppercase text-zinc-400">Live Position: Deep Lying Playmaker</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-32 px-10">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-            <div class="bento-card md:col-span-2">
-                <h3 class="text-xs font-black text-orange-500 uppercase mb-10">Technical Mastery</h3>
-                <div class="space-y-6 text-[10px] font-black uppercase">
-                    <div>Passing Accuracy <div class="h-1 bg-zinc-800 mt-2"><div class="h-full bg-orange-500 w-[92%]"></div></div></div>
-                    <div>Vision <div class="h-1 bg-zinc-800 mt-2"><div class="h-full bg-orange-500 w-[96%]"></div></div></div>
+    
+    <section class="py-32 px-10 border-t border-white/5 bg-zinc-950/20">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <h3 class="text-orange-500 font-black uppercase tracking-[0.3em] text-[10px] mb-4 italic">Core Strategy</h3>
+                <h2 class="text-4xl font-black italic uppercase leading-tight">The Midfield <br> Maestro.</h2>
+                <p class="text-zinc-400 text-sm mt-6 leading-relaxed">
+                    I operate as the engine of the team. My focus is on **collecting**, **distributing**, and **controlling** the tempo. By combining data science with spatial vision, I find passing lanes that others don't see.
+                </p>
+                <div class="mt-10 flex gap-6">
+                    <div class="border-l border-orange-500 pl-4">
+                        <span class="block font-black text-2xl tracking-tighter">CM/CDM</span>
+                        <span class="text-[9px] text-zinc-600 uppercase font-bold">Primary Zones</span>
+                    </div>
+                    <div class="border-l border-orange-500 pl-4">
+                        <span class="block font-black text-2xl tracking-tighter">8+ YRS</span>
+                        <span class="text-[9px] text-zinc-600 uppercase font-bold">Field Experience</span>
+                    </div>
                 </div>
             </div>
-            <div class="bento-card text-center flex flex-col justify-center">
-                <div class="text-4xl font-black text-orange-500 italic">88</div>
-                <div class="text-[10px] text-zinc-500 uppercase mt-2">Overall Rating</div>
+            <div class="grid grid-cols-1 gap-4" data-aos="fade-left">
+                <div class="bento-card">
+                    <h4 class="text-xs font-black uppercase text-white mb-2 italic">Vision IQ</h4>
+                    <p class="text-zinc-500 text-[11px]">Analyzing opponent pressing patterns in real-time to maintain possession.</p>
+                </div>
+                <div class="bento-card">
+                    <h4 class="text-xs font-black uppercase text-white mb-2 italic">Data Edge</h4>
+                    <p class="text-zinc-500 text-[11px]">Using performance metrics to optimize movement and tactical positioning.</p>
+                </div>
             </div>
         </div>
     </section>
+
+    <section class="py-24 px-10 bg-orange-500 text-black overflow-hidden relative">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 relative z-10">
+            <div class="text-center" data-aos="zoom-in">
+                <h4 class="font-black text-5xl mb-3 tracking-tighter italic">01</h4>
+                <p class="font-black uppercase text-xs tracking-widest">High IQ Playmaking</p>
+                <p class="text-[10px] mt-2 font-bold opacity-70 uppercase">Game Intelligence & Spatial Awareness</p>
+            </div>
+            <div class="text-center" data-aos="zoom-in" data-aos-delay="100">
+                <h4 class="font-black text-5xl mb-3 tracking-tighter italic">02</h4>
+                <p class="font-black uppercase text-xs tracking-widest">Precision Passing</p>
+                <p class="text-[10px] mt-2 font-bold opacity-70 uppercase">92%+ Long & Short Ball Accuracy</p>
+            </div>
+            <div class="text-center" data-aos="zoom-in" data-aos-delay="200">
+                <h4 class="font-black text-5xl mb-3 tracking-tighter italic">03</h4>
+                <p class="font-black uppercase text-xs tracking-widest">Stamina Engine</p>
+                <p class="text-[10px] mt-2 font-bold opacity-70 uppercase">12KM+ Average Distance Coverage</p>
+            </div>
+        </div>
+        <div class="absolute top-0 right-0 text-[15rem] font-black italic opacity-5 pointer-events-none -translate-y-1/2">PITCH</div>
+    </section>
+
+    <section class="py-32 px-10 border-t border-white/5 bg-black">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bento-card md:col-span-2" data-aos="fade-up">
+                    <h3 class="text-[10px] font-black text-orange-500 uppercase tracking-widest mb-12 italic">Performance Breakdown</h3>
+                    <div class="space-y-10">
+                        <div>
+                            <div class="flex justify-between text-[11px] font-black uppercase mb-3">Ball Distribution <span class="text-white">96%</span></div>
+                            <div class="h-[2px] w-full bg-zinc-900 rounded-full overflow-hidden"><div class="h-full bg-orange-500 w-[96%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] font-black uppercase mb-3">Tactical Awareness <span class="text-white">94%</span></div>
+                            <div class="h-[2px] w-full bg-zinc-900 rounded-full overflow-hidden"><div class="h-full bg-orange-500 w-[94%]"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] font-black uppercase mb-3">Pressure Resistance <span class="text-white">91%</span></div>
+                            <div class="h-[2px] w-full bg-zinc-900 rounded-full overflow-hidden"><div class="h-full bg-orange-500 w-[91%]"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card flex flex-col justify-center items-center text-center bg-orange-500/5" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-28 h-28 rounded-full border border-orange-500/30 flex items-center justify-center font-black text-5xl italic text-orange-500 shadow-[0_0_30px_rgba(249,115,22,0.1)]">88</div>
+                    <h4 class="font-black uppercase tracking-widest text-[10px] mt-8 text-zinc-400">Overall Capability</h4>
+                    <p class="text-zinc-600 text-[8px] mt-2 uppercase font-bold tracking-[0.2em]">Scout Verified Report</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 text-center border-t border-white/5">
+        <a href="https://api.whatsapp.com/send?phone=96181101811" target="_blank" class="text-[9px] font-black tracking-[1.5em] text-zinc-700 hover:text-orange-500 transition uppercase">Ahmad Bandar // Protocol 2026</a>
+    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000 });</script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
 </body>
 </html>
