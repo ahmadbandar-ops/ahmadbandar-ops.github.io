@@ -10,14 +10,24 @@
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap');
         body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Tactical Pitch Design */
         .pitch-full { background: #080808; border: 2px solid #1a1a1a; border-radius: 20px; position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
         .heatmap-zone { position: absolute; background: radial-gradient(circle, rgba(249,115,22,0.4) 0%, transparent 75%); border-radius: 50%; filter: blur(30px); animation: pulse 4s infinite; }
         @keyframes pulse { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.2); } }
-        .bento-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 30px; transition: 0.4s; }
+        
+        .bento-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 30px; transition: 0.4s; position: relative; overflow: hidden; }
+        .bento-card:hover { border-color: #f97316; background: rgba(249,115,22,0.03); }
+        
         .timeline-dot { width: 8px; height: 8px; background: #f97316; border-radius: 50%; position: absolute; left: -4px; top: 8px; box-shadow: 0 0 10px #f97316; }
+        
+        /* New: Scroll Progress Bar */
+        #scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: #f97316; z-index: 200; width: 0%; transition: width 0.1s; }
     </style>
 </head>
 <body>
+
+    <div id="scroll-progress"></div>
 
     <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center backdrop-blur-md bg-black/20">
         <a href="index.html" class="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500 hover:text-white transition">← BACK TO SYSTEM</a>
@@ -33,7 +43,7 @@
             <p class="mt-4 text-zinc-500 tracking-[0.6em] text-[10px] uppercase font-bold">Midfield Intelligence Visualization</p>
         </div>
         <div class="max-w-6xl w-full" data-aos="zoom-in">
-            <div class="pitch-full shadow-2xl">
+            <div class="pitch-full shadow-2xl group">
                 <div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/5"></div>
                 <div class="heatmap-zone w-64 h-64 top-1/4 left-1/2"></div>
                 <div class="absolute bottom-6 left-8 flex items-center gap-3 text-[9px] font-black uppercase text-zinc-400">
@@ -44,16 +54,35 @@
         </div>
     </section>
 
-    
+    <section class="py-20 px-10 bg-black">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+            <div class="bento-card" data-aos="fade-up">
+                <span class="text-orange-500 text-[10px] font-black tracking-widest">01 / TECHNICAL</span>
+                <h3 class="text-xl font-bold mt-4 uppercase italic">Ball Mastery</h3>
+                <p class="text-zinc-500 text-[11px] mt-2">Elite first touch and close control under midfield pressure.</p>
+            </div>
+            <div class="bento-card" data-aos="fade-up" data-aos-delay="100">
+                <span class="text-orange-500 text-[10px] font-black tracking-widest">02 / TACTICAL</span>
+                <h3 class="text-xl font-bold mt-4 uppercase italic">Spatial Vision</h3>
+                <p class="text-zinc-500 text-[11px] mt-2">Analyzing defensive gaps before receiving the ball.</p>
+            </div>
+            <div class="bento-card" data-aos="fade-up" data-aos-delay="200">
+                <span class="text-orange-500 text-[10px] font-black tracking-widest">03 / PHYSICAL</span>
+                <h3 class="text-xl font-bold mt-4 uppercase italic">Engine Capacity</h3>
+                <p class="text-zinc-500 text-[11px] mt-2">Consistent high-intensity sprints throughout 90 minutes.</p>
+            </div>
+        </div>
+    </section>
+
     <section class="py-32 px-10 border-t border-white/5 bg-zinc-950/20">
         <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right">
                 <h3 class="text-orange-500 font-black uppercase tracking-[0.3em] text-[10px] mb-4 italic">Core Strategy</h3>
-                <h2 class="text-4xl font-black italic uppercase leading-tight">The Midfield Maestro.</h2>
-                <p class="text-zinc-400 text-sm mt-6 leading-relaxed italic">"Control the center, and you control the game. Data is the map, but vision is the compass."</p>
+                <h2 class="text-4xl font-black italic uppercase leading-tight">The Midfield <br> Maestro.</h2>
+                <p class="text-zinc-400 text-sm mt-6 leading-relaxed italic italic">"Control the center, and you control the game. Data is the map, but vision is the compass."</p>
             </div>
             <div class="grid grid-cols-1 gap-4" data-aos="fade-left">
-                <div class="bento-card">
+                <div class="bento-card border-orange-500/20">
                     <h4 class="text-xs font-black uppercase text-white mb-2 italic tracking-widest">Positioning IQ</h4>
                     <p class="text-zinc-500 text-[11px]">Identifying half-spaces and passing lanes through structural data analysis.</p>
                 </div>
@@ -61,7 +90,6 @@
         </div>
     </section>
 
-    
     <section class="py-32 px-10 border-t border-white/5 bg-black">
         <div class="max-w-4xl mx-auto">
             <h3 class="text-orange-500 font-black uppercase tracking-[0.3em] text-[10px] mb-16 text-center italic">Evolution Journey</h3>
@@ -83,18 +111,18 @@
     </section>
 
     <section class="py-24 px-10 bg-orange-500 text-black">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center font-black">
             <div data-aos="zoom-in">
-                <h4 class="font-black text-5xl mb-3 italic">92%</h4>
-                <p class="font-black uppercase text-xs">Passing Accuracy</p>
+                <h4 class="text-5xl mb-3 italic">92%</h4>
+                <p class="uppercase text-xs tracking-widest">Passing Accuracy</p>
             </div>
             <div data-aos="zoom-in" data-aos-delay="100">
-                <h4 class="font-black text-5xl mb-3 italic">12KM</h4>
-                <p class="font-black uppercase text-xs">Avg. Distance</p>
+                <h4 class="text-5xl mb-3 italic">12KM</h4>
+                <p class="uppercase text-xs tracking-widest">Avg. Distance</p>
             </div>
             <div data-aos="zoom-in" data-aos-delay="200">
-                <h4 class="font-black text-5xl mb-3 italic">ELITE</h4>
-                <p class="font-black uppercase text-xs">Vision Rating</p>
+                <h4 class="text-5xl mb-3 italic">ELITE</h4>
+                <p class="uppercase text-xs tracking-widest">Vision Rating</p>
             </div>
         </div>
     </section>
@@ -115,6 +143,16 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, once: true });</script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Scroll Progress Logic
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
+        };
+    </script>
 </body>
 </html>
