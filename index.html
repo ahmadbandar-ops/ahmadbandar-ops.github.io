@@ -20,22 +20,25 @@
 <body>
     <div class="bg-grid"></div>
     <div id="custom-cursor"></div>
-
-   <header class="fixed top-0 w-full z-[110] px-6 py-4 flex justify-between items-center bg-black/80 backdrop-blur-xl border-b border-white/5 text-[9px] font-black tracking-[0.2em]">
-    <div class="flex items-center gap-4">
+<header class="fixed top-0 w-full z-[110] px-4 md:px-6 py-3 md:py-4 flex flex-col md:flex-row justify-between items-center bg-black/90 backdrop-blur-xl border-b border-white/5 text-[8px] md:text-[9px] font-black tracking-[0.1em] md:tracking-[0.2em]">
+    
+    <div class="hidden md:flex items-center gap-4">
         <span class="text-orange-500">SYSTEM: ONLINE</span>
         <span class="text-zinc-600">|</span>
         <span id="live-clock">00:00:00</span>
     </div>
 
-    <div class="flex items-center gap-8 uppercase">
-        <a href="#home" class="hover:text-orange-500 transition tracking-[0.3em]">Index</a>
-        <a href="#lab" class="hover:text-orange-500 transition tracking-[0.3em]">Vault</a>
-        <a href="https://api.whatsapp.com/send?phone=96181101811" target="_blank" class="hover:text-orange-500 transition tracking-[0.3em]">[ Contact ]</a>
+    <div class="flex items-center justify-center gap-3 md:gap-8 uppercase w-full md:w-auto">
+        <a href="#home" class="hover:text-orange-500 transition px-1">Index</a>
+        <a href="#lab" class="hover:text-orange-500 transition px-1">Vault</a>
+        <a href="https://api.whatsapp.com/send?phone=96181101811" target="_blank" class="hover:text-orange-500 transition px-1">Contact</a>
         
-        <a href="index2.html" class="text-orange-500 font-bold border border-orange-500/30 px-4 py-2 rounded-sm hover:bg-orange-500 hover:text-black transition duration-300 tracking-[0.3em]">
-            FOOTBALL DNA
+        <a href="index2.html" class="text-orange-500 font-bold border border-orange-500/40 px-2 py-1 md:px-4 md:py-2 rounded-sm hover:bg-orange-500 hover:text-black transition duration-300">
+            FOOTBALL
         </a>
+    </div>
+</header>
+   
     </div>
 </header>
     <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center">
