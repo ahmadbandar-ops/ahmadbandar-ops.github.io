@@ -18,6 +18,14 @@
     </style>
 </head>
 <body>
+    <div id="lock-screen" class="fixed inset-0 z-[200] bg-black flex flex-col justify-center items-center transition-opacity duration-1000">
+    <div class="text-center">
+        <h2 class="text-orange-500 font-black tracking-[0.5em] text-[10px] mb-8 uppercase animate-pulse">System Encrypted</h2>
+        <button onclick="unlockSystem()" class="border border-white/20 px-8 py-3 rounded-full text-[10px] font-black tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-all">
+            Access Protocol
+        </button>
+    </div>
+</div>
     <div class="bg-grid"></div>
     <div id="custom-cursor"></div>
 <header class="fixed top-0 w-full z-[110] px-6 py-4 flex justify-between items-center bg-black/80 backdrop-blur-xl border-b border-white/5 text-[9px] font-black tracking-[0.2em]">
