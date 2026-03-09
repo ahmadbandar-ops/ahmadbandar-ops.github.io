@@ -10,12 +10,32 @@
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap');
         body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .football-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 30px; transition: 0.4s; position: relative; overflow: hidden; }
-        .football-card:hover { border-color: #f97316; background: rgba(249,115,22,0.03); transform: translateY(-5px); }
-        .pitch-line { position: absolute; border: 1px solid rgba(249,115,22,0.1); }
+        
+        /* FOOTBALL BACKGROUND IMAGE */
+        .hero-bg {
+            position: fixed;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=2000'); /* Soura mratabe lal pitch */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .football-card { 
+            background: rgba(255,255,255,0.03); 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.05); 
+            border-radius: 24px; 
+            padding: 30px; 
+            transition: 0.4s; 
+        }
+        .football-card:hover { border-color: #f97316; background: rgba(249,115,22,0.05); transform: translateY(-5px); }
     </style>
 </head>
 <body>
+
+    <div class="hero-bg"></div>
 
     <header class="fixed top-0 w-full z-[110] px-2 md:px-6 py-3 md:py-4 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/5">
         <div class="flex items-center gap-1 md:gap-4">
@@ -48,45 +68,34 @@
             <p class="mt-4 text-zinc-500 tracking-[0.6em] text-[10px] uppercase font-bold italic">Athlete // Tactician // Coach</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
             <div class="football-card" data-aos="fade-up">
                 <h3 class="text-orange-500 text-[10px] font-black uppercase italic mb-4">Positioning</h3>
-                <h2 class="text-3xl font-black italic mb-4 uppercase text-white">The Midfield</h2>
-                <p class="text-zinc-500 text-sm leading-relaxed">Controlling the game tempo and executing spatial transitions. Ready for match day.</p>
+                <h2 class="text-3xl font-black italic mb-4 uppercase">The Midfield</h2>
+                <p class="text-zinc-500 text-sm italic leading-relaxed">Spatial control and transitions.</p>
             </div>
-
             <div class="football-card" data-aos="fade-up" data-aos-delay="100">
-                <h3 class="text-orange-500 text-[10px] font-black uppercase italic mb-4">Future Path</h3>
-                <h2 class="text-3xl font-black italic mb-4 uppercase text-white">Coaching</h2>
-                <p class="text-zinc-500 text-sm leading-relaxed">Developing tactical frameworks and player development strategies for the next generation.</p>
+                <h3 class="text-orange-500 text-[10px] font-black uppercase italic mb-4">Career</h3>
+                <h2 class="text-3xl font-black italic mb-4 uppercase">Coaching</h2>
+                <p class="text-zinc-500 text-sm italic leading-relaxed">Tactical framework development.</p>
             </div>
-
             <div class="football-card" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="text-orange-500 text-[10px] font-black uppercase italic mb-4">Performance</h3>
-                <h2 class="text-3xl font-black italic mb-4 uppercase text-white">99% Ready</h2>
-                <div class="w-full bg-white/5 h-1 mt-4">
-                    <div class="bg-orange-500 h-full w-[99%]"></div>
-                </div>
+                <h3 class="text-orange-500 text-[10px] font-black uppercase italic mb-4">Status</h3>
+                <h2 class="text-3xl font-black italic mb-4 uppercase">99% Ready</h2>
+                <div class="w-full bg-white/5 h-1 mt-4"><div class="bg-orange-500 h-full w-[99%]"></div></div>
             </div>
         </div>
 
-        <div class="mt-12 football-card border-orange-500/20" data-aos="fade-up">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                <div>
-                    <h2 class="text-2xl font-black uppercase italic text-white">Tactical Analysis</h2>
-                    <p class="text-zinc-500 text-sm mt-2 italic max-w-xl">
-                        Combining my studies in Data Science at USJ with on-field experience to break down modern football systems.
-                    </p>
+        <div class="football-card border-orange-500/20" data-aos="fade-up">
+            <h2 class="text-2xl font-black uppercase italic mb-6">Tactical Analysis Hub</h2>
+            <div class="flex gap-4">
+                <div class="bg-white/5 p-4 rounded-xl border border-white/5">
+                    <span class="text-orange-500 font-black text-xl italic">4-3-3</span>
+                    <p class="text-[8px] text-zinc-500 uppercase font-bold tracking-widest mt-1">Attacking Formation</p>
                 </div>
-                <div class="flex gap-4">
-                    <div class="text-center px-4 py-2 bg-white/5 rounded-lg border border-white/5">
-                        <span class="block text-orange-500 font-black text-xl italic">4-3-3</span>
-                        <span class="text-[8px] text-zinc-500 uppercase tracking-widest font-bold">Primary</span>
-                    </div>
-                    <div class="text-center px-4 py-2 bg-white/5 rounded-lg border border-white/5">
-                        <span class="block text-orange-500 font-black text-xl italic">3-5-2</span>
-                        <span class="text-[8px] text-zinc-500 uppercase tracking-widest font-bold">Secondary</span>
-                    </div>
+                <div class="bg-white/5 p-4 rounded-xl border border-white/5">
+                    <span class="text-orange-500 font-black text-xl italic">3-5-2</span>
+                    <p class="text-[8px] text-zinc-500 uppercase font-bold tracking-widest mt-1">Counter System</p>
                 </div>
             </div>
         </div>
