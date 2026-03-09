@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Bandar | The Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap');
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .lab-card { background: #0a0a0a; border: 1px solid rgba(255,255,255,0.03); border-radius: 20px; overflow: hidden; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }
+        .lab-card:hover { border-color: #f97316; transform: translateY(-10px); background: #0f0f0f; }
+        .status-badge { background: rgba(249,115,22,0.1); color: #f97316; font-size: 8px; font-weight: 900; px-3 py-1; rounded-full uppercase tracking-widest; border: 1px solid rgba(249,115,22,0.2); padding: 4px 10px; border-radius: 50px; }
+    </style>
+</head>
+<body>
+
+    <header class="fixed top-0 w-full z-[110] px-2 md:px-6 py-3 md:py-4 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/5">
+        <div class="flex items-center gap-1 md:gap-4">
+            <span id="live-clock" class="text-white font-black tracking-tighter text-[8px] md:text-[11px]">00:00:00</span>
+            <span class="text-zinc-800">|</span>
+            <div class="flex gap-[1px] items-end h-2 md:h-3">
+                <div class="w-[1.5px] h-[30%] bg-white/20"></div>
+                <div class="w-[1.5px] h-[60%] bg-orange-500"></div>
+                <div class="w-[1.5px] h-[100%] bg-orange-500"></div>
+            </div>
+        </div>
+        <nav class="flex items-center gap-1.5 md:gap-4 uppercase font-black text-[6.5px] md:text-[9px] tracking-tight text-zinc-400">
+            <a href="index.html" class="hover:text-orange-500 transition px-1">Index</a>
+            <a href="personal.html" class="hover:text-orange-500 transition px-1">Profile</a>
+            <a href="lab.html" class="text-white border-b border-orange-500 px-1">Lab</a>
+            <a href="index2.html" class="text-orange-500 border border-orange-500/40 px-1.5 py-0.5 rounded-sm bg-orange-500/5">FOOTBALL</a>
+        </nav>
+        <div class="flex items-center gap-1 border-l border-white/10 pl-2">
+            <span class="text-[6px] md:text-[9px] font-bold text-zinc-500">98%</span>
+            <div class="w-4 h-2 md:w-6 md:h-3 border border-white/30 rounded-[1px] p-[0.5px] relative">
+                <div class="h-full bg-green-500 w-[90%] rounded-[0.5px]"></div>
+                <div class="absolute -right-[2px] top-1/2 -translate-y-1/2 w-[1.5px] h-0.5 bg-white/30 rounded-r-sm"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-32 px-6 max-w-6xl mx-auto min-h-screen pb-20">
+        <div class="mb-16" data-aos="fade-up">
+            <h1 class="text-6xl md:text-8xl font-black uppercase italic gradient-text tracking-tighter leading-none">The Lab.</h1>
+            <p class="mt-4 text-zinc-500 tracking-[0.6em] text-[10px] uppercase font-bold">Research & Development Hub</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            
+            <div class="lab-card p-8" data-aos="fade-up">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="status-badge">In Development</span>
+                    <span class="text-zinc-800 font-mono text-[10px]">VER 2.0</span>
+                </div>
+                <h3 class="text-2xl font-black uppercase italic mb-4 text-white">Medical Admin System</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-8">Flutter-based solution for doctors to manage appointments, patient history, and achievement tracking.</p>
+                <div class="flex gap-2">
+                    <span class="bg-white/5 px-3 py-1 text-[8px] font-black rounded uppercase">Flutter</span>
+                    <span class="bg-white/5 px-3 py-1 text-[8px] font-black rounded uppercase">Dart</span>
+                    <span class="bg-white/5 px-3 py-1 text-[8px] font-black rounded uppercase">Firebase</span>
+                </div>
+            </div>
+
+            <div class="lab-card p-8" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="status-badge">Prototype</span>
+                    <span class="text-zinc-800 font-mono text-[10px]">VER 0.8</span>
+                </div>
+                <h3 class="text-2xl font-black uppercase italic mb-4 text-white">Tactical Analysis Engine</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-8">Processing football match data using Python to visualize player positioning and pass success rates.</p>
+                <div class="flex gap-2">
+                    <span class="bg-white/5 px-3 py-1 text-[8px] font-black rounded uppercase">Python</span>
+                    <span class="bg-white/5 px-3 py-1 text-[8px] font-black rounded uppercase">Pandas</span>
+                    <span class="bg-white/5 px-3 py-1 text-[8px] font-black rounded uppercase">Matplotlib</span>
+                </div>
+            </div>
+
+            <div class="lab-card p-8" data-aos="fade-up">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="status-badge" style="color: #4ade80; border-color: rgba(74,222,128,0.2); background: rgba(74,222,128,0.05);">Live</span>
+                    <span class="text-zinc-800 font-mono text-[10px]">VER 1.0</span>
+                </div>
+                <h3 class="text-2xl font-black uppercase italic mb-4 text-white">System Protocol Portfolio</h3>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-8">iOS-inspired multi-page ecosystem built with Tailwind CSS and advanced JavaScript logic.</p>
+                <div class="flex gap-2">
+                    <span class="bg-white/5 px-3 py-1 text-[8px] font-black rounded uppercase">HTML5</span>
+                    <span class="bg-white/5 px-3 py-1 text-[8px] font-black rounded uppercase">Tailwind</span>
+                    <span class="bg-white/5 px-3 py-1 text-[8px] font-black rounded uppercase">AOS.js</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('live-clock').textContent = now.getHours().toString().padStart(2,'0') + ":" + now.getMinutes().toString().padStart(2,'0') + ":" + now.getSeconds().toString().padStart(2,'0');
+        }
+        setInterval(updateClock, 1000); updateClock();
+    </script>
+</body>
+</html>
