@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Bandar | Digital CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; }
+        .cv-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 25px; transition: 0.3s; }
+        .cv-card:hover { border-color: #f97316; background: rgba(249,115,22,0.02); }
+        .skill-tag { background: rgba(249,115,22,0.1); color: #f97316; padding: 4px 12px; border-radius: 50px; font-size: 10px; font-weight: 700; border: 1px solid rgba(249,115,22,0.2); }
+    </style>
+</head>
+<body class="pt-24 pb-20 px-6">
+
+    <header class="fixed top-0 left-0 w-full z-[110] px-6 py-4 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/5">
+        <div class="flex items-center gap-4">
+            <span id="live-clock" class="text-white font-black text-[11px]">00:00:00</span>
+            <div class="flex gap-[1px] items-end h-3 border-l border-white/10 pl-4">
+                <div class="w-[1.5px] h-[100%] bg-orange-500"></div>
+            </div>
+        </div>
+        <nav class="flex items-center gap-6 uppercase font-black text-[9px] tracking-widest text-zinc-400">
+            <a href="index.html" class="hover:text-orange-500 transition">Home</a>
+            <a href="cv.html" class="text-white border-b border-orange-500">CV</a>
+        </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-16" data-aos="fade-up">
+            <div class="w-32 h-32 rounded-2xl overflow-hidden border-2 border-orange-500 shadow-[0_0_20px_#f9731644]">
+                <img src="ahmad-cutout.png..jpg" class="w-full h-full object-cover">
+            </div>
+            <div>
+                <h1 class="text-5xl font-black uppercase italic tracking-tighter">Ahmad Bandar</h1>
+                <p class="text-orange-500 font-bold tracking-[0.3em] text-[10px] uppercase mt-2">Data Scientist & Football Specialist</p>
+                <p class="text-zinc-500 text-sm mt-4 max-w-md italic">Transforming complex data into tactical intelligence. Student at Saint Joseph University of Beirut.</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <section class="space-y-6" data-aos="fade-right">
+                <h2 class="text-xs font-black uppercase tracking-[0.5em] text-zinc-600 mb-4 italic">// Education</h2>
+                <div class="cv-card">
+                    <span class="text-[10px] text-orange-500 font-bold italic">2024 — Present</span>
+                    <h3 class="text-lg font-black mt-1 uppercase italic">B.S. Data Science</h3>
+                    <p class="text-zinc-400 text-xs">Saint Joseph University of Beirut (USJ)</p>
+                </div>
+            </section>
+
+            <section class="space-y-6" data-aos="fade-left">
+                <h2 class="text-xs font-black uppercase tracking-[0.5em] text-zinc-600 mb-4 italic">// Tech Stack</h2>
+                <div class="cv-card flex flex-wrap gap-2">
+                    <span class="skill-tag">PYTHON</span>
+                    <span class="skill-tag">FLUTTER</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">DATA ANALYSIS</span>
+                    <span class="skill-tag">PANDAS</span>
+                    <span class="skill-tag">TAILWIND CSS</span>
+                </div>
+            </section>
+
+            <section class="md:col-span-2 space-y-6" data-aos="fade-up">
+                <h2 class="text-xs font-black uppercase tracking-[0.5em] text-zinc-600 mb-4 italic">// Experience & Projects</h2>
+                <div class="cv-card mb-4">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-lg font-black uppercase italic">Medical Admin App</h3>
+                        <span class="text-[10px] text-orange-500 font-bold italic italic">PROTOTYPE</span>
+                    </div>
+                    <p class="text-zinc-500 text-xs mt-2">Developing a Flutter application for clinical management and patient scheduling.</p>
+                </div>
+                <div class="cv-card">
+                    <div class="flex justify-between items-start">
+                        <h3 class="text-lg font-black uppercase italic">Football Tactical Analysis</h3>
+                        <span class="text-[10px] text-orange-500 font-bold italic italic">RESEARCH</span>
+                    </div>
+                    <p class="text-zinc-500 text-xs mt-2">Using Python for spatial data visualization in football matches to optimize player positioning.</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="mt-16 text-center" data-aos="zoom-in">
+            <button onclick="window.print()" class="px-10 py-4 bg-orange-500 rounded-xl text-black font-black text-[10px] uppercase tracking-widest hover:bg-orange-600 transition-all">
+                Download PDF Version
+            </button>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('live-clock').textContent = now.getHours().toString().padStart(2,'0') + ":" + now.getMinutes().toString().padStart(2,'0') + ":" + now.getSeconds().toString().padStart(2,'0');
+        }
+        setInterval(updateClock, 1000); updateClock();
+    </script>
+</body>
+</html>
