@@ -3,156 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Bandar | Tactical DNA</title>
+    <title>Ahmad Bandar | Football DNA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap');
-        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* Tactical Pitch Design */
-        .pitch-full { background: #080808; border: 2px solid #1a1a1a; border-radius: 20px; position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; }
-        .heatmap-zone { position: absolute; background: radial-gradient(circle, rgba(249,115,22,0.4) 0%, transparent 75%); border-radius: 50%; filter: blur(30px); animation: pulse 4s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.2); } }
-        
-        .bento-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 30px; transition: 0.4s; position: relative; overflow: hidden; }
-        .bento-card:hover { border-color: #f97316; background: rgba(249,115,22,0.03); }
-        
-        .timeline-dot { width: 8px; height: 8px; background: #f97316; border-radius: 50%; position: absolute; left: -4px; top: 8px; box-shadow: 0 0 10px #f97316; }
-        
-        /* New: Scroll Progress Bar */
-        #scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: #f97316; z-index: 200; width: 0%; transition: width 0.1s; }
+        .stats-card { background: rgba(249,115,22,0.03); border: 1px solid rgba(249,115,22,0.1); border-radius: 20px; padding: 25px; transition: 0.4s; }
+        .stats-card:hover { border-color: #f97316; background: rgba(249,115,22,0.08); }
     </style>
 </head>
 <body>
 
-    <div id="scroll-progress"></div>
-
-    <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center backdrop-blur-md bg-black/20">
-        <a href="index.html" class="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500 hover:text-white transition">← BACK TO SYSTEM</a>
-        <div class="flex items-center gap-3">
-             <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-             <div class="text-[9px] font-black tracking-widest text-zinc-600 uppercase italic">READY FOR SCOUTING</div>
-        </div>
-    </nav>
-
-    <section class="min-h-screen flex flex-col justify-center items-center px-10 pt-24">
-        <div class="text-center mb-16" data-aos="fade-down">
-            <h1 class="text-6xl md:text-8xl font-black uppercase italic gradient-text tracking-tighter leading-none">Tactical DNA</h1>
-            <p class="mt-4 text-zinc-500 tracking-[0.6em] text-[10px] uppercase font-bold">Midfield Intelligence Visualization</p>
-        </div>
-        <div class="max-w-6xl w-full" data-aos="zoom-in">
-            <div class="pitch-full shadow-2xl group">
-                <div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/5"></div>
-                <div class="heatmap-zone w-64 h-64 top-1/4 left-1/2"></div>
-                <div class="absolute bottom-6 left-8 flex items-center gap-3 text-[9px] font-black uppercase text-zinc-400">
-                    <span class="w-2 h-2 bg-orange-500 rounded-full animate-ping"></span>
-                    Deep Lying Playmaker Analysis
-                </div>
+    <header class="fixed top-0 w-full z-[110] px-2 md:px-6 py-3 md:py-4 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/5">
+        <div class="flex items-center gap-1 md:gap-4">
+            <span id="live-clock" class="text-white font-black tracking-tighter text-[8px] md:text-[11px]">00:00:00</span>
+            <span class="text-zinc-800">|</span>
+            <div class="flex gap-[1px] items-end h-2 md:h-3">
+                <div class="w-[1.5px] h-[30%] bg-white/20"></div>
+                <div class="w-[1.5px] h-[60%] bg-orange-500"></div>
+                <div class="w-[1.5px] h-[100%] bg-orange-500"></div>
             </div>
         </div>
-    </section>
-
-    <section class="py-20 px-10 bg-black">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-            <div class="bento-card" data-aos="fade-up">
-                <span class="text-orange-500 text-[10px] font-black tracking-widest">01 / TECHNICAL</span>
-                <h3 class="text-xl font-bold mt-4 uppercase italic">Ball Mastery</h3>
-                <p class="text-zinc-500 text-[11px] mt-2">Elite first touch and close control under midfield pressure.</p>
-            </div>
-            <div class="bento-card" data-aos="fade-up" data-aos-delay="100">
-                <span class="text-orange-500 text-[10px] font-black tracking-widest">02 / TACTICAL</span>
-                <h3 class="text-xl font-bold mt-4 uppercase italic">Spatial Vision</h3>
-                <p class="text-zinc-500 text-[11px] mt-2">Analyzing defensive gaps before receiving the ball.</p>
-            </div>
-            <div class="bento-card" data-aos="fade-up" data-aos-delay="200">
-                <span class="text-orange-500 text-[10px] font-black tracking-widest">03 / PHYSICAL</span>
-                <h3 class="text-xl font-bold mt-4 uppercase italic">Engine Capacity</h3>
-                <p class="text-zinc-500 text-[11px] mt-2">Consistent high-intensity sprints throughout 90 minutes.</p>
+        <nav class="flex items-center gap-1.5 md:gap-4 uppercase font-black text-[6.5px] md:text-[9px] tracking-tight text-zinc-400">
+            <a href="index.html" class="hover:text-orange-500 transition px-1">Index</a>
+            <a href="personal.html" class="hover:text-orange-500 transition px-1">Profile</a>
+            <a href="lab.html" class="hover:text-orange-500 transition px-1">Lab</a>
+            <a href="index2.html" class="text-white bg-orange-500 border border-orange-500/40 px-2 py-0.5 md:px-3 md:py-1 rounded-sm shadow-[0_0_10px_rgba(249,115,22,0.3)]">FOOTBALL</a>
+        </nav>
+        <div class="flex items-center gap-1 border-l border-white/10 pl-2">
+            <span class="text-[6px] md:text-[9px] font-bold text-zinc-500">98%</span>
+            <div class="w-4 h-2 md:w-6 md:h-3 border border-white/30 rounded-[1px] p-[0.5px] relative">
+                <div class="h-full bg-green-500 w-[90%] rounded-[0.5px]"></div>
+                <div class="absolute -right-[2px] top-1/2 -translate-y-1/2 w-[1.5px] h-0.5 bg-white/30 rounded-r-sm"></div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <section class="py-32 px-10 border-t border-white/5 bg-zinc-950/20">
-        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div data-aos="fade-right">
-                <h3 class="text-orange-500 font-black uppercase tracking-[0.3em] text-[10px] mb-4 italic">Core Strategy</h3>
-                <h2 class="text-4xl font-black italic uppercase leading-tight">The Midfield <br> Maestro.</h2>
-                <p class="text-zinc-400 text-sm mt-6 leading-relaxed italic italic">"Control the center, and you control the game. Data is the map, but vision is the compass."</p>
+    <main class="pt-32 px-6 max-w-6xl mx-auto min-h-screen pb-20">
+        <div class="mb-16" data-aos="fade-up">
+            <h1 class="text-6xl md:text-8xl font-black uppercase italic gradient-text tracking-tighter leading-none">The Pitch.</h1>
+            <p class="mt-4 text-zinc-500 tracking-[0.6em] text-[10px] uppercase font-bold">Tactical DNA & Career Data</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="stats-card text-center" data-aos="zoom-in">
+                <h3 class="text-orange-500 text-[9px] font-black uppercase mb-2">Position</h3>
+                <h2 class="text-3xl font-black italic">MIDFIELDER</h2>
             </div>
-            <div class="grid grid-cols-1 gap-4" data-aos="fade-left">
-                <div class="bento-card border-orange-500/20">
-                    <h4 class="text-xs font-black uppercase text-white mb-2 italic tracking-widest">Positioning IQ</h4>
-                    <p class="text-zinc-500 text-[11px]">Identifying half-spaces and passing lanes through structural data analysis.</p>
-                </div>
+            <div class="stats-card text-center" data-aos="zoom-in" data-aos-delay="100">
+                <h3 class="text-orange-500 text-[9px] font-black uppercase mb-2">Condition</h3>
+                <h2 class="text-3xl font-black italic">MATCH READY</h2>
+            </div>
+            <div class="stats-card text-center" data-aos="zoom-in" data-aos-delay="200">
+                <h3 class="text-orange-500 text-[9px] font-black uppercase mb-2">Focus</h3>
+                <h2 class="text-3xl font-black italic">TACTICS</h2>
             </div>
         </div>
-    </section>
 
-    <section class="py-32 px-10 border-t border-white/5 bg-black">
-        <div class="max-w-4xl mx-auto">
-            <h3 class="text-orange-500 font-black uppercase tracking-[0.3em] text-[10px] mb-16 text-center italic">Evolution Journey</h3>
-            <div class="relative border-l border-white/10 ml-4 space-y-16">
-                <div class="pl-10 relative" data-aos="fade-up">
-                    <div class="timeline-dot"></div>
-                    <span class="text-orange-500 font-black text-xl italic leading-none">2026</span>
-                    <h4 class="text-white font-black uppercase text-sm mt-2 tracking-widest">System Architect Mode</h4>
-                    <p class="text-zinc-500 text-[11px] mt-2 max-w-md">Bridging the gap between Data Science at USJ and pro-level football tactics.</p>
-                </div>
-                <div class="pl-10 relative" data-aos="fade-up" data-aos-delay="100">
-                    <div class="timeline-dot bg-zinc-700 shadow-none"></div>
-                    <span class="text-zinc-600 font-black text-xl italic leading-none">2025</span>
-                    <h4 class="text-white font-black uppercase text-sm mt-2 tracking-widest">Strategic Playmaker</h4>
-                    <p class="text-zinc-500 text-[11px] mt-2 max-w-md">Refining technical passing and spatial awareness as a core Deep Lying Playmaker.</p>
-                </div>
-            </div>
+        <div class="mt-12 bg-white/5 p-10 rounded-3xl border border-white/5" data-aos="fade-up">
+            <h2 class="text-2xl font-black uppercase italic mb-6">Tactical Vision</h2>
+            <p class="text-zinc-400 text-sm leading-relaxed max-w-2xl">
+                Developing a unique approach that merges data analytics with on-field performance. 
+                Studying player movement patterns and spatial control to optimize transition phases.
+            </p>
         </div>
-    </section>
-
-    <section class="py-24 px-10 bg-orange-500 text-black">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center font-black">
-            <div data-aos="zoom-in">
-                <h4 class="text-5xl mb-3 italic">92%</h4>
-                <p class="uppercase text-xs tracking-widest">Passing Accuracy</p>
-            </div>
-            <div data-aos="zoom-in" data-aos-delay="100">
-                <h4 class="text-5xl mb-3 italic">12KM</h4>
-                <p class="uppercase text-xs tracking-widest">Avg. Distance</p>
-            </div>
-            <div data-aos="zoom-in" data-aos-delay="200">
-                <h4 class="text-5xl mb-3 italic">ELITE</h4>
-                <p class="uppercase text-xs tracking-widest">Vision Rating</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 px-10 bg-white text-black overflow-hidden relative">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 relative z-10">
-            <h2 class="text-6xl md:text-8xl font-black uppercase italic tracking-tighter leading-[0.8]">THE <br> PLAYBOOK.</h2>
-            <div class="max-w-md">
-                <p class="text-2xl font-bold italic leading-snug">"Data is the preparation. The field is the execution. The goal is the result."</p>
-                <p class="mt-6 text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400">— A. BANDAR / PROTOCOL</p>
-            </div>
-        </div>
-        <div class="absolute bottom-0 right-0 text-[20rem] font-black italic opacity-5 pointer-events-none translate-y-1/4">DNA</div>
-    </section>
-
-    <footer class="py-20 text-center border-t border-white/5 bg-black">
-        <p class="text-[9px] font-black tracking-[1.5em] text-zinc-800 uppercase italic">Authorized Access Only // 2026</p>
-    </footer>
+    </main>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
-
-        // Scroll Progress Logic
-        window.onscroll = function() {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("scroll-progress").style.width = scrolled + "%";
-        };
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('live-clock').textContent = now.getHours().toString().padStart(2,'0') + ":" + now.getMinutes().toString().padStart(2,'0') + ":" + now.getSeconds().toString().padStart(2,'0');
+        }
+        setInterval(updateClock, 1000); updateClock();
     </script>
 </body>
 </html>
