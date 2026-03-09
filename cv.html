@@ -8,90 +8,130 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; }
-        .cv-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 25px; transition: 0.3s; }
-        .cv-card:hover { border-color: #f97316; background: rgba(249,115,22,0.02); }
-        .skill-tag { background: rgba(249,115,22,0.1); color: #f97316; padding: 4px 12px; border-radius: 50px; font-size: 10px; font-weight: 700; border: 1px solid rgba(249,115,22,0.2); }
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        
+        /* Moving Mesh Background metel Jason */
+        .mesh-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(249,115,22,0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: move 20s infinite alternate;
+        }
+        @keyframes move {
+            0% { transform: translate(-10%, -10%) scale(1); }
+            100% { transform: translate(10%, 10%) scale(1.1); }
+        }
+
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.01); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            border-radius: 24px; 
+            padding: 35px; 
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover { border-color: #f97316; background: rgba(249,115,22,0.02); }
+        .orange-glow { text-shadow: 0 0 15px rgba(249,115,22,0.5); }
     </style>
 </head>
-<body class="pt-24 pb-20 px-6">
+<body class="pt-28 pb-20 px-6">
+    <div class="mesh-bg"></div>
 
-    <header class="fixed top-0 left-0 w-full z-[110] px-6 py-4 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/5">
+    <header class="fixed top-0 left-0 w-full z-[110] px-6 py-4 flex justify-between items-center bg-black/40 backdrop-blur-2xl border-b border-white/5">
         <div class="flex items-center gap-4">
             <span id="live-clock" class="text-white font-black text-[11px]">00:00:00</span>
-            <div class="flex gap-[1px] items-end h-3 border-l border-white/10 pl-4">
-                <div class="w-[1.5px] h-[100%] bg-orange-500"></div>
-            </div>
+            <div class="w-[1px] h-3 bg-white/10 mx-2"></div>
+            <span class="text-[9px] font-black uppercase tracking-widest text-orange-500">A.Bandar // CV</span>
         </div>
-        <nav class="flex items-center gap-6 uppercase font-black text-[9px] tracking-widest text-zinc-400">
-            <a href="index.html" class="hover:text-orange-500 transition">Home</a>
-            <a href="cv.html" class="text-white border-b border-orange-500">CV</a>
+        <nav class="flex items-center gap-6 uppercase font-black text-[9px] tracking-widest text-zinc-500">
+            <a href="index.html" class="hover:text-white transition">Home</a>
+            <a href="cv.html" class="text-white border-b border-orange-500">Resume</a>
         </nav>
     </header>
 
-    <main class="max-w-4xl mx-auto">
-        <div class="flex flex-col md:flex-row items-center gap-8 mb-16" data-aos="fade-up">
-            <div class="w-32 h-32 rounded-2xl overflow-hidden border-2 border-orange-500 shadow-[0_0_20px_#f9731644]">
-                <img src="ahmad-cutout.png..jpg" class="w-full h-full object-cover">
+    <main class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-12 items-center mb-20" data-aos="fade-up">
+            <div class="md:col-span-2">
+                <h1 class="text-6xl md:text-8xl font-black uppercase italic tracking-tighter leading-none mb-4">Ahmad<br><span class="orange-glow text-orange-500">Bandar</span></h1>
+                <p class="text-zinc-500 font-bold tracking-[0.4em] text-[11px] uppercase mb-8">Data Science Student // USJ Lebanon</p>
+                <div class="flex flex-wrap gap-4">
+                    <div class="text-[10px] font-black uppercase tracking-widest py-2 px-4 border border-white/10 rounded-full italic">Saksakiye, Lebanon</div>
+                    <div class="text-[10px] font-black uppercase tracking-widest py-2 px-4 border border-orange-500/20 rounded-full text-orange-500 italic">Available for Projects</div>
+                </div>
             </div>
-            <div>
-                <h1 class="text-5xl font-black uppercase italic tracking-tighter">Ahmad Bandar</h1>
-                <p class="text-orange-500 font-bold tracking-[0.3em] text-[10px] uppercase mt-2">Data Scientist & Football Specialist</p>
-                <p class="text-zinc-500 text-sm mt-4 max-w-md italic">Transforming complex data into tactical intelligence. Student at Saint Joseph University of Beirut.</p>
+            <div class="relative group">
+                <div class="absolute inset-0 bg-orange-500/20 blur-[60px] rounded-full group-hover:bg-orange-500/30 transition"></div>
+                <img src="ahmad-cutout.png..jpg" class="relative z-10 w-full rounded-3xl grayscale hover:grayscale-0 transition duration-700 shadow-2xl">
             </div>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <section class="space-y-6" data-aos="fade-right">
-                <h2 class="text-xs font-black uppercase tracking-[0.5em] text-zinc-600 mb-4 italic">// Education</h2>
-                <div class="cv-card">
-                    <span class="text-[10px] text-orange-500 font-bold italic">2024 — Present</span>
-                    <h3 class="text-lg font-black mt-1 uppercase italic">B.S. Data Science</h3>
-                    <p class="text-zinc-400 text-xs">Saint Joseph University of Beirut (USJ)</p>
-                </div>
-            </section>
-
-            <section class="space-y-6" data-aos="fade-left">
-                <h2 class="text-xs font-black uppercase tracking-[0.5em] text-zinc-600 mb-4 italic">// Tech Stack</h2>
-                <div class="cv-card flex flex-wrap gap-2">
-                    <span class="skill-tag">PYTHON</span>
-                    <span class="skill-tag">FLUTTER</span>
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">DATA ANALYSIS</span>
-                    <span class="skill-tag">PANDAS</span>
-                    <span class="skill-tag">TAILWIND CSS</span>
-                </div>
-            </section>
-
-            <section class="md:col-span-2 space-y-6" data-aos="fade-up">
-                <h2 class="text-xs font-black uppercase tracking-[0.5em] text-zinc-600 mb-4 italic">// Experience & Projects</h2>
-                <div class="cv-card mb-4">
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-lg font-black uppercase italic">Medical Admin App</h3>
-                        <span class="text-[10px] text-orange-500 font-bold italic italic">PROTOTYPE</span>
+        <div class="grid md:grid-cols-12 gap-8">
+            <div class="md:col-span-4 space-y-8">
+                <section data-aos="fade-right">
+                    <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-600 mb-6 italic">// Contact</h2>
+                    <div class="glass-card space-y-4">
+                        <div class="text-xs"><span class="text-zinc-500 block mb-1">Email:</span> <a href="mailto:bandarahmad104@gmail.com" class="hover:text-orange-500 transition">bandarahmad104@gmail.com</a></div>
+                        <div class="text-xs"><span class="text-zinc-500 block mb-1">Phone:</span> <a href="tel:+96181101811" class="hover:text-orange-500 transition">+961 81 101 811</a></div>
                     </div>
-                    <p class="text-zinc-500 text-xs mt-2">Developing a Flutter application for clinical management and patient scheduling.</p>
-                </div>
-                <div class="cv-card">
-                    <div class="flex justify-between items-start">
-                        <h3 class="text-lg font-black uppercase italic">Football Tactical Analysis</h3>
-                        <span class="text-[10px] text-orange-500 font-bold italic italic">RESEARCH</span>
-                    </div>
-                    <p class="text-zinc-500 text-xs mt-2">Using Python for spatial data visualization in football matches to optimize player positioning.</p>
-                </div>
-            </section>
-        </div>
+                </section>
 
-        <div class="mt-16 text-center" data-aos="zoom-in">
-            <button onclick="window.print()" class="px-10 py-4 bg-orange-500 rounded-xl text-black font-black text-[10px] uppercase tracking-widest hover:bg-orange-600 transition-all">
-                Download PDF Version
-            </button>
+                <section data-aos="fade-right" data-aos-delay="100">
+                    <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-600 mb-6 italic">// Languages</h2>
+                    <div class="glass-card space-y-4">
+                        <div class="flex justify-between items-center text-xs"><span>Arabic</span> <span class="text-orange-500 font-bold italic">Native</span></div>
+                        <div class="flex justify-between items-center text-xs"><span>English</span> <span class="text-orange-500 font-bold italic">Fluent</span></div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="md:col-span-8 space-y-8">
+                <section data-aos="fade-left">
+                    <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-600 mb-6 italic">// Education</h2>
+                    <div class="space-y-4">
+                        <div class="glass-card">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-lg font-black uppercase italic">B.S. Data Science</h3>
+                                <span class="text-[9px] font-bold text-orange-500">USJ</span>
+                            </div>
+                            <p class="text-zinc-500 text-xs italic">Saint Joseph University of Beirut. Focus on analytical systems and data structures.</p>
+                        </div>
+                        <div class="glass-card">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-lg font-black uppercase italic">High School Diploma</h3>
+                                <span class="text-[9px] font-bold text-zinc-500">Sarafand High School</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-aos="fade-left" data-aos-delay="100">
+                    <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-600 mb-6 italic">// Courses & Skills</h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="glass-card">
+                            <h3 class="text-xs font-black uppercase mb-4 italic text-orange-500">Digital Training</h3>
+                            <ul class="text-[11px] text-zinc-400 space-y-2">
+                                <li>• Web Development Fundamentals</li>
+                                <li>• Advanced Data Science Tools</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card">
+                            <h3 class="text-xs font-black uppercase mb-4 italic text-orange-500">Technical Stack</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[8px] font-black">PYTHON</span>
+                                <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[8px] font-black">FLUTTER</span>
+                                <span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[8px] font-black">SQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
     </main>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({ duration: 1000, once: true });
         function updateClock() {
             const now = new Date();
             document.getElementById('live-clock').textContent = now.getHours().toString().padStart(2,'0') + ":" + now.getMinutes().toString().padStart(2,'0') + ":" + now.getSeconds().toString().padStart(2,'0');
