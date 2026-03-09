@@ -19,23 +19,27 @@
 <body>
 
     <div id="lock-screen" class="fixed inset-0 z-[200] flex flex-col justify-center items-center overflow-hidden transition-opacity duration-1000 bg-black">
-        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-40">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-screen-with-dots-and-lines-23427-large.mp4" type="video/mp4">
-        </video>
-        <div class="absolute inset-0 bg-black/60"></div>
-        <div class="relative z-10 text-center">
-            <div class="mb-6 flex justify-center animate-spin-slow">
-                <div class="w-12 h-12 border border-orange-500/30 rounded-full flex items-center justify-center">
-                    <div class="w-2 h-2 bg-orange-500 rounded-full shadow-[0_0_15px_#f97316]"></div>
-                </div>
-            </div>
-            <h2 class="text-orange-500 font-black tracking-[0.8em] text-[10px] mb-8 uppercase italic">A.BANDAR // SYSTEM</h2>
-            <button onclick="unlockSystem()" class="px-12 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-black tracking-[0.4em] uppercase text-white hover:border-orange-500 transition-all">
-                Initialize System
-            </button>
-        </div>
+    
+    <div class="absolute inset-0 w-full h-full bg-cover bg-center opacity-60" 
+         style="background-image: url('ahmad-cutout.png..jpg');"> 
     </div>
 
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+
+    <div class="relative z-10 text-center">
+        <div class="mb-6 flex justify-center animate-spin-slow">
+            <div class="w-16 h-16 border border-orange-500/30 rounded-full flex items-center justify-center backdrop-blur-sm">
+                <div class="w-3 h-3 bg-orange-500 rounded-full shadow-[0_0_20px_#f97316]"></div>
+            </div>
+        </div>
+        <h2 class="text-white font-black tracking-[0.8em] text-[12px] mb-2 uppercase italic">SYSTEM ACCESS</h2>
+        <h3 class="text-orange-500 font-black tracking-[0.4em] text-[10px] mb-12 uppercase italic">A.BANDAR // ROOT</h3>
+        
+        <button onclick="unlockSystem()" class="group relative px-16 py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full text-[10px] font-black tracking-[0.5em] uppercase text-white hover:border-orange-500 transition-all overflow-hidden">
+            <span class="relative z-10">Initialize System</span>
+        </button>
+    </div>
+</div>
     <header class="fixed top-0 w-full z-[110] px-2 md:px-6 py-3 md:py-4 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/5">
         <div class="flex items-center gap-1 md:gap-4">
             <span id="live-clock" class="text-white font-black tracking-tighter text-[8px] md:text-[11px]">00:00:00</span>
