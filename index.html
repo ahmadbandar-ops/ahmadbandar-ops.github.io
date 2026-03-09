@@ -17,29 +17,32 @@
     </style>
 </head>
 <body>
-
-    <div id="lock-screen" class="fixed inset-0 z-[200] flex flex-col justify-center items-center overflow-hidden transition-opacity duration-1000 bg-black">
+    <div id="lock-screen" class="fixed inset-0 z-[200] flex flex-col justify-center items-center overflow-hidden transition-opacity duration-1000 bg-[#050505]">
     
-    <div class="absolute inset-0 w-full h-full bg-cover bg-center opacity-60" 
-         style="background-image: url('ahmad-cutout.png..jpg');"> 
+    <div class="relative w-64 h-64 md:w-80 md:h-80 mb-8" data-aos="zoom-out" data-aos-duration="2000">
+        <div class="absolute inset-0 bg-orange-500/20 blur-[80px] rounded-full"></div>
+        
+        <img src="ahmad-cutout.png..jpg" 
+             class="relative z-10 w-full h-full object-contain drop-shadow-[0_0_30px_rgba(249,115,22,0.3)]"
+             alt="Ahmad Bandar">
     </div>
 
-    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-
-    <div class="relative z-10 text-center">
-        <div class="mb-6 flex justify-center animate-spin-slow">
-            <div class="w-16 h-16 border border-orange-500/30 rounded-full flex items-center justify-center backdrop-blur-sm">
-                <div class="w-3 h-3 bg-orange-500 rounded-full shadow-[0_0_20px_#f97316]"></div>
-            </div>
-        </div>
+    <div class="relative z-10 text-center" data-aos="fade-up" data-aos-delay="800">
         <h2 class="text-white font-black tracking-[0.8em] text-[12px] mb-2 uppercase italic">SYSTEM ACCESS</h2>
         <h3 class="text-orange-500 font-black tracking-[0.4em] text-[10px] mb-12 uppercase italic">A.BANDAR // ROOT</h3>
         
-        <button onclick="unlockSystem()" class="group relative px-16 py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full text-[10px] font-black tracking-[0.5em] uppercase text-white hover:border-orange-500 transition-all overflow-hidden">
-            <span class="relative z-10">Initialize System</span>
+        <button onclick="unlockSystem()" class="group relative px-16 py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full text-[10px] font-black tracking-[0.5em] uppercase text-white hover:border-orange-500 transition-all overflow-hidden shadow-2xl">
+            <span class="relative z-10 italic">Initialize System</span>
+            <div class="absolute inset-0 bg-orange-500/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
         </button>
     </div>
+
+    <div class="absolute bottom-10 text-white/5 font-black text-[12vw] select-none pointer-events-none uppercase italic">
+        Ahmad Bandar
+    </div>
 </div>
+    
+       
     <header class="fixed top-0 w-full z-[110] px-2 md:px-6 py-3 md:py-4 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/5">
         <div class="flex items-center gap-1 md:gap-4">
             <span id="live-clock" class="text-white font-black tracking-tighter text-[8px] md:text-[11px]">00:00:00</span>
