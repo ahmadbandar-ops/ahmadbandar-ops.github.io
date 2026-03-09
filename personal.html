@@ -3,96 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Bandar | Identity Protocol</title>
+    <title>Ahmad Bandar | Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap');
-        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .bento-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 30px; transition: 0.4s; }
-        .bento-card:hover { border-color: #f97316; background: rgba(249,115,22,0.03); }
-        .skill-tag { background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.2); color: #f97316; padding: 4px 12px; border-radius: 100px; font-size: 10px; font-weight: 900; text-transform: uppercase; }
+        .info-card { background: rgba(255,255,255,0.02); border-left: 2px solid #f97316; padding: 25px; border-radius: 0 15px 15px 0; transition: 0.3s; }
+        .info-card:hover { background: rgba(249,115,22,0.05); transform: translateX(10px); }
     </style>
 </head>
 <body>
 
-    <header class="fixed top-0 w-full z-[110] px-6 py-4 flex justify-between items-center bg-black/80 backdrop-blur-xl border-b border-white/5 text-[9px] font-black tracking-[0.2em]">
-        <div class="flex items-center gap-4">
-            <span class="text-orange-500">SYSTEM: ONLINE</span>
+    <header class="fixed top-0 w-full z-[110] px-2 md:px-6 py-3 md:py-4 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/5">
+        <div class="flex items-center gap-1 md:gap-4">
+            <span id="live-clock" class="text-white font-black tracking-tighter text-[8px] md:text-[11px]">00:00:00</span>
+            <span class="text-zinc-800">|</span>
+            <div class="flex gap-[1px] items-end h-2 md:h-3">
+                <div class="w-[1.5px] h-[30%] bg-white/20"></div>
+                <div class="w-[1.5px] h-[60%] bg-orange-500"></div>
+                <div class="w-[1.5px] h-[100%] bg-orange-500"></div>
+            </div>
         </div>
-        <div class="flex items-center gap-6 uppercase">
+        <nav class="flex items-center gap-1.5 md:gap-4 uppercase font-black text-[6.5px] md:text-[9px] tracking-tight text-zinc-400">
             <a href="index.html" class="hover:text-orange-500 transition px-1">Index</a>
             <a href="personal.html" class="text-white border-b border-orange-500 px-1">Profile</a>
-            <a href="index.html#lab" class="hover:text-orange-500 transition px-1">Vault</a>
-            <a href="https://api.whatsapp.com/send?phone=96181101811" target="_blank" class="hover:text-orange-500 transition px-1">[ Contact ]</a>
-            <a href="index2.html" class="text-orange-500 border border-orange-500/30 px-3 py-1.5 rounded-sm hover:bg-orange-500 hover:text-black transition duration-300">
-                FOOTBALL DNA
-            </a>
+            <a href="lab.html" class="hover:text-orange-500 transition px-1">Lab</a>
+            <a href="index2.html" class="text-orange-500 border border-orange-500/40 px-1.5 py-0.5 rounded-sm bg-orange-500/5">FOOTBALL</a>
+        </nav>
+        <div class="flex items-center gap-1 border-l border-white/10 pl-2">
+            <span class="text-[6px] md:text-[9px] font-bold text-zinc-500">98%</span>
+            <div class="w-4 h-2 md:w-6 md:h-3 border border-white/30 rounded-[1px] p-[0.5px] relative">
+                <div class="h-full bg-green-500 w-[90%] rounded-[0.5px]"></div>
+                <div class="absolute -right-[2px] top-1/2 -translate-y-1/2 w-[1.5px] h-0.5 bg-white/30 rounded-r-sm"></div>
+            </div>
         </div>
     </header>
 
-    <section class="min-h-screen flex flex-col justify-center items-center px-6 pt-24">
-        <div class="text-center mb-16" data-aos="fade-down">
-            <h1 class="text-6xl md:text-8xl font-black uppercase italic gradient-text tracking-tighter leading-none">Identity</h1>
-            <p class="mt-4 text-zinc-500 tracking-[0.6em] text-[10px] uppercase font-bold">Personal Data Protocol</p>
+    <main class="pt-32 px-6 max-w-4xl mx-auto min-h-screen pb-20">
+        <div class="mb-16" data-aos="fade-right">
+            <h1 class="text-5xl md:text-7xl font-black uppercase italic gradient-text tracking-tighter">Identity.</h1>
+            <p class="text-zinc-500 text-[10px] tracking-[0.5em] mt-2 uppercase font-bold">User Profile // Ahmad Bandar</p>
         </div>
 
-        <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <div class="bento-card md:col-span-2" data-aos="fade-right">
-                <h3 class="text-orange-500 text-[10px] font-black tracking-widest italic mb-4 uppercase">01 / Education</h3>
-                <h2 class="text-3xl font-black uppercase italic">Data Science Student</h2>
-                <p class="text-zinc-500 text-sm mt-4 leading-relaxed">
-                    Studying **Data Science** at **Saint Joseph University of Beirut (USJ)**. 
-                    Specializing in building intelligent systems and mobile frameworks.
-                </p>
+        <div class="space-y-6">
+            <div class="info-card" data-aos="fade-up">
+                <h3 class="text-orange-500 text-[10px] font-black uppercase tracking-widest mb-2 italic">Academic Status</h3>
+                <h2 class="text-xl font-bold">Data Science Student @ USJ</h2>
+                <p class="text-zinc-500 text-sm mt-2">Saint Joseph University of Beirut. Focus on AI, Machine Learning, and Big Data Analysis.</p>
             </div>
 
-            <div class="bento-card" data-aos="fade-left">
-                <h3 class="text-orange-500 text-[10px] font-black tracking-widest italic mb-4 uppercase">02 / Profile</h3>
-                <div class="space-y-4">
-                    <div>
-                        <span class="block text-[8px] text-zinc-600 font-black uppercase italic">Origin</span>
-                        <span class="text-sm font-bold">Lebanon / Turkey Explorer</span>
-                    </div>
-                    <div>
-                        <span class="block text-[8px] text-zinc-600 font-black uppercase italic">Status</span>
-                        <span class="text-sm font-bold text-green-500">Active Developer</span>
-                    </div>
+            <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-orange-500 text-[10px] font-black uppercase tracking-widest mb-2 italic">Technical Stack</h3>
+                <h2 class="text-xl font-bold">Developer & Analyst</h2>
+                <div class="flex flex-wrap gap-3 mt-3">
+                    <span class="text-[9px] border border-white/10 px-2 py-1 rounded">PYTHON</span>
+                    <span class="text-[9px] border border-white/10 px-2 py-1 rounded">FLUTTER</span>
+                    <span class="text-[9px] border border-white/10 px-2 py-1 rounded">HTML/TAILWIND</span>
+                    <span class="text-[9px] border border-white/10 px-2 py-1 rounded">SQL</span>
                 </div>
             </div>
 
-            
-            <div class="bento-card md:col-span-3" data-aos="fade-up">
-                <h3 class="text-orange-500 text-[10px] font-black tracking-widest italic mb-6 uppercase">03 / Technical Stack</h3>
-                <div class="flex flex-wrap gap-3">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Flutter</span>
-                    <span class="skill-tag">HTML5 / CSS3</span>
-                    <span class="skill-tag">GitHub</span>
-                    <span class="skill-tag">VS Code</span>
-                    <span class="skill-tag">Data Analysis</span>
-                    <span class="skill-tag">Mobile Automation</span>
-                </div>
-            </div>
-
-            <div class="bento-card md:col-span-3 bg-white text-black" data-aos="fade-up">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <h2 class="text-4xl font-black italic uppercase tracking-tighter">Current <br> Objective</h2>
-                    <p class="max-w-md text-sm font-bold leading-relaxed italic">
-                        "Developing high-performance software solutions by merging analytical data insights with modern mobile architecture."
-                    </p>
-                </div>
+            <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-orange-500 text-[10px] font-black uppercase tracking-widest mb-2 italic">Background</h3>
+                <h2 class="text-xl font-bold">Athlete & Strategist</h2>
+                <p class="text-zinc-500 text-sm mt-2 leading-relaxed">Combining the discipline of a football player with the analytical mind of a data scientist. Based in Lebanon.</p>
             </div>
         </div>
-    </section>
 
-    <footer class="py-20 text-center border-t border-white/5 bg-black">
-        <p class="text-[9px] font-black tracking-[1.5em] text-zinc-800 uppercase italic italic">Ahmad Bandar // Protocol 2026</p>
-    </footer>
+        <div class="mt-16 p-8 border border-white/5 rounded-2xl text-center" data-aos="zoom-in">
+            <p class="text-zinc-500 text-[10px] uppercase tracking-widest mb-6 font-bold italic">Secure Communication Channel</p>
+            <a href="https://api.whatsapp.com/send?phone=96181101811" target="_blank" class="bg-white text-black px-10 py-3 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-orange-500 transition-colors">Open WhatsApp</a>
+        </div>
+    </main>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, once: true });</script>
+    <script>
+        AOS.init({ duration: 1000 });
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('live-clock').textContent = now.getHours().toString().padStart(2,'0') + ":" + now.getMinutes().toString().padStart(2,'0') + ":" + now.getSeconds().toString().padStart(2,'0');
+        }
+        setInterval(updateClock, 1000); updateClock();
+    </script>
 </body>
 </html>
