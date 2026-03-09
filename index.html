@@ -3,88 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmad Bandar | System Architect</title>
+    <title>Ahmad Bandar | System Root</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* Animated Elements */
-.animate-spin-slow {
-    animation: spin 8s linear infinite;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-/* Kirmel el-Lock screen yballesh aswad kamil abel ma y-load el-video */
-#lock-screen {
-    background-color: #000;
-}
-        /* Hayda l-koud bi-alib l-<style> section */
-#lock-screen {
-    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
-                url('https://images.unsplash.com/photo-1551288049-bbbda5366392?q=80&w=2070&auto=format&fit=crop'); 
-    background-size: cover;
-    background-position: center;
-}
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;900&display=swap');
-        body { background-color: #000; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; cursor: none; scroll-behavior: smooth; }
-        #custom-cursor { position: fixed; width: 10px; height: 10px; background: #f97316; border-radius: 50%; pointer-events: none; z-index: 10000; transition: transform 0.1s; transform: translate(-50%, -50%); }
-        .bg-grid { position: fixed; inset: 0; z-index: -1; background-image: linear-gradient(rgba(249, 115, 22, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(249, 115, 22, 0.03) 1px, transparent 1px); background-size: 50px 50px; }
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .gradient-text { background: linear-gradient(180deg, #fff 30%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .project-card { border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.4s; background: rgba(10, 10, 10, 0.8); }
-        .project-card:hover { border-color: #f97316; transform: translateY(-5px); }
-        
+        .bento-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 30px; transition: 0.4s; }
+        .bento-card:hover { border-color: #f97316; background: rgba(249,115,22,0.03); transform: translateY(-5px); }
+        .animate-spin-slow { animation: spin 8s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
-  <div id="lock-screen" class="fixed inset-0 z-[200] flex flex-col justify-center items-center overflow-hidden transition-opacity duration-1000">
-    
-    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-40">
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-screen-with-dots-and-lines-23427-large.mp4" type="video/mp4">
-    </video>
 
-    <div class="absolute inset-0 bg-black/60"></div>
+    <div id="lock-screen" class="fixed inset-0 z-[200] flex flex-col justify-center items-center overflow-hidden transition-opacity duration-1000 bg-black">
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-40">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-screen-with-dots-and-lines-23427-large.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="relative z-10 text-center">
+            <div class="mb-6 flex justify-center animate-spin-slow">
+                <div class="w-12 h-12 border border-orange-500/30 rounded-full flex items-center justify-center">
+                    <div class="w-2 h-2 bg-orange-500 rounded-full shadow-[0_0_15px_#f97316]"></div>
+                </div>
+            </div>
+            <h2 class="text-orange-500 font-black tracking-[0.8em] text-[10px] mb-8 uppercase italic">A.BANDAR // SYSTEM</h2>
+            <button onclick="unlockSystem()" class="px-12 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-black tracking-[0.4em] uppercase text-white hover:border-orange-500 transition-all">
+                Initialize System
+            </button>
+        </div>
+    </div>
 
-    <div class="relative z-10 text-center" data-aos="zoom-in">
-        <div class="mb-6 flex justify-center">
-            <div class="w-16 h-16 border border-orange-500/30 rounded-full flex items-center justify-center animate-spin-slow">
-                <div class="w-2 h-2 bg-orange-500 rounded-full shadow-[0_0_15px_#f97316]"></div>
+    <header class="fixed top-0 w-full z-[110] px-2 md:px-6 py-3 md:py-4 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/5">
+        <div class="flex items-center gap-1 md:gap-4">
+            <span id="live-clock" class="text-white font-black tracking-tighter text-[8px] md:text-[11px]">00:00:00</span>
+            <span class="text-zinc-800">|</span>
+            <div class="flex gap-[1px] items-end h-2 md:h-3">
+                <div class="w-[1.5px] h-[30%] bg-white/20"></div>
+                <div class="w-[1.5px] h-[60%] bg-orange-500"></div>
+                <div class="w-[1.5px] h-[100%] bg-orange-500"></div>
             </div>
         </div>
-        <h2 class="text-orange-500 font-black tracking-[0.8em] text-[10px] mb-8 uppercase italic">A.BANDAR // SYSTEM</h2>
-        
-        <button onclick="unlockSystem()" class="group relative px-12 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-full overflow-hidden transition-all duration-500 hover:border-orange-500">
-            <span class="relative z-10 text-[10px] font-black tracking-[0.4em] uppercase text-white group-hover:text-orange-500 transition-colors">Initialize System</span>
-            <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        </button>
-        
-        <p class="mt-8 text-[8px] text-zinc-500 font-black uppercase tracking-widest italic animate-pulse">Waiting for Authentication...</p>
-    </div>
-</div>
-<header class="fixed top-0 w-full z-[110] px-2 md:px-6 py-3 md:py-4 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/5">
-    
-    <div class="flex items-center gap-1 md:gap-4">
-        <span id="live-clock" class="text-white font-black tracking-tighter text-[8px] md:text-[11px]">00:00:00</span>
-        <span class="text-zinc-800">|</span>
-        <div class="flex gap-[1px] items-end h-2 md:h-3">
-            <div class="w-[1.5px] h-[30%] bg-white/20"></div>
-            <div class="w-[1.5px] h-[60%] bg-orange-500"></div>
-            <div class="w-[1.5px] h-[100%] bg-orange-500"></div>
-        </div>
-    </div>
-
-    <div class="flex items-center gap-2 md:gap-6">
-        <nav class="flex items-center gap-2 uppercase font-black text-[6.5px] md:text-[9px] tracking-tight md:tracking-widest text-zinc-400">
-            <a href="index.html" class="hover:text-orange-500 transition">Index</a>
-            <a href="personal.html" class="hover:text-orange-500 transition">Profile</a>
-            <a href="index2.html" class="text-orange-500 border border-orange-500/40 px-1.5 py-0.5 md:px-3 md:py-1 rounded-sm bg-orange-500/5">
-                FOOTBALL
-            </a>
+        <nav class="flex items-center gap-1.5 md:gap-4 uppercase font-black text-[6.5px] md:text-[9px] tracking-tight text-zinc-400">
+            <a href="index.html" class="text-white border-b border-orange-500 px-1">Index</a>
+            <a href="personal.html" class="hover:text-orange-500 transition px-1">Profile</a>
+            <a href="lab.html" class="hover:text-orange-500 transition px-1">Lab</a>
+            <a href="index2.html" class="text-orange-500 border border-orange-500/40 px-1.5 py-0.5 rounded-sm bg-orange-500/5">FOOTBALL</a>
         </nav>
-
         <div class="flex items-center gap-1 border-l border-white/10 pl-2">
             <span class="text-[6px] md:text-[9px] font-bold text-zinc-500">98%</span>
             <div class="w-4 h-2 md:w-6 md:h-3 border border-white/30 rounded-[1px] p-[0.5px] relative">
@@ -92,99 +59,44 @@
                 <div class="absolute -right-[2px] top-1/2 -translate-y-1/2 w-[1.5px] h-0.5 bg-white/30 rounded-r-sm"></div>
             </div>
         </div>
-    </div>
-</header>
-</header>
-   
-    </div>
-</header>
-    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center">
-        <div data-aos="zoom-out">
-            <img src="ahmad-cutout.png..jpg" class="w-48 md:w-64 mb-10 drop-shadow-[0_0_40px_rgba(249,115,22,0.4)]" alt="Ahmad">
-            <h1 class="text-6xl md:text-[8rem] font-black uppercase tracking-tighter leading-[0.8]">AHMAD <br> <span class="gradient-text">BANDAR</span></h1>
-            <p class="mt-8 text-[10px] tracking-[0.6em] text-zinc-500 uppercase">Data Architect & Midfield Strategist</p>
-        </div>
-    </section>
+    </header>
 
-    <section id="lab" class="py-32 px-10 border-t border-white/5">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-black uppercase italic mb-16">The Vault<span class="text-orange-500">.</span></h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="project-card p-8 rounded-2xl" data-aos="fade-up">
-                    <span class="text-orange-500 text-[10px] font-black">01 / ANALYSIS</span>
-                    <h3 class="text-xl font-bold mt-2 uppercase">Neural Scout</h3>
-                    <p class="text-zinc-500 text-xs mt-4">AI-driven scouting engine using Python.</p>
-                </div>
-                <div class="project-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
-                    <span class="text-orange-500 text-[10px] font-black">02 / DATABASE</span>
-                    <h3 class="text-xl font-bold mt-2 uppercase">Logic Link SQL</h3>
-                    <p class="text-zinc-500 text-xs mt-4">Relational architecture for athletic data.</p>
-                </div>
-                <div class="project-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                    <span class="text-orange-500 text-[10px] font-black">03 / VISUALS</span>
-                    <h3 class="text-xl font-bold mt-2 uppercase">Heat-Map UI</h3>
-                    <p class="text-zinc-500 text-xs mt-4">Custom JS for tactical movement tracking.</p>
-                </div>
-            </div>
+    <main class="pt-32 px-6 max-w-6xl mx-auto min-h-screen">
+        <div class="mb-12" data-aos="fade-up">
+            <h1 class="text-6xl md:text-8xl font-black uppercase italic gradient-text tracking-tighter leading-none">Main Root</h1>
+            <p class="mt-4 text-zinc-500 tracking-[0.6em] text-[10px] uppercase font-bold">Protocol Access Granted</p>
         </div>
-    </section>
+
+        <div class="grid md:grid-cols-2 gap-6 pb-20">
+            <a href="lab.html" class="bento-card group" data-aos="fade-up">
+                <h3 class="text-orange-500 text-[10px] font-black uppercase italic mb-4 tracking-widest">01 / Innovation</h3>
+                <h2 class="text-2xl font-black uppercase italic group-hover:text-orange-500 transition-colors">The Lab</h2>
+                <p class="text-zinc-500 text-sm mt-2 leading-relaxed italic">Research, Development, and Data Science Projects.</p>
+                <div class="mt-6 text-[8px] font-black text-white/20 uppercase tracking-[0.4em]">Initialize Connection →</div>
+            </a>
+
+            <a href="index2.html" class="bento-card group" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-orange-500 text-[10px] font-black uppercase italic mb-4 tracking-widest">02 / Performance</h3>
+                <h2 class="text-2xl font-black uppercase italic group-hover:text-orange-500 transition-colors">Football DNA</h2>
+                <p class="text-zinc-500 text-sm mt-2 leading-relaxed italic">Tactical Analysis, Career Path, and Coaching Data.</p>
+                <div class="mt-6 text-[8px] font-black text-white/20 uppercase tracking-[0.4em]">Analyze Field →</div>
+            </a>
+        </div>
+    </main>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000 });
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.getElementById('custom-cursor');
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-        setInterval(() => { document.getElementById('live-clock').innerText = new Date().toLocaleTimeString(); }, 1000);
+        AOS.init({ duration: 1000, once: true });
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('live-clock').textContent = now.getHours().toString().padStart(2,'0') + ":" + now.getMinutes().toString().padStart(2,'0') + ":" + now.getSeconds().toString().padStart(2,'0');
+        }
+        setInterval(updateClock, 1000); updateClock();
+        function unlockSystem() {
+            const lock = document.getElementById('lock-screen');
+            lock.style.opacity = '0';
+            setTimeout(() => { lock.style.display = 'none'; }, 1000);
+        }
     </script>
-    <script>
-    // 1. Unlock System Function
-    function unlockSystem() {
-        const lock = document.getElementById('lock-screen');
-        lock.style.opacity = '0';
-        setTimeout(() => {
-            lock.style.display = 'none';
-        }, 1000);
-    }
-
-    // 2. Live Digital Clock (App Style)
-    function updateClock() {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getHours()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        // If you have an element with id="live-clock" in your header
-        const clockElement = document.getElementById('live-clock');
-        if(clockElement) {
-            clockElement.textContent = `${hours}:${minutes}:${seconds}`;
-        }
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-</script>
-    <script>
-    function updateClock() {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        const clockElement = document.getElementById('live-clock');
-        if(clockElement) {
-            clockElement.textContent = `${hours}:${minutes}:${seconds}`;
-        }
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    function unlockSystem() {
-        const lock = document.getElementById('lock-screen');
-        lock.style.opacity = '0';
-        setTimeout(() => { 
-            lock.style.display = 'none'; 
-        }, 1000);
-    }
-</script>
 </body>
 </html>
