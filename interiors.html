@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loudji Interiors | Introduction</title>
+    <style>
+        /* Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fcfbf9; /* Soft, elegant off-white */
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eae6df;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #4a443f; /* Deep warm clay/earth tone */
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #6e655f;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #4a443f;
+            font-weight: bold;
+        }
+
+        /* Main Intro Section */
+        .intro-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 8%;
+            min-height: 80vh;
+        }
+
+        .intro-text {
+            flex: 1;
+            padding-right: 60px;
+        }
+
+        .intro-text h1 {
+            font-size: 48px;
+            font-weight: 300;
+            line-height: 1.2;
+            color: #332e2a;
+            margin-bottom: 20px;
+        }
+
+        .intro-text h1 span {
+            font-weight: 700;
+            color: #8c7d70; /* Elegant accent tone */
+        }
+
+        .intro-text p {
+            font-size: 16px;
+            color: #6e655f;
+            margin-bottom: 30px;
+            max-width: 500px;
+            text-align: justify;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #4a443f;
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 2px;
+            border-radius: 2px;
+            transition: background 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #6e655f;
+        }
+
+        /* Hero Image Placement */
+        .intro-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-box {
+            width: 100%;
+            max-width: 450px;
+            height: 550px;
+            background-color: #eae6df; /* Temporary placeholder color */
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8c7d70;
+            font-style: italic;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .intro-container {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 40px 5%;
+            }
+            .intro-text {
+                padding-right: 0;
+                margin-top: 40px;
+            }
+            .intro-text p {
+                margin: 0 auto 30px auto;
+            }
+            .image-box {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Loudji Interiors</div>
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="intro-container">
+        
+        <div class="intro-text">
+            <h1>Designing Spaces,<br>Elevating <span>Lifestyles</span></h1>
+            <p>
+                Welcome to Loudji Interiors. We believe that a space should not only look stunning but should also tell a story. From modern minimalism to timeless classic designs, we transform concepts into beautiful, functional realities.
+            </p>
+            <a href="#" class="cta-btn">View My Portfolio</a>
+        </div>
+
+        <div class="intro-image">
+            <div class="image-box">
+                <img src="your-image-name.jpg" alt="Interior Design Concept Workspace">
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
